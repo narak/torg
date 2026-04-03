@@ -644,12 +644,12 @@ export function useOrgState(): OrgState {
                 return;
             }
 
-            // Enter: toggle tab bar focus when tabs active, else edit heading
+            // Enter: focus editor (or return from tabs), else edit heading
             if (key === 'Enter') {
                 e.preventDefault();
-                if (tabMode !== 'none') {
-                    setTabBarFocused((v) => !v);
-                    msg(tabBarFocused ? '' : 'Tab bar focused — h/l to navigate');
+                if (tabBarFocused) {
+                    setTabBarFocused(false);
+                    msg('');
                     setCmdBuf('');
                     return;
                 }
@@ -802,7 +802,12 @@ export function useOrgState(): OrgState {
                 setTabMode((prev) => {
                     const next = prev === 'none' ? 'tag' : prev === 'tag' ? 'heading' : 'none';
                     msg(next === 'none' ? 'Tabs: off' : `Tabs: by ${next}`);
-                    if (next === 'none') setActiveTab(null);
+                    if (next === 'none') {
+                        setActiveTab(null);
+                        setTabBarFocused(false);
+                    } else {
+                        setTabBarFocused(true);
+                    }
                     return next;
                 });
                 setCmdBuf('');
@@ -833,6 +838,11 @@ export function useOrgState(): OrgState {
             }
             if (key === 'Escape') {
                 setCmdBuf('');
+                if (tabMode !== 'none' && !tabBarFocused) {
+                    setTabBarFocused(true);
+                    msg('Tab bar focused — h/l to navigate');
+                    return;
+                }
                 if (tabBarFocused) {
                     setTabBarFocused(false);
                     msg('');

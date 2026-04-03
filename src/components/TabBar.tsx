@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { C } from '../theme';
 import type { OrgNode } from '../types';
 
@@ -13,8 +13,18 @@ interface TabBarProps {
 }
 
 export function TabBar({ tabMode, tabList, activeTab, nodes, focused, onTabSelect, onClose }: TabBarProps) {
+    const tabBarRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (focused) {
+            tabBarRef.current?.focus();
+        }
+    }, [focused]);
+
     return (
         <div
+            ref={tabBarRef}
+            tabIndex={-1}
             style={{
                 backgroundColor: C.bgAlt,
                 borderBottom: focused ? `1px solid ${C.blue}` : `1px solid ${C.border}`,
@@ -24,6 +34,7 @@ export function TabBar({ tabMode, tabList, activeTab, nodes, focused, onTabSelec
                 gap: '0',
                 overflowX: 'auto',
                 fontSize: '13px',
+                outline: 'none',
             }}
         >
             {/* Mode label — highlighted when focused */}
