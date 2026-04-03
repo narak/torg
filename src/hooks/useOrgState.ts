@@ -145,6 +145,7 @@ export function useOrgState(): OrgState {
         if (tabMode === 'none') {
             setActiveTab(null);
             setTabBarFocused(false);
+            containerRef.current?.focus();
             return;
         }
         if (tabList.length > 0 && (activeTab === null || !tabList.includes(activeTab))) {

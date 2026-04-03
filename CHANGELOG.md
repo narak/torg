@@ -87,3 +87,4 @@
 - Tab bar navigation disabled when Escape key is pressed
 - Tab bar appearance updates based on focus state
 - Base inheritance system for tags in heading mode uses ancestor tag lookups
+- Markdown export state indicators use text labels (`TODO`, `DOING`, `WAITING`, `DONE`) instead of icons
