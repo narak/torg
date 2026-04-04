@@ -42,6 +42,7 @@ export default function App() {
         tabBarFocused,
         filterBarFocused,
         filterFocusIdx,
+        wordWrap,
         setTabMode,
         setActiveTab,
         visible,
@@ -154,6 +155,7 @@ export default function App() {
                             showMeta={showMeta}
                             shiftHeld={shiftHeld}
                             isMatch={matchIds.size > 0 ? matchIds.has(node.id) : null}
+                            wordWrap={wordWrap}
                         />
                     ))}
                     <div style={{ height: '40px' }} />
@@ -169,6 +171,20 @@ export default function App() {
                     />
                 )}
             </div>
+
+            {!wordWrap && selNode && selNode.title && (
+                <div
+                    style={{
+                        backgroundColor: C.bgAlt,
+                        borderTop: `1px solid ${C.border}`,
+                        padding: '2px 14px',
+                        fontSize: '12px',
+                        color: C.dimBright,
+                    }}
+                >
+                    {selNode.title}
+                </div>
+            )}
 
             <Modeline
                 message={message}

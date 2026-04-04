@@ -207,7 +207,6 @@ export function SearchOverlay({
                 alignItems: 'flex-start',
                 justifyContent: 'center',
                 zIndex: 300,
-                fontFamily: FONT,
                 paddingTop: '12vh',
             }}
             onClick={onClose}
@@ -246,7 +245,6 @@ export function SearchOverlay({
                             border: 'none',
                             outline: 'none',
                             color: C.fg,
-                            fontFamily: FONT,
                             fontSize: '13px',
                             padding: 0,
                         }}
@@ -268,7 +266,10 @@ export function SearchOverlay({
                                 key={result.item.id}
                                 result={result}
                                 isCursor={i === cursor}
-                                onSelect={() => { onSelect(result.item.id); onClose(); }}
+                                onSelect={() => {
+                                    onSelect(result.item.id);
+                                    onClose();
+                                }}
                             />
                         ))
                     )}

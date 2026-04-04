@@ -32,6 +32,7 @@ interface OrgNodeRowProps {
     showMeta: boolean;
     shiftHeld: boolean;
     isMatch: boolean | null;
+    wordWrap: boolean;
 }
 
 // State icons used as bullet indicators
@@ -199,6 +200,7 @@ export function OrgNodeRow({
     showMeta,
     shiftHeld,
     isMatch,
+    wordWrap,
 }: OrgNodeRowProps) {
     const { guides, isLastSibling } = guideInfo;
     const lc = LEVEL_COLORS[(node.level - 1) % LEVEL_COLORS.length];
@@ -206,8 +208,18 @@ export function OrgNodeRow({
     const isDone = node.state === 'DONE';
 
     // Font weight driven by highest urgency across P and S (0=heaviest, 3=lightest)
-    const P_WEIGHT: Record<NonNullable<typeof node.priority>, number> = { P0: 800, P1: 700, P2: 600, P3: 500 };
-    const S_WEIGHT: Record<NonNullable<typeof node.severity>, number> = { S0: 800, S1: 700, S2: 600, S3: 500 };
+    const P_WEIGHT: Record<NonNullable<typeof node.priority>, number> = {
+        P0: 800,
+        P1: 700,
+        P2: 600,
+        P3: 500,
+    };
+    const S_WEIGHT: Record<NonNullable<typeof node.severity>, number> = {
+        S0: 800,
+        S1: 700,
+        S2: 600,
+        S3: 500,
+    };
     const titleWeight = Math.max(
         node.priority ? P_WEIGHT[node.priority] : 400,
         node.severity ? S_WEIGHT[node.severity] : 400,
@@ -252,7 +264,7 @@ export function OrgNodeRow({
                 style={{
                     width: '80px',
                     display: 'flex',
-                    alignItems: 'center',
+                    alignItems: 'baseline',
                     gap: '6px',
                     padding: '0 6px',
                     // justifyContent: 'flex-end',
@@ -283,7 +295,7 @@ export function OrgNodeRow({
             <div
                 style={{
                     display: 'flex',
-                    alignItems: 'center',
+                    alignItems: 'baseline',
                     flex: 1,
                     padding: '1px 0',
                     paddingRight: '14px',
@@ -342,7 +354,6 @@ export function OrgNodeRow({
                             outline: 'none',
                             border: 'none',
                             borderBottom: `1px solid ${C.cursor}`,
-                            fontFamily: FONT,
                             fontSize: '14px',
                             lineHeight: '1.55',
                             flex: 1,
@@ -357,9 +368,9 @@ export function OrgNodeRow({
                             color: isDone ? C.dim : node.level === 1 ? lc : C.fg,
                             textDecoration: isDone ? 'line-through' : 'none',
                             fontWeight: titleWeight,
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
+                            overflow: wordWrap ? 'visible' : 'hidden',
+                            textOverflow: wordWrap ? 'clip' : 'ellipsis',
+                            whiteSpace: wordWrap ? 'normal' : 'nowrap',
                             alignSelf: 'baseline',
                         }}
                     >

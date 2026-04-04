@@ -32,6 +32,7 @@ const HELP: { section?: string; key?: string; desc?: string }[] = [
     { section: 'Search' },
     { key: '/ or ⌘K', desc: 'Open fuzzy search' },
     { key: 'H / Shift+h', desc: 'Toggle hide DONE items' },
+    { key: 'w', desc: 'Toggle word wrap (off shows full title in peek bar)' },
     { key: '\\', desc: 'Open / cycle filter group (state → priority → tag → date)' },
     { key: 'c  (filter focused)', desc: 'Clear all active filters' },
     { key: 'T / Shift+t', desc: 'Cycle tab mode (off → by tag → by heading)' },

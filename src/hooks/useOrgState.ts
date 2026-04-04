@@ -28,6 +28,7 @@ export interface OrgState {
     showMd: boolean;
     showMeta: boolean;
     showSearch: boolean;
+    wordWrap: boolean;
     searchQuery: string;
     shiftHeld: boolean;
     filter: FilterState;
@@ -54,6 +55,7 @@ export interface OrgState {
     setSelectedId: (id: string) => void;
     setEditValue: (v: string) => void;
     setTagsEditValue: (v: string) => void;
+    toggleWordWrap: () => void;
     setShowHelp: React.Dispatch<React.SetStateAction<boolean>>;
     setShowMd: React.Dispatch<React.SetStateAction<boolean>>;
     setShowSearch: React.Dispatch<React.SetStateAction<boolean>>;
@@ -129,6 +131,7 @@ export function useOrgState(): OrgState {
     const [tabBarFocused, setTabBarFocused] = useState(false);
     const [filterBarFocused, setFilterBarFocused] = useState(false);
     const [filterFocusIdx, setFilterFocusIdx] = useState(0);
+    const [wordWrap, setWordWrap] = useState(false);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const selectedRef = useRef<HTMLDivElement>(null);
@@ -276,6 +279,15 @@ export function useOrgState(): OrgState {
                 hideDone: f.hideDone,
             })),
         [],
+    );
+
+    const toggleWordWrap = useCallback(
+        () =>
+            setWordWrap((v) => {
+                msg(v ? 'Word wrap: off' : 'Word wrap: on');
+                return !v;
+            }),
+        [msg],
     );
 
     const toggleHideDone = useCallback(
@@ -597,6 +609,7 @@ export function useOrgState(): OrgState {
         toggleFilterPill,
         clearFilters,
         toggleHideDone,
+        toggleWordWrap,
         setNodes,
         confirmTagEdit,
         cancelTagEdit,
@@ -631,6 +644,8 @@ export function useOrgState(): OrgState {
         showMeta,
         showSearch,
         searchQuery,
+        wordWrap,
+        toggleWordWrap,
         shiftHeld,
         filter,
         matchIds,

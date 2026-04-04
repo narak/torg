@@ -40,7 +40,14 @@ interface TagsEditInputProps {
     onCancelTagEdit: () => void;
 }
 
-function TagsEditInput({ tagsEditValue, allTags, tagsRef, onTagsChange, onConfirmTagEdit, onCancelTagEdit }: TagsEditInputProps) {
+function TagsEditInput({
+    tagsEditValue,
+    allTags,
+    tagsRef,
+    onTagsChange,
+    onConfirmTagEdit,
+    onCancelTagEdit,
+}: TagsEditInputProps) {
     return (
         <>
             <span style={{ color: C.green, flexShrink: 0 }}>Tags:</span>
@@ -49,8 +56,14 @@ function TagsEditInput({ tagsEditValue, allTags, tagsRef, onTagsChange, onConfir
                 value={tagsEditValue}
                 onChange={(e) => onTagsChange(e.target.value)}
                 onKeyDown={(e) => {
-                    if (e.key === 'Enter') { e.preventDefault(); onConfirmTagEdit(); }
-                    if (e.key === 'Escape') { e.preventDefault(); onCancelTagEdit(); }
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        onConfirmTagEdit();
+                    }
+                    if (e.key === 'Escape') {
+                        e.preventDefault();
+                        onCancelTagEdit();
+                    }
                 }}
                 placeholder="tag1 tag2 tag3 …"
                 style={{
@@ -59,7 +72,6 @@ function TagsEditInput({ tagsEditValue, allTags, tagsRef, onTagsChange, onConfir
                     border: 'none',
                     outline: 'none',
                     borderBottom: `1px solid ${C.green}`,
-                    fontFamily: FONT,
                     fontSize: '12px',
                     flex: 1,
                     padding: 0,
@@ -130,7 +142,17 @@ function HintBar({ message, cmdBuf }: HintBarProps) {
     );
 }
 
-export function Modeline({ message, cmdBuf, tagsEditId, tagsEditValue, allTags, tagsRef, onTagsChange, onConfirmTagEdit, onCancelTagEdit }: ModelineProps) {
+export function Modeline({
+    message,
+    cmdBuf,
+    tagsEditId,
+    tagsEditValue,
+    allTags,
+    tagsRef,
+    onTagsChange,
+    onConfirmTagEdit,
+    onCancelTagEdit,
+}: ModelineProps) {
     return (
         <div
             style={{

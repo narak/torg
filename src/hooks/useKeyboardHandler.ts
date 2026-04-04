@@ -55,6 +55,7 @@ export interface KeyboardHandlerDeps {
     toggleFilterPill: (idx: number) => void;
     clearFilters: () => void;
     toggleHideDone: () => void;
+    toggleWordWrap: () => void;
     setNodes: React.Dispatch<React.SetStateAction<OrgNode[]>>;
     // Memoized callbacks
     confirmTagEdit: () => void;
@@ -108,6 +109,7 @@ export function useKeyboardHandler({
     toggleFilterPill,
     clearFilters,
     toggleHideDone,
+    toggleWordWrap,
     setNodes,
     confirmTagEdit,
     cancelTagEdit,
@@ -503,6 +505,11 @@ export function useKeyboardHandler({
                     setCmdBuf('');
                     return true;
                 }
+                if (key === 'w' && !altKey && !ctrlKey && !filterBarFocused) {
+                    toggleWordWrap();
+                    setCmdBuf('');
+                    return true;
+                }
                 if (key === 'c' && !altKey && !ctrlKey && filterBarFocused) {
                     clearFilters();
                     msg('Filters cleared');
@@ -607,6 +614,7 @@ export function useKeyboardHandler({
             toggleFilterPill,
             clearFilters,
             toggleHideDone,
+            toggleWordWrap,
             confirmTagEdit,
             cancelTagEdit,
             confirmEdit,
