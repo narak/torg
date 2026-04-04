@@ -485,9 +485,14 @@ export function useOrgState(): OrgState {
         let end = idx + 1;
         while (end < nodes.length && nodes[end].level > node.level) end++;
         const childCount = end - idx - 1;
+
+        const deletedIds = new Set(nodes.slice(idx, end).map((n) => n.id));
         const vIdx = visible.findIndex((n) => n.id === selectedId);
-        const adj = visible[vIdx + 1] ?? visible[vIdx - 1];
-        if (adj && adj.id !== selectedId) setSelectedId(adj.id);
+        const nextVisible = visible.slice(vIdx + 1).find((n) => !deletedIds.has(n.id));
+        const prevVisible = visible.slice(0, vIdx).reverse().find((n) => !deletedIds.has(n.id));
+        const target = nextVisible ?? prevVisible;
+        if (target) setSelectedId(target.id);
+
         commitNodes((prev) => prev.filter((_, i) => i < idx || i >= end));
         msg(
             childCount > 0
