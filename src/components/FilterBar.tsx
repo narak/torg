@@ -18,6 +18,32 @@ const DATE_PRESETS: { label: string; value: NonNullable<FilterState['datePreset'
     { label: 'This month', value: 'month' },
 ];
 
+interface FilterPillProps {
+    active: boolean;
+    color: string;
+    label: string;
+    onClick: () => void;
+}
+
+function FilterPill({ active, color, label, onClick }: FilterPillProps) {
+    return (
+        <span
+            onClick={onClick}
+            style={{
+                cursor: 'pointer',
+                padding: '1px 8px',
+                borderRadius: '3px',
+                fontSize: '12px',
+                border: `1px solid ${active ? color : C.border}`,
+                color: active ? color : C.dimBright,
+                backgroundColor: active ? `${color}18` : 'transparent',
+            }}
+        >
+            {label}
+        </span>
+    );
+}
+
 export function FilterBar({
     filter,
     allTags,
@@ -47,24 +73,6 @@ export function FilterBar({
         onFilterChange({ ...filter, datePreset: filter.datePreset === v ? null : v });
     };
 
-    const pill = (active: boolean, color: string, label: string, onClick: () => void) => (
-        <span
-            key={label}
-            onClick={onClick}
-            style={{
-                cursor: 'pointer',
-                padding: '1px 8px',
-                borderRadius: '3px',
-                fontSize: '12px',
-                border: `1px solid ${active ? color : C.border}`,
-                color: active ? color : C.dimBright,
-                backgroundColor: active ? `${color}18` : 'transparent',
-            }}
-        >
-            {label}
-        </span>
-    );
-
     return (
         <div
             style={{
@@ -90,27 +98,45 @@ export function FilterBar({
                 {/* State filters */}
                 <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                     <span style={{ color: C.dim, marginRight: '2px' }}>state</span>
-                    {STATES.map((s) =>
-                        pill(filter.states.includes(s), STATE_COLORS[s], s, () => toggleState(s)),
-                    )}
+                    {STATES.map((s) => (
+                        <FilterPill
+                            key={s}
+                            active={filter.states.includes(s)}
+                            color={STATE_COLORS[s]}
+                            label={s}
+                            onClick={() => toggleState(s)}
+                        />
+                    ))}
                 </div>
 
                 {/* Tag filters */}
                 {allTags.length > 0 && (
                     <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                         <span style={{ color: C.dim, marginRight: '2px' }}>tag</span>
-                        {allTags.map((t) =>
-                            pill(filter.tags.includes(t), C.green, `:${t}:`, () => toggleTag(t)),
-                        )}
+                        {allTags.map((t) => (
+                            <FilterPill
+                                key={t}
+                                active={filter.tags.includes(t)}
+                                color={C.green}
+                                label={`:${t}:`}
+                                onClick={() => toggleTag(t)}
+                            />
+                        ))}
                     </div>
                 )}
 
                 {/* Date filters */}
                 <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                     <span style={{ color: C.dim, marginRight: '2px' }}>added</span>
-                    {DATE_PRESETS.map(({ label, value }) =>
-                        pill(filter.datePreset === value, C.cyan, label, () => toggleDate(value)),
-                    )}
+                    {DATE_PRESETS.map(({ label, value }) => (
+                        <FilterPill
+                            key={value}
+                            active={filter.datePreset === value}
+                            color={C.cyan}
+                            label={label}
+                            onClick={() => toggleDate(value)}
+                        />
+                    ))}
                 </div>
             </div>
             {/* Match count + clear */}

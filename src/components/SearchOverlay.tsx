@@ -50,6 +50,66 @@ function getIndices(result: FuseResult<OrgNode>, key: string, refIndex?: number)
     return match?.indices;
 }
 
+function stateColor(state: NonNullable<OrgNode['state']>): string {
+    if (state === 'DONE') return C.green;
+    if (state === 'DOING') return C.yellow;
+    if (state === 'WAITING') return C.violet;
+    return C.red;
+}
+
+interface SearchResultItemProps {
+    result: FuseResult<OrgNode>;
+    isCursor: boolean;
+    onSelect: () => void;
+}
+
+function SearchResultItem({ result, isCursor, onSelect }: SearchResultItemProps) {
+    const node = result.item;
+    return (
+        <div
+            onClick={onSelect}
+            style={{
+                padding: '6px 14px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                cursor: 'pointer',
+                backgroundColor: isCursor ? C.modelineBg : 'transparent',
+                borderLeft: isCursor ? `2px solid ${C.blue}` : '2px solid transparent',
+            }}
+        >
+            {'  '.repeat(node.level - 1)}
+            {node.state && (
+                <span style={{ fontSize: '11px', flexShrink: 0, color: stateColor(node.state) }}>
+                    {highlight(node.state, getIndices(result, 'state'))}
+                </span>
+            )}
+            <span
+                style={{
+                    color: C.fg,
+                    fontSize: '13px',
+                    flex: 1,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                }}
+            >
+                {highlight(node.title || '(untitled)', getIndices(result, 'title'))}
+            </span>
+            {node.tags.length > 0 && (
+                <span style={{ color: C.dim, fontSize: '11px', flexShrink: 0 }}>
+                    {node.tags.map((t, ti) => (
+                        <span key={t}>
+                            {ti === 0 ? ':' : ''}
+                            {highlight(t, getIndices(result, 'tags', ti))}:
+                        </span>
+                    ))}
+                </span>
+            )}
+        </div>
+    );
+}
+
 export function SearchOverlay({
     nodes,
     query,
@@ -203,82 +263,14 @@ export function SearchOverlay({
                             No matches
                         </div>
                     ) : (
-                        results.map((result, i) => {
-                            const node = result.item;
-                            return (
-                                <div
-                                    key={node.id}
-                                    onClick={() => {
-                                        onSelect(node.id);
-                                        onClose();
-                                    }}
-                                    style={{
-                                        padding: '6px 14px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '8px',
-                                        cursor: 'pointer',
-                                        backgroundColor:
-                                            i === cursor ? C.modelineBg : 'transparent',
-                                        borderLeft:
-                                            i === cursor
-                                                ? `2px solid ${C.blue}`
-                                                : '2px solid transparent',
-                                    }}
-                                >
-                                    {'  '.repeat(node.level - 1)}
-                                    {node.state && (
-                                        <span
-                                            style={{
-                                                fontSize: '11px',
-                                                flexShrink: 0,
-                                                color:
-                                                    node.state === 'DONE'
-                                                        ? C.green
-                                                        : node.state === 'DOING'
-                                                          ? C.yellow
-                                                          : node.state === 'WAITING'
-                                                            ? C.violet
-                                                            : C.red,
-                                            }}
-                                        >
-                                            {highlight(node.state, getIndices(result, 'state'))}
-                                        </span>
-                                    )}
-                                    <span
-                                        style={{
-                                            color: C.fg,
-                                            fontSize: '13px',
-                                            flex: 1,
-                                            overflow: 'hidden',
-                                            textOverflow: 'ellipsis',
-                                            whiteSpace: 'nowrap',
-                                        }}
-                                    >
-                                        {highlight(
-                                            node.title || '(untitled)',
-                                            getIndices(result, 'title'),
-                                        )}
-                                    </span>
-                                    {node.tags.length > 0 && (
-                                        <span
-                                            style={{
-                                                color: C.dim,
-                                                fontSize: '11px',
-                                                flexShrink: 0,
-                                            }}
-                                        >
-                                            {node.tags.map((t, ti) => (
-                                                <span key={t}>
-                                                    {ti === 0 ? ':' : ''}
-                                                    {highlight(t, getIndices(result, 'tags', ti))}:
-                                                </span>
-                                            ))}
-                                        </span>
-                                    )}
-                                </div>
-                            );
-                        })
+                        results.map((result, i) => (
+                            <SearchResultItem
+                                key={result.item.id}
+                                result={result}
+                                isCursor={i === cursor}
+                                onSelect={() => { onSelect(result.item.id); onClose(); }}
+                            />
+                        ))
                     )}
                 </div>
                 <div

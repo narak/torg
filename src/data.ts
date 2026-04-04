@@ -1,7 +1,6 @@
 import type { OrgNode } from './types';
 
-let _uid = 300;
-export const genId = () => `node_${_uid++}`;
+export const genId = () => `node_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
 
 function d(iso: string) {
     return new Date(iso).getTime();

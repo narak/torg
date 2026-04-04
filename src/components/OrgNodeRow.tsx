@@ -25,6 +25,69 @@ interface OrgNodeRowProps {
     isMatch: boolean | null;
 }
 
+function IndentGuides({ guides }: { guides: boolean[] }) {
+    return (
+        <>
+            {guides.map((active, l) => (
+                <span
+                    key={l}
+                    style={{
+                        display: 'inline-block',
+                        width: '16px',
+                        flexShrink: 0,
+                        color: active
+                            ? hexToRgba(LEVEL_COLORS[l % LEVEL_COLORS.length], 0.35)
+                            : 'transparent',
+                        textAlign: 'left',
+                    }}
+                >
+                    │
+                </span>
+            ))}
+        </>
+    );
+}
+
+interface TagsCellProps {
+    tags: string[];
+    isSel: boolean;
+    editingId: string | null;
+    onOpenTagEdit: () => void;
+}
+
+function TagsCell({ tags, isSel, editingId, onOpenTagEdit }: TagsCellProps) {
+    if (tags.length > 0) {
+        return (
+            <span
+                style={{ color: C.green, flexShrink: 0, marginLeft: 'auto', cursor: 'pointer' }}
+                title="Click or press : to edit tags"
+                onClick={(e) => { e.stopPropagation(); onOpenTagEdit(); }}
+            >
+                :{tags.join(':')}:
+            </span>
+        );
+    }
+    if (isSel && !editingId) {
+        return (
+            <span
+                style={{
+                    color: C.dim,
+                    flexShrink: 0,
+                    marginLeft: 'auto',
+                    paddingRight: '16px',
+                    fontSize: '12px',
+                    cursor: 'pointer',
+                }}
+                title="Press : to add tags"
+                onClick={(e) => { e.stopPropagation(); onOpenTagEdit(); }}
+            >
+                :…:
+            </span>
+        );
+    }
+    return null;
+}
+
 export function OrgNodeRow({
     node,
     nodes,
@@ -87,23 +150,7 @@ export function OrgNodeRow({
                     minWidth: 0,
                 }}
             >
-                {/* Indent guide columns */}
-                {guides.map((active, l) => (
-                    <span
-                        key={l}
-                        style={{
-                            display: 'inline-block',
-                            width: '16px',
-                            flexShrink: 0,
-                            color: active
-                                ? hexToRgba(LEVEL_COLORS[l % LEVEL_COLORS.length], 0.35)
-                                : 'transparent',
-                            textAlign: 'left',
-                        }}
-                    >
-                        │
-                    </span>
-                ))}
+                <IndentGuides guides={guides} />
 
                 {/* Connector (level ≥ 2) */}
                 {node.level >= 2 && (
@@ -227,44 +274,13 @@ export function OrgNodeRow({
                     </span>
                 )}
 
-                {/* Tags */}
-                {!isEdit && node.tags.length > 0 && (
-                    <span
-                        style={{
-                            color: C.green,
-                            flexShrink: 0,
-                            marginLeft: 'auto',
-                            cursor: 'pointer',
-                        }}
-                        title="Click or press : to edit tags"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            onOpenTagEdit();
-                        }}
-                    >
-                        :{node.tags.join(':')}:
-                    </span>
-                )}
-
-                {/* No-tag add hint for selected */}
-                {!isEdit && node.tags.length === 0 && isSel && !editingId && (
-                    <span
-                        style={{
-                            color: C.dim,
-                            flexShrink: 0,
-                            marginLeft: 'auto',
-                            paddingRight: '16px',
-                            fontSize: '12px',
-                            cursor: 'pointer',
-                        }}
-                        title="Press : to add tags"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            onOpenTagEdit();
-                        }}
-                    >
-                        :…:
-                    </span>
+                {!isEdit && (
+                    <TagsCell
+                        tags={node.tags}
+                        isSel={isSel}
+                        editingId={editingId}
+                        onOpenTagEdit={onOpenTagEdit}
+                    />
                 )}
             </div>
         </div>

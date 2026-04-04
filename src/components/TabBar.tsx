@@ -12,13 +12,90 @@ interface TabBarProps {
     onClose: () => void;
 }
 
+function getTabLabel(tab: string, tabMode: TabBarProps['tabMode'], nodes: OrgNode[]): string {
+    if (tabMode === 'tag') return `:${tab}:`;
+    return nodes.find((n) => n.id === tab)?.title ?? tab;
+}
+
+interface ModeLabelProps {
+    tabMode: TabBarProps['tabMode'];
+    focused: boolean;
+}
+
+function ModeLabel({ tabMode, focused }: ModeLabelProps) {
+    return (
+        <span
+            style={{
+                color: focused ? C.blue : C.dim,
+                backgroundColor: focused ? C.bgSelected : 'transparent',
+                padding: '0 10px',
+                flexShrink: 0,
+                fontSize: '11px',
+                borderRight: `1px solid ${C.border}`,
+                fontWeight: focused ? 'bold' : 'normal',
+                alignSelf: 'stretch',
+                display: 'flex',
+                alignItems: 'center',
+            }}
+        >
+            {focused ? '› ' : ''}by {tabMode}
+        </span>
+    );
+}
+
+interface TabItemProps {
+    tab: string;
+    label: string;
+    isActive: boolean;
+    focused: boolean;
+    onSelect: () => void;
+}
+
+function TabItem({ tab, label, isActive, focused, onSelect }: TabItemProps) {
+    return (
+        <span
+            key={tab}
+            onClick={onSelect}
+            style={{
+                padding: '5px 14px',
+                cursor: 'pointer',
+                flexShrink: 0,
+                color: isActive ? C.fg : C.dimBright,
+                borderRight: `1px solid ${C.border}`,
+                borderBottom: isActive ? `2px solid ${C.blue}` : '2px solid transparent',
+                backgroundColor: isActive ? C.bgSelected : 'transparent',
+                outline: focused && isActive ? `1px solid ${C.blue}` : 'none',
+                outlineOffset: '-2px',
+            }}
+        >
+            {label}
+        </span>
+    );
+}
+
+function CloseButton({ onClose }: { onClose: () => void }) {
+    return (
+        <span
+            onClick={onClose}
+            style={{
+                marginLeft: 'auto',
+                padding: '5px 12px',
+                color: C.dimBright,
+                cursor: 'pointer',
+                flexShrink: 0,
+                borderLeft: `1px solid ${C.border}`,
+            }}
+        >
+            ✕
+        </span>
+    );
+}
+
 export function TabBar({ tabMode, tabList, activeTab, nodes, focused, onTabSelect, onClose }: TabBarProps) {
     const tabBarRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (focused) {
-            tabBarRef.current?.focus();
-        }
+        if (focused) tabBarRef.current?.focus();
     }, [focused]);
 
     return (
@@ -37,66 +114,20 @@ export function TabBar({ tabMode, tabList, activeTab, nodes, focused, onTabSelec
                 outline: 'none',
             }}
         >
-            {/* Mode label — highlighted when focused */}
-            <span
-                style={{
-                    color: focused ? C.blue : C.dim,
-                    backgroundColor: focused ? C.bgSelected : 'transparent',
-                    padding: '0 10px',
-                    flexShrink: 0,
-                    fontSize: '11px',
-                    borderRight: `1px solid ${C.border}`,
-                    fontWeight: focused ? 'bold' : 'normal',
-                    alignSelf: 'stretch',
-                    display: 'flex',
-                    alignItems: 'center',
-                }}
-            >
-                {focused ? '›' : ''} by {tabMode}
-            </span>
+            <ModeLabel tabMode={tabMode} focused={focused} />
 
-            {/* Tabs */}
-            {tabList.map((tab) => {
-                const isActive = tab === activeTab;
-                return (
-                    <span
-                        key={tab}
-                        onClick={() => onTabSelect(tab)}
-                        style={{
-                            padding: '5px 14px',
-                            cursor: 'pointer',
-                            flexShrink: 0,
-                            color: isActive ? C.fg : C.dimBright,
-                            borderRight: `1px solid ${C.border}`,
-                            borderBottom: isActive
-                                ? `2px solid ${C.blue}`
-                                : '2px solid transparent',
-                            backgroundColor: isActive ? C.bgSelected : 'transparent',
-                            outline: focused && isActive ? `1px solid ${C.blue}` : 'none',
-                            outlineOffset: '-2px',
-                        }}
-                    >
-                        {tabMode === 'tag'
-                            ? `:${tab}:`
-                            : (nodes.find((n) => n.id === tab)?.title ?? tab)}
-                    </span>
-                );
-            })}
+            {tabList.map((tab) => (
+                <TabItem
+                    key={tab}
+                    tab={tab}
+                    label={getTabLabel(tab, tabMode, nodes)}
+                    isActive={tab === activeTab}
+                    focused={focused}
+                    onSelect={() => onTabSelect(tab)}
+                />
+            ))}
 
-            {/* Close */}
-            <span
-                onClick={onClose}
-                style={{
-                    marginLeft: 'auto',
-                    padding: '5px 12px',
-                    color: C.dimBright,
-                    cursor: 'pointer',
-                    flexShrink: 0,
-                    borderLeft: `1px solid ${C.border}`,
-                }}
-            >
-                ✕
-            </span>
+            <CloseButton onClose={onClose} />
         </div>
     );
 }
