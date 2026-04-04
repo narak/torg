@@ -33,6 +33,8 @@ export interface OrgState {
     filter: FilterState;
     matchIds: Set<string>;
     showFilter: boolean;
+    filterBarFocused: boolean;
+    filterFocusIdx: number;
     tabMode: 'none' | 'tag' | 'heading';
     activeTab: string | null;
     tabList: string[];
@@ -57,6 +59,8 @@ export interface OrgState {
     setShowSearch: React.Dispatch<React.SetStateAction<boolean>>;
     setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
     setShowFilter: React.Dispatch<React.SetStateAction<boolean>>;
+    setFilterBarFocused: React.Dispatch<React.SetStateAction<boolean>>;
+    setFilterFocusIdx: React.Dispatch<React.SetStateAction<number>>;
     setNodes: React.Dispatch<React.SetStateAction<OrgNode[]>>;
     startEdit: (nodeId: string) => void;
     confirmEdit: () => void;
@@ -99,6 +103,8 @@ export function useOrgState(): OrgState {
     const [tabMode, setTabMode] = useState<'none' | 'tag' | 'heading'>('none');
     const [activeTab, setActiveTab] = useState<string | null>(null);
     const [tabBarFocused, setTabBarFocused] = useState(false);
+    const [filterBarFocused, setFilterBarFocused] = useState(false);
+    const [filterFocusIdx, setFilterFocusIdx] = useState(0);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const selectedRef = useRef<HTMLDivElement>(null);
@@ -186,6 +192,35 @@ export function useOrgState(): OrgState {
     );
 
     const msg = useCallback((m: string) => setMessage(m), []);
+
+    const FILTER_STATES = ['TODO', 'DOING', 'WAITING', 'DONE'] as const;
+    const FILTER_DATE_PRESETS = ['today', 'week', 'month'] as const;
+    const filterPillCount = FILTER_STATES.length + allTags.length + FILTER_DATE_PRESETS.length;
+
+    const toggleFilterPill = useCallback(
+        (idx: number) => {
+            if (idx < FILTER_STATES.length) {
+                const s = FILTER_STATES[idx];
+                setFilter((f) => ({
+                    ...f,
+                    states: f.states.includes(s) ? f.states.filter((x) => x !== s) : [...f.states, s],
+                }));
+            } else if (idx < FILTER_STATES.length + allTags.length) {
+                const t = allTags[idx - FILTER_STATES.length];
+                setFilter((f) => ({
+                    ...f,
+                    tags: f.tags.includes(t) ? f.tags.filter((x) => x !== t) : [...f.tags, t],
+                }));
+            } else {
+                const dateIdx = idx - FILTER_STATES.length - allTags.length;
+                if (dateIdx >= 0 && dateIdx < FILTER_DATE_PRESETS.length) {
+                    const v = FILTER_DATE_PRESETS[dateIdx];
+                    setFilter((f) => ({ ...f, datePreset: f.datePreset === v ? null : v }));
+                }
+            }
+        },
+        [allTags],
+    );
 
     const HISTORY_LIMIT = 50;
     const commitNodes = useCallback((next: OrgNode[] | ((prev: OrgNode[]) => OrgNode[])) => {
@@ -471,6 +506,11 @@ export function useOrgState(): OrgState {
         tabMode,
         tabList,
         tabBarFocused,
+        showFilter,
+        filterBarFocused,
+        filterFocusIdx,
+        filterPillCount,
+        filterTagCount: allTags.length,
         setShowHelp,
         setShowSearch,
         setShowMd,
@@ -481,6 +521,9 @@ export function useOrgState(): OrgState {
         setActiveTab,
         setTabBarFocused,
         setShowFilter,
+        setFilterBarFocused,
+        setFilterFocusIdx,
+        toggleFilterPill,
         setNodes,
         confirmTagEdit,
         cancelTagEdit,
@@ -547,6 +590,10 @@ export function useOrgState(): OrgState {
         setFilter,
         showFilter,
         setShowFilter,
+        filterBarFocused,
+        filterFocusIdx,
+        setFilterBarFocused,
+        setFilterFocusIdx,
         tabMode,
         activeTab,
         tabList,

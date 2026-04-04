@@ -33,6 +33,11 @@ export interface KeyboardHandlerDeps {
     tabMode: 'none' | 'tag' | 'heading';
     tabList: string[];
     tabBarFocused: boolean;
+    showFilter: boolean;
+    filterBarFocused: boolean;
+    filterFocusIdx: number;
+    filterPillCount: number;
+    filterTagCount: number;
     // Stable setters (omitted from useCallback deps)
     setShowHelp: React.Dispatch<React.SetStateAction<boolean>>;
     setShowSearch: React.Dispatch<React.SetStateAction<boolean>>;
@@ -44,6 +49,9 @@ export interface KeyboardHandlerDeps {
     setActiveTab: React.Dispatch<React.SetStateAction<string | null>>;
     setTabBarFocused: React.Dispatch<React.SetStateAction<boolean>>;
     setShowFilter: React.Dispatch<React.SetStateAction<boolean>>;
+    setFilterBarFocused: React.Dispatch<React.SetStateAction<boolean>>;
+    setFilterFocusIdx: React.Dispatch<React.SetStateAction<number>>;
+    toggleFilterPill: (idx: number) => void;
     setNodes: React.Dispatch<React.SetStateAction<OrgNode[]>>;
     // Memoized callbacks
     confirmTagEdit: () => void;
@@ -77,6 +85,11 @@ export function useKeyboardHandler({
     tabMode,
     tabList,
     tabBarFocused,
+    showFilter,
+    filterBarFocused,
+    filterFocusIdx,
+    filterPillCount,
+    filterTagCount,
     setShowHelp,
     setShowSearch,
     setShowMd,
@@ -87,6 +100,9 @@ export function useKeyboardHandler({
     setActiveTab,
     setTabBarFocused,
     setShowFilter,
+    setFilterBarFocused,
+    setFilterFocusIdx,
+    toggleFilterPill,
     setNodes,
     confirmTagEdit,
     cancelTagEdit,
@@ -137,21 +153,55 @@ export function useKeyboardHandler({
                 e.preventDefault();
             if (cmdTimer.current) clearTimeout(cmdTimer.current);
 
+            // ── Filter bar group helpers ───────────────────────────────────────────────
+            const FILTER_STATES_COUNT = 4;
+            const filterTagStart = FILTER_STATES_COUNT;
+            const filterDateStart = FILTER_STATES_COUNT + filterTagCount;
+            // Returns [groupStart, groupEnd] for the pill at filterFocusIdx
+            const filterGroupBounds = (): [number, number] => {
+                if (filterFocusIdx < filterTagStart)
+                    return [0, filterTagStart - 1];
+                if (filterTagCount > 0 && filterFocusIdx < filterDateStart)
+                    return [filterTagStart, filterDateStart - 1];
+                return [filterDateStart, filterPillCount - 1];
+            };
+            // Returns the start index of the next group (wraps around)
+            const filterNextGroupStart = (): number => {
+                const groups = [0, ...(filterTagCount > 0 ? [filterTagStart] : []), filterDateStart];
+                let curListIdx = 0;
+                if (filterFocusIdx >= filterDateStart) curListIdx = filterTagCount > 0 ? 2 : 1;
+                else if (filterTagCount > 0 && filterFocusIdx >= filterTagStart) curListIdx = 1;
+                return groups[(curListIdx + 1) % groups.length];
+            };
+
             // ── Navigation ────────────────────────────────────────────────────────────
             const handleNavKeys = (): boolean => {
+                if (key === ' ' && filterBarFocused) {
+                    toggleFilterPill(filterFocusIdx);
+                    setCmdBuf('');
+                    return true;
+                }
                 if ((key === 'ArrowDown' || key === 'j') && !altKey && !ctrlKey && !shiftKey) {
+                    if (filterBarFocused) { setCmdBuf(''); return true; } // block while filter focused
                     if (tabBarFocused) { setTabBarFocused(false); msg(''); }
                     if (selIdx < visible.length - 1) setSelectedId(visible[selIdx + 1].id);
                     setCmdBuf('');
                     return true;
                 }
                 if ((key === 'ArrowUp' || key === 'k') && !altKey && !ctrlKey && !shiftKey) {
+                    if (filterBarFocused) { setCmdBuf(''); return true; } // block while filter focused
                     if (tabBarFocused) { setTabBarFocused(false); msg(''); }
                     if (selIdx > 0) setSelectedId(visible[selIdx - 1].id);
                     setCmdBuf('');
                     return true;
                 }
                 if ((key === 'h' || key === 'ArrowLeft') && !altKey && !ctrlKey && !shiftKey) {
+                    if (filterBarFocused) {
+                        const [start] = filterGroupBounds();
+                        setFilterFocusIdx((prev) => Math.max(start, prev - 1));
+                        setCmdBuf('');
+                        return true;
+                    }
                     if (tabBarFocused) {
                         setActiveTab((prev) => {
                             if (!prev || tabList.length === 0) return prev;
@@ -174,6 +224,12 @@ export function useKeyboardHandler({
                     return true;
                 }
                 if ((key === 'l' || key === 'ArrowRight') && !altKey && !ctrlKey && !shiftKey) {
+                    if (filterBarFocused) {
+                        const [, end] = filterGroupBounds();
+                        setFilterFocusIdx((prev) => Math.min(end, prev + 1));
+                        setCmdBuf('');
+                        return true;
+                    }
                     if (tabBarFocused) {
                         setActiveTab((prev) => {
                             if (!prev || tabList.length === 0) return prev;
@@ -280,6 +336,12 @@ export function useKeyboardHandler({
                 }
                 if (key === 'Enter') {
                     e.preventDefault();
+                    if (filterBarFocused) {
+                        setFilterBarFocused(false);
+                        msg('');
+                        setCmdBuf('');
+                        return true;
+                    }
                     if (tabBarFocused) {
                         setTabBarFocused(false);
                         msg('');
@@ -399,6 +461,7 @@ export function useKeyboardHandler({
                             setTabBarFocused(false);
                         } else {
                             setTabBarFocused(true);
+                            setFilterBarFocused(false);
                         }
                         return next;
                     });
@@ -407,7 +470,16 @@ export function useKeyboardHandler({
                 }
                 if (key === '\\' && !ctrlKey && !altKey) {
                     e.preventDefault();
-                    setShowFilter((v) => !v);
+                    if (!showFilter) {
+                        setShowFilter(true);
+                        setFilterBarFocused(true);
+                        setFilterFocusIdx(0);
+                    } else if (!filterBarFocused) {
+                        setFilterBarFocused(true);
+                        setFilterFocusIdx(0);
+                    } else {
+                        setFilterFocusIdx(filterNextGroupStart());
+                    }
                     setCmdBuf('');
                     return true;
                 }
@@ -425,6 +497,11 @@ export function useKeyboardHandler({
                 }
                 if (key === 'Escape') {
                     setCmdBuf('');
+                    if (filterBarFocused) {
+                        setFilterBarFocused(false);
+                        msg('');
+                        return true;
+                    }
                     if (tabMode !== 'none' && !tabBarFocused) {
                         setTabBarFocused(true);
                         msg('Tab bar focused — h/l to navigate');
@@ -465,6 +542,12 @@ export function useKeyboardHandler({
             tabMode,
             tabList,
             tabBarFocused,
+            showFilter,
+            filterBarFocused,
+            filterFocusIdx,
+            filterPillCount,
+            filterTagCount,
+            toggleFilterPill,
             confirmTagEdit,
             cancelTagEdit,
             confirmEdit,

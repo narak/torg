@@ -9,6 +9,8 @@ interface FilterBarProps {
     totalCount: number;
     onFilterChange: (f: FilterState) => void;
     onClose: () => void;
+    focused?: boolean;
+    focusIdx?: number;
 }
 
 const STATES: NonNullable<TodoState>[] = ['TODO', 'DOING', 'WAITING', 'DONE'];
@@ -23,9 +25,10 @@ interface FilterPillProps {
     color: string;
     label: string;
     onClick: () => void;
+    focused?: boolean;
 }
 
-function FilterPill({ active, color, label, onClick }: FilterPillProps) {
+function FilterPill({ active, color, label, onClick, focused }: FilterPillProps) {
     return (
         <span
             onClick={onClick}
@@ -37,6 +40,8 @@ function FilterPill({ active, color, label, onClick }: FilterPillProps) {
                 border: `1px solid ${active ? color : C.border}`,
                 color: active ? color : C.dimBright,
                 backgroundColor: active ? `${color}18` : 'transparent',
+                outline: focused ? `1px solid ${color}` : 'none',
+                outlineOffset: '2px',
             }}
         >
             {label}
@@ -51,6 +56,8 @@ export function FilterBar({
     totalCount,
     onFilterChange,
     onClose,
+    focused = false,
+    focusIdx = 0,
 }: FilterBarProps) {
     const hasActive =
         filter.states.length > 0 || filter.tags.length > 0 || filter.datePreset !== null;
@@ -73,11 +80,15 @@ export function FilterBar({
         onFilterChange({ ...filter, datePreset: filter.datePreset === v ? null : v });
     };
 
+    // Pill indices: STATES(0-3), allTags(4..3+N), DATE_PRESETS(4+N..6+N)
+    const tagOffset = STATES.length;
+    const dateOffset = tagOffset + allTags.length;
+
     return (
         <div
             style={{
                 backgroundColor: C.bgAlt,
-                borderBottom: `1px solid ${C.border}`,
+                borderBottom: focused ? `1px solid ${C.blue}` : `1px solid ${C.border}`,
                 flexShrink: 0,
                 padding: '5px 14px',
                 display: 'flex',
@@ -98,13 +109,14 @@ export function FilterBar({
                 {/* State filters */}
                 <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                     <span style={{ color: C.dim, marginRight: '2px' }}>state</span>
-                    {STATES.map((s) => (
+                    {STATES.map((s, i) => (
                         <FilterPill
                             key={s}
                             active={filter.states.includes(s)}
                             color={STATE_COLORS[s]}
                             label={s}
                             onClick={() => toggleState(s)}
+                            focused={focused && focusIdx === i}
                         />
                     ))}
                 </div>
@@ -113,13 +125,14 @@ export function FilterBar({
                 {allTags.length > 0 && (
                     <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                         <span style={{ color: C.dim, marginRight: '2px' }}>tag</span>
-                        {allTags.map((t) => (
+                        {allTags.map((t, i) => (
                             <FilterPill
                                 key={t}
                                 active={filter.tags.includes(t)}
                                 color={C.green}
                                 label={`:${t}:`}
                                 onClick={() => toggleTag(t)}
+                                focused={focused && focusIdx === tagOffset + i}
                             />
                         ))}
                     </div>
@@ -128,13 +141,14 @@ export function FilterBar({
                 {/* Date filters */}
                 <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                     <span style={{ color: C.dim, marginRight: '2px' }}>added</span>
-                    {DATE_PRESETS.map(({ label, value }) => (
+                    {DATE_PRESETS.map(({ label, value }, i) => (
                         <FilterPill
                             key={value}
                             active={filter.datePreset === value}
                             color={C.cyan}
                             label={label}
                             onClick={() => toggleDate(value)}
+                            focused={focused && focusIdx === dateOffset + i}
                         />
                     ))}
                 </div>

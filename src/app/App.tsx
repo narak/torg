@@ -40,6 +40,8 @@ export default function App() {
         activeTab,
         tabList,
         tabBarFocused,
+        filterBarFocused,
+        filterFocusIdx,
         setTabMode,
         setActiveTab,
         visible,
@@ -108,6 +110,8 @@ export default function App() {
                     totalCount={nodes.length}
                     onFilterChange={setFilter}
                     onClose={() => setShowFilter(false)}
+                    focused={filterBarFocused}
+                    focusIdx={filterFocusIdx}
                 />
             )}
 
