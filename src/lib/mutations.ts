@@ -1,4 +1,4 @@
-import type { OrgNode, TodoState, Priority } from '../types';
+import type { OrgNode, TodoState, Priority, Severity } from '../types';
 
 export function cycleTodo(state: TodoState): TodoState {
     const cycle: TodoState[] = [null, 'TODO', 'DOING', 'WAITING', 'DONE'];
@@ -6,8 +6,13 @@ export function cycleTodo(state: TodoState): TodoState {
 }
 
 export function cyclePriority(p: Priority): Priority {
-    const cycle: Priority[] = [null, 'A', 'B', 'C'];
+    const cycle: Priority[] = [null, 'P0', 'P1', 'P2', 'P3'];
     return cycle[(cycle.indexOf(p) + 1) % cycle.length];
+}
+
+export function cycleSeverity(s: Severity): Severity {
+    const cycle: Severity[] = [null, 'S0', 'S1', 'S2', 'S3'];
+    return cycle[(cycle.indexOf(s) + 1) % cycle.length];
 }
 
 export function demoteSubtree(nodes: OrgNode[], nodeId: string): OrgNode[] {

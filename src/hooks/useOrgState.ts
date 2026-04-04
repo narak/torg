@@ -79,7 +79,24 @@ export function useOrgState(): OrgState {
     const [nodes, setNodes] = useState<OrgNode[]>(() => {
         try {
             const saved = localStorage.getItem('torg:nodes');
-            if (saved) return JSON.parse(saved) as OrgNode[];
+            if (saved) {
+                const parsed = JSON.parse(saved) as OrgNode[];
+                // Migrate old A/B/C priorities to P0/P1/P2
+                return parsed.map((n) => {
+                    const p = n.priority as string | null;
+                    const migrated = {
+                        ...n,
+                        severity: (n as OrgNode & { severity?: unknown }).severity ?? null,
+                    };
+                    if (p === 'A') return { ...migrated, priority: 'P0' as const };
+                    if (p === 'B') return { ...migrated, priority: 'P1' as const };
+                    if (p === 'C') return { ...migrated, priority: 'P2' as const };
+                    // Strip old S-series priorities that ended up on priority field
+                    if (typeof p === 'string' && p.startsWith('S'))
+                        return { ...migrated, priority: null, severity: p as OrgNode['severity'] };
+                    return migrated;
+                });
+            }
         } catch {}
         return INITIAL_NODES;
     });
@@ -98,7 +115,14 @@ export function useOrgState(): OrgState {
     const [showSearch, setShowSearch] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [shiftHeld, setShiftHeld] = useState(false);
-    const [filter, setFilter] = useState<FilterState>({ states: [], tags: [], datePreset: null });
+    const [filter, setFilter] = useState<FilterState>({
+        states: [],
+        priorities: [],
+        severities: [],
+        tags: [],
+        datePreset: null,
+        hideDone: true,
+    });
     const [showFilter, setShowFilter] = useState(false);
     const [tabMode, setTabMode] = useState<'none' | 'tag' | 'heading'>('none');
     const [activeTab, setActiveTab] = useState<string | null>(null);
@@ -193,33 +217,74 @@ export function useOrgState(): OrgState {
 
     const msg = useCallback((m: string) => setMessage(m), []);
 
-    const FILTER_STATES = ['TODO', 'DOING', 'WAITING', 'DONE'] as const;
-    const FILTER_DATE_PRESETS = ['today', 'week', 'month'] as const;
-    const filterPillCount = FILTER_STATES.length + allTags.length + FILTER_DATE_PRESETS.length;
+    // Pill layout: 0-3=states, 4-7=priorities, 8-11=severities, 12..12+N-1=tags, 12+N..14+N=dates
+    const FILTER_STATES_ARR = ['TODO', 'DOING', 'WAITING', 'DONE'] as const;
+    const FILTER_PRIORITY_ARR = ['P0', 'P1', 'P2', 'P3'] as const;
+    const FILTER_SEVERITY_ARR = ['S0', 'S1', 'S2', 'S3'] as const;
+    const FILTER_DATE_ARR = ['today', 'week', 'month'] as const;
+    const filterPillCount = 4 + 4 + 4 + allTags.length + 3;
 
     const toggleFilterPill = useCallback(
         (idx: number) => {
-            if (idx < FILTER_STATES.length) {
-                const s = FILTER_STATES[idx];
+            if (idx < 4) {
+                const s = FILTER_STATES_ARR[idx];
                 setFilter((f) => ({
                     ...f,
                     states: f.states.includes(s) ? f.states.filter((x) => x !== s) : [...f.states, s],
                 }));
-            } else if (idx < FILTER_STATES.length + allTags.length) {
-                const t = allTags[idx - FILTER_STATES.length];
+            } else if (idx < 8) {
+                const p = FILTER_PRIORITY_ARR[idx - 4];
+                setFilter((f) => ({
+                    ...f,
+                    priorities: f.priorities.includes(p)
+                        ? f.priorities.filter((x) => x !== p)
+                        : [...f.priorities, p],
+                }));
+            } else if (idx < 12) {
+                const sv = FILTER_SEVERITY_ARR[idx - 8];
+                setFilter((f) => ({
+                    ...f,
+                    severities: f.severities.includes(sv)
+                        ? f.severities.filter((x) => x !== sv)
+                        : [...f.severities, sv],
+                }));
+            } else if (idx < 12 + allTags.length) {
+                const t = allTags[idx - 12];
                 setFilter((f) => ({
                     ...f,
                     tags: f.tags.includes(t) ? f.tags.filter((x) => x !== t) : [...f.tags, t],
                 }));
             } else {
-                const dateIdx = idx - FILTER_STATES.length - allTags.length;
-                if (dateIdx >= 0 && dateIdx < FILTER_DATE_PRESETS.length) {
-                    const v = FILTER_DATE_PRESETS[dateIdx];
+                const dateIdx = idx - 12 - allTags.length;
+                if (dateIdx >= 0 && dateIdx < 3) {
+                    const v = FILTER_DATE_ARR[dateIdx];
                     setFilter((f) => ({ ...f, datePreset: f.datePreset === v ? null : v }));
                 }
             }
         },
         [allTags],
+    );
+
+    const clearFilters = useCallback(
+        () =>
+            setFilter((f) => ({
+                states: [],
+                priorities: [],
+                severities: [],
+                tags: [],
+                datePreset: null,
+                hideDone: f.hideDone,
+            })),
+        [],
+    );
+
+    const toggleHideDone = useCallback(
+        () =>
+            setFilter((f) => {
+                msg(f.hideDone ? 'Showing DONE items' : 'Hiding DONE items');
+                return { ...f, hideDone: !f.hideDone };
+            }),
+        [msg],
     );
 
     const HISTORY_LIMIT = 50;
@@ -395,6 +460,7 @@ export function useOrgState(): OrgState {
                 tags: [],
                 collapsed: false,
                 priority: null,
+                severity: null,
                 createdAt: Date.now(),
             };
             commitNodes((prev) => {
@@ -524,6 +590,8 @@ export function useOrgState(): OrgState {
         setFilterBarFocused,
         setFilterFocusIdx,
         toggleFilterPill,
+        clearFilters,
+        toggleHideDone,
         setNodes,
         confirmTagEdit,
         cancelTagEdit,

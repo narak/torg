@@ -1,6 +1,6 @@
 import React from 'react';
-import type { FilterState, TodoState } from '../types';
-import { C, STATE_COLORS } from '../theme';
+import type { FilterState, TodoState, Priority, Severity } from '../types';
+import { C, STATE_COLORS, PRIORITY_COLORS, SEVERITY_COLORS } from '../theme';
 
 interface FilterBarProps {
     filter: FilterState;
@@ -8,17 +8,33 @@ interface FilterBarProps {
     matchCount: number;
     totalCount: number;
     onFilterChange: (f: FilterState) => void;
-    onClose: () => void;
     focused?: boolean;
     focusIdx?: number;
 }
 
 const STATES: NonNullable<TodoState>[] = ['TODO', 'DOING', 'WAITING', 'DONE'];
+const PRIORITIES: NonNullable<Priority>[] = ['P0', 'P1', 'P2', 'P3'];
+const SEVERITIES: NonNullable<Severity>[] = ['S0', 'S1', 'S2', 'S3'];
 const DATE_PRESETS: { label: string; value: NonNullable<FilterState['datePreset']> }[] = [
     { label: 'Today', value: 'today' },
     { label: 'This week', value: 'week' },
     { label: 'This month', value: 'month' },
 ];
+
+// Pill index layout:
+//   0-3:  STATES
+//   4-7:  PRIORITIES (P0-P3)
+//   8-11: SEVERITIES (S0-S3)
+//   12..12+N-1: TAGS
+//   12+N..14+N: DATE_PRESETS
+const STATE_OFFSET = 0;
+const PRIORITY_OFFSET = 4;
+const SEVERITY_OFFSET = 8;
+const TAG_OFFSET = 12;
+
+function toggle<T>(arr: T[], item: T): T[] {
+    return arr.includes(item) ? arr.filter((x) => x !== item) : [...arr, item];
+}
 
 interface FilterPillProps {
     active: boolean;
@@ -49,40 +65,50 @@ function FilterPill({ active, color, label, onClick, focused }: FilterPillProps)
     );
 }
 
+function GroupLabel({ label, active }: { label: string; active: boolean }) {
+    return (
+        <span
+            style={{
+                color: active ? C.blue : C.dim,
+                fontWeight: active ? 'bold' : 'normal',
+                minWidth: '52px',
+                display: 'inline-block',
+            }}
+        >
+            {label}
+        </span>
+    );
+}
+
 export function FilterBar({
     filter,
     allTags,
     matchCount,
     totalCount,
     onFilterChange,
-    onClose,
     focused = false,
     focusIdx = 0,
 }: FilterBarProps) {
     const hasActive =
-        filter.states.length > 0 || filter.tags.length > 0 || filter.datePreset !== null;
+        filter.states.length > 0 ||
+        filter.priorities.length > 0 ||
+        filter.severities.length > 0 ||
+        filter.tags.length > 0 ||
+        filter.datePreset !== null;
 
-    const toggleState = (s: NonNullable<TodoState>) => {
-        const next = filter.states.includes(s)
-            ? filter.states.filter((x) => x !== s)
-            : [...filter.states, s];
-        onFilterChange({ ...filter, states: next });
-    };
+    const dateOffset = TAG_OFFSET + allTags.length;
 
-    const toggleTag = (t: string) => {
-        const next = filter.tags.includes(t)
-            ? filter.tags.filter((x) => x !== t)
-            : [...filter.tags, t];
-        onFilterChange({ ...filter, tags: next });
-    };
-
-    const toggleDate = (v: NonNullable<FilterState['datePreset']>) => {
-        onFilterChange({ ...filter, datePreset: filter.datePreset === v ? null : v });
-    };
-
-    // Pill indices: STATES(0-3), allTags(4..3+N), DATE_PRESETS(4+N..6+N)
-    const tagOffset = STATES.length;
-    const dateOffset = tagOffset + allTags.length;
+    const focusedGroup = focused
+        ? focusIdx < PRIORITY_OFFSET
+            ? 0
+            : focusIdx < SEVERITY_OFFSET
+              ? 1
+              : focusIdx < TAG_OFFSET
+                ? 2
+                : focusIdx < dateOffset
+                  ? 3
+                  : 4
+        : -1;
 
     return (
         <div
@@ -92,7 +118,7 @@ export function FilterBar({
                 flexShrink: 0,
                 padding: '5px 14px',
                 display: 'flex',
-                alignItems: 'center',
+                alignItems: 'flex-start',
                 gap: '16px',
                 flexWrap: 'wrap',
                 fontSize: '12px',
@@ -104,73 +130,123 @@ export function FilterBar({
                     gap: '5px',
                     flexDirection: 'column',
                     alignItems: 'flex-start',
+                    flex: 1,
+                    minWidth: 0,
                 }}
             >
-                {/* State filters */}
-                <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-                    <span style={{ color: C.dim, marginRight: '2px' }}>state</span>
+                {/* State */}
+                <div style={{ display: 'flex', gap: '5px', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <GroupLabel label="state" active={focusedGroup === 0} />
                     {STATES.map((s, i) => (
                         <FilterPill
                             key={s}
                             active={filter.states.includes(s)}
                             color={STATE_COLORS[s]}
                             label={s}
-                            onClick={() => toggleState(s)}
-                            focused={focused && focusIdx === i}
+                            onClick={() => onFilterChange({ ...filter, states: toggle(filter.states, s) })}
+                            focused={focused && focusIdx === STATE_OFFSET + i}
                         />
                     ))}
                 </div>
 
-                {/* Tag filters */}
+                {/* Priority */}
+                <div style={{ display: 'flex', gap: '5px', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <GroupLabel label="priority" active={focusedGroup === 1} />
+                    {PRIORITIES.map((p, i) => (
+                        <FilterPill
+                            key={p}
+                            active={filter.priorities.includes(p)}
+                            color={PRIORITY_COLORS[p]}
+                            label={p}
+                            onClick={() => onFilterChange({ ...filter, priorities: toggle(filter.priorities, p) })}
+                            focused={focused && focusIdx === PRIORITY_OFFSET + i}
+                        />
+                    ))}
+                </div>
+
+                {/* Severity */}
+                <div style={{ display: 'flex', gap: '5px', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <GroupLabel label="severity" active={focusedGroup === 2} />
+                    {SEVERITIES.map((s, i) => (
+                        <FilterPill
+                            key={s}
+                            active={filter.severities.includes(s)}
+                            color={SEVERITY_COLORS[s]}
+                            label={s}
+                            onClick={() => onFilterChange({ ...filter, severities: toggle(filter.severities, s) })}
+                            focused={focused && focusIdx === SEVERITY_OFFSET + i}
+                        />
+                    ))}
+                </div>
+
+                {/* Tags */}
                 {allTags.length > 0 && (
-                    <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-                        <span style={{ color: C.dim, marginRight: '2px' }}>tag</span>
+                    <div style={{ display: 'flex', gap: '5px', alignItems: 'center', flexWrap: 'wrap' }}>
+                        <GroupLabel label="tag" active={focusedGroup === 3} />
                         {allTags.map((t, i) => (
                             <FilterPill
                                 key={t}
                                 active={filter.tags.includes(t)}
                                 color={C.green}
                                 label={`:${t}:`}
-                                onClick={() => toggleTag(t)}
-                                focused={focused && focusIdx === tagOffset + i}
+                                onClick={() => onFilterChange({ ...filter, tags: toggle(filter.tags, t) })}
+                                focused={focused && focusIdx === TAG_OFFSET + i}
                             />
                         ))}
                     </div>
                 )}
 
-                {/* Date filters */}
-                <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-                    <span style={{ color: C.dim, marginRight: '2px' }}>added</span>
+                {/* Date */}
+                <div style={{ display: 'flex', gap: '5px', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <GroupLabel label="added" active={focusedGroup === 4} />
                     {DATE_PRESETS.map(({ label, value }, i) => (
                         <FilterPill
                             key={value}
                             active={filter.datePreset === value}
                             color={C.cyan}
                             label={label}
-                            onClick={() => toggleDate(value)}
+                            onClick={() =>
+                                onFilterChange({
+                                    ...filter,
+                                    datePreset: filter.datePreset === value ? null : value,
+                                })
+                            }
                             focused={focused && focusIdx === dateOffset + i}
                         />
                     ))}
                 </div>
             </div>
-            {/* Match count + clear */}
-            <div style={{ marginLeft: 'auto', display: 'flex', gap: '12px', alignItems: 'center' }}>
+
+            {/* Match count + clear + hint */}
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center', paddingTop: '3px', flexShrink: 0 }}>
                 {hasActive && (
                     <span style={{ color: C.dimBright }}>
-                        <span style={{ color: C.yellow }}>{matchCount}</span>/{totalCount} match
+                        <span style={{ color: C.yellow }}>{matchCount}</span>/{totalCount}
                     </span>
                 )}
                 {hasActive && (
                     <span
-                        onClick={() => onFilterChange({ states: [], tags: [], datePreset: null })}
+                        onClick={() =>
+                            onFilterChange({
+                                states: [],
+                                priorities: [],
+                                severities: [],
+                                tags: [],
+                                datePreset: null,
+                                hideDone: filter.hideDone,
+                            })
+                        }
                         style={{ color: C.red, cursor: 'pointer' }}
+                        title="c to clear"
                     >
                         clear
                     </span>
                 )}
-                <span onClick={onClose} style={{ color: C.dimBright, cursor: 'pointer' }}>
-                    ✕
-                </span>
+                {focused && (
+                    <span style={{ color: C.dim, fontSize: '11px' }}>
+                        \:group · h/l:pill · Space:toggle · c:clear · Esc/Enter:exit
+                    </span>
+                )}
             </div>
         </div>
     );

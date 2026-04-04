@@ -11,6 +11,7 @@ import {
 import {
     cycleTodo,
     cyclePriority,
+    cycleSeverity,
     demoteSubtree,
     promoteSubtree,
     moveSubtreeDown,
@@ -52,6 +53,8 @@ export interface KeyboardHandlerDeps {
     setFilterBarFocused: React.Dispatch<React.SetStateAction<boolean>>;
     setFilterFocusIdx: React.Dispatch<React.SetStateAction<number>>;
     toggleFilterPill: (idx: number) => void;
+    clearFilters: () => void;
+    toggleHideDone: () => void;
     setNodes: React.Dispatch<React.SetStateAction<OrgNode[]>>;
     // Memoized callbacks
     confirmTagEdit: () => void;
@@ -103,6 +106,8 @@ export function useKeyboardHandler({
     setFilterBarFocused,
     setFilterFocusIdx,
     toggleFilterPill,
+    clearFilters,
+    toggleHideDone,
     setNodes,
     confirmTagEdit,
     cancelTagEdit,
@@ -154,30 +159,59 @@ export function useKeyboardHandler({
             if (cmdTimer.current) clearTimeout(cmdTimer.current);
 
             // ── Filter bar group helpers ───────────────────────────────────────────────
-            const FILTER_STATES_COUNT = 4;
-            const filterTagStart = FILTER_STATES_COUNT;
-            const filterDateStart = FILTER_STATES_COUNT + filterTagCount;
-            // Returns [groupStart, groupEnd] for the pill at filterFocusIdx
+            // Pill layout: 0-3=states, 4-7=priorities, 8-11=severities, 12+…=tags, 12+N+…=dates
+            const FILTER_PRIORITY_START = 4;
+            const FILTER_SEVERITY_START = 8;
+            const FILTER_TAG_START = 12; // 4+4+4
+            const filterDateStart = FILTER_TAG_START + filterTagCount;
+            // Returns [groupStart, groupEnd] for the pill currently at filterFocusIdx
             const filterGroupBounds = (): [number, number] => {
-                if (filterFocusIdx < filterTagStart)
-                    return [0, filterTagStart - 1];
+                if (filterFocusIdx < FILTER_PRIORITY_START)
+                    return [0, FILTER_PRIORITY_START - 1];
+                if (filterFocusIdx < FILTER_SEVERITY_START)
+                    return [FILTER_PRIORITY_START, FILTER_SEVERITY_START - 1];
+                if (filterFocusIdx < FILTER_TAG_START)
+                    return [FILTER_SEVERITY_START, FILTER_TAG_START - 1];
                 if (filterTagCount > 0 && filterFocusIdx < filterDateStart)
-                    return [filterTagStart, filterDateStart - 1];
+                    return [FILTER_TAG_START, filterDateStart - 1];
                 return [filterDateStart, filterPillCount - 1];
             };
             // Returns the start index of the next group (wraps around)
             const filterNextGroupStart = (): number => {
-                const groups = [0, ...(filterTagCount > 0 ? [filterTagStart] : []), filterDateStart];
+                const groups = [
+                    0,
+                    FILTER_PRIORITY_START,
+                    FILTER_SEVERITY_START,
+                    ...(filterTagCount > 0 ? [FILTER_TAG_START] : []),
+                    filterDateStart,
+                ];
                 let curListIdx = 0;
-                if (filterFocusIdx >= filterDateStart) curListIdx = filterTagCount > 0 ? 2 : 1;
-                else if (filterTagCount > 0 && filterFocusIdx >= filterTagStart) curListIdx = 1;
+                if (filterFocusIdx >= filterDateStart)
+                    curListIdx = filterTagCount > 0 ? 4 : 3;
+                else if (filterTagCount > 0 && filterFocusIdx >= FILTER_TAG_START)
+                    curListIdx = 3;
+                else if (filterFocusIdx >= FILTER_SEVERITY_START)
+                    curListIdx = 2;
+                else if (filterFocusIdx >= FILTER_PRIORITY_START)
+                    curListIdx = 1;
                 return groups[(curListIdx + 1) % groups.length];
             };
 
             // ── Navigation ────────────────────────────────────────────────────────────
             const handleNavKeys = (): boolean => {
-                if (key === ' ' && filterBarFocused) {
-                    toggleFilterPill(filterFocusIdx);
+                if (key === ' ') {
+                    if (filterBarFocused) {
+                        toggleFilterPill(filterFocusIdx);
+                    } else if (!altKey && !ctrlKey && !shiftKey) {
+                        commitNodes((prev) =>
+                            prev.map((n) => {
+                                if (n.id !== selectedId) return n;
+                                const ns = cycleTodo(n.state);
+                                msg(`State → ${ns ?? '(none)'}`);
+                                return { ...n, state: ns };
+                            }),
+                        );
+                    }
                     setCmdBuf('');
                     return true;
                 }
@@ -369,8 +403,20 @@ export function useKeyboardHandler({
                         prev.map((n) => {
                             if (n.id !== selectedId) return n;
                             const np = cyclePriority(n.priority);
-                            msg(`Priority → ${np ? `[#${np}]` : '(none)'}`);
+                            msg(`Priority → ${np ?? '(none)'}`);
                             return { ...n, priority: np };
+                        }),
+                    );
+                    setCmdBuf('');
+                    return true;
+                }
+                if (key === 's' && !altKey && !ctrlKey) {
+                    commitNodes((prev) =>
+                        prev.map((n) => {
+                            if (n.id !== selectedId) return n;
+                            const ns = cycleSeverity(n.severity);
+                            msg(`Severity → ${ns ?? '(none)'}`);
+                            return { ...n, severity: ns };
                         }),
                     );
                     setCmdBuf('');
@@ -449,6 +495,17 @@ export function useKeyboardHandler({
                 if (key === 'I' && !altKey && !ctrlKey) {
                     setShowMeta((v) => !v);
                     msg(showMeta ? 'Metadata annotations off' : 'Metadata annotations on');
+                    setCmdBuf('');
+                    return true;
+                }
+                if (key === 'H' && !altKey && !ctrlKey) {
+                    toggleHideDone();
+                    setCmdBuf('');
+                    return true;
+                }
+                if (key === 'c' && !altKey && !ctrlKey && filterBarFocused) {
+                    clearFilters();
+                    msg('Filters cleared');
                     setCmdBuf('');
                     return true;
                 }
@@ -548,6 +605,8 @@ export function useKeyboardHandler({
             filterPillCount,
             filterTagCount,
             toggleFilterPill,
+            clearFilters,
+            toggleHideDone,
             confirmTagEdit,
             cancelTagEdit,
             confirmEdit,

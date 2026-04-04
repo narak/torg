@@ -1,4 +1,4 @@
-import type { TodoState, Priority } from './types';
+import type { TodoState, Priority, Severity } from './types';
 
 export const C = {
     bg: '#282c34',
@@ -29,17 +29,26 @@ export const STATE_COLORS: Record<NonNullable<TodoState>, string> = {
     WAITING: C.violet,
 };
 
-export const STATE_ICONS: Record<NonNullable<TodoState>, string> = {
-    TODO: '☐',
-    DONE: '☑',
-    DOING: '◑',
-    WAITING: '⏸',
+// Short labels shown in gutter
+export const STATE_LABELS: Record<NonNullable<TodoState>, string> = {
+    TODO: 'TODO',
+    DOING: 'DOING',
+    WAITING: 'WAIT',
+    DONE: 'DONE',
 };
 
 export const PRIORITY_COLORS: Record<NonNullable<Priority>, string> = {
-    A: C.red,
-    B: C.yellow,
-    C: C.dimBright,
+    P0: C.red,
+    P1: C.orange,
+    P2: C.yellow,
+    P3: C.dimBright,
+};
+
+export const SEVERITY_COLORS: Record<NonNullable<Severity>, string> = {
+    S0: C.magenta,
+    S1: C.violet,
+    S2: C.cyan,
+    S3: C.dimBright,
 };
 
 export const FONT = "'JetBrains Mono','Fira Code','Cascadia Code','Consolas',monospace";

@@ -1,6 +1,15 @@
 import React from 'react';
-import type { OrgNode, GuideInfo } from '../types';
-import { C, LEVEL_COLORS, STATE_COLORS, PRIORITY_COLORS, FONT, hexToRgba } from '../theme';
+import type { OrgNode, GuideInfo, TodoState } from '../types';
+import {
+    C,
+    LEVEL_COLORS,
+    STATE_COLORS,
+    STATE_LABELS,
+    PRIORITY_COLORS,
+    SEVERITY_COLORS,
+    FONT,
+    hexToRgba,
+} from '../theme';
 import { nodeHasChildren } from '../lib/tree';
 
 interface OrgNodeRowProps {
@@ -24,6 +33,82 @@ interface OrgNodeRowProps {
     shiftHeld: boolean;
     isMatch: boolean | null;
 }
+
+// State icons used as bullet indicators
+function IconCircle() {
+    return (
+        <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <circle cx="12" cy="12" r="10" />
+        </svg>
+    );
+}
+function IconCircleDot() {
+    return (
+        <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="12" r="3.5" fill="currentColor" stroke="none" />
+        </svg>
+    );
+}
+function IconClock() {
+    return (
+        <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+        </svg>
+    );
+}
+function IconCircleCheck() {
+    return (
+        <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="9 12 11 14 15 10" />
+        </svg>
+    );
+}
+
+const STATE_BULLET: Record<NonNullable<TodoState>, React.ReactElement> = {
+    TODO: <IconCircle />,
+    DOING: <IconCircleDot />,
+    WAITING: <IconClock />,
+    DONE: <IconCircleCheck />,
+};
 
 function IndentGuides({ guides }: { guides: boolean[] }) {
     return (
@@ -61,7 +146,10 @@ function TagsCell({ tags, isSel, editingId, onOpenTagEdit }: TagsCellProps) {
             <span
                 style={{ color: C.green, flexShrink: 0, marginLeft: 'auto', cursor: 'pointer' }}
                 title="Click or press : to edit tags"
-                onClick={(e) => { e.stopPropagation(); onOpenTagEdit(); }}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onOpenTagEdit();
+                }}
             >
                 :{tags.join(':')}:
             </span>
@@ -79,7 +167,10 @@ function TagsCell({ tags, isSel, editingId, onOpenTagEdit }: TagsCellProps) {
                     cursor: 'pointer',
                 }}
                 title="Press : to add tags"
-                onClick={(e) => { e.stopPropagation(); onOpenTagEdit(); }}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onOpenTagEdit();
+                }}
             >
                 :…:
             </span>
@@ -114,6 +205,23 @@ export function OrgNodeRow({
     const hasKids = nodeHasChildren(nodes, node.id);
     const isDone = node.state === 'DONE';
 
+    // Font weight driven by highest urgency across P and S (0=heaviest, 3=lightest)
+    const P_WEIGHT: Record<NonNullable<typeof node.priority>, number> = { P0: 800, P1: 700, P2: 600, P3: 500 };
+    const S_WEIGHT: Record<NonNullable<typeof node.severity>, number> = { S0: 800, S1: 700, S2: 600, S3: 500 };
+    const titleWeight = Math.max(
+        node.priority ? P_WEIGHT[node.priority] : 400,
+        node.severity ? S_WEIGHT[node.severity] : 400,
+    );
+
+    // Bullet: state icon if state exists, else fold/plain indicator
+    const bullet = node.state ? (
+        <span style={{ color: STATE_COLORS[node.state], display: 'flex', alignItems: 'center' }}>
+            {STATE_BULLET[node.state]}
+        </span>
+    ) : (
+        <span style={{ color: lc }}>{hasKids ? (node.collapsed ? '▸' : '▾') : '○'}</span>
+    );
+
     return (
         <div
             ref={selectedRef}
@@ -139,13 +247,45 @@ export function OrgNodeRow({
                 cursor: 'default',
             }}
         >
+            {/* Left gutter: state text + P badge + S badge */}
+            <div
+                style={{
+                    width: '80px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '0 6px',
+                    // justifyContent: 'flex-end',
+                    fontSize: '10px',
+                    fontWeight: 'bold',
+                }}
+            >
+                <span style={{ color: PRIORITY_COLORS[node.priority], minWidth: '12px' }}>
+                    {node.priority || ''}
+                </span>
+                <span style={{ color: SEVERITY_COLORS[node.severity], minWidth: '12px' }}>
+                    {node.severity || ''}
+                </span>
+                {node.state && (
+                    <span
+                        style={{
+                            color: STATE_COLORS[node.state],
+                            letterSpacing: '0.3px',
+                            textAlign: 'right',
+                        }}
+                    >
+                        {STATE_LABELS[node.state]}
+                    </span>
+                )}
+            </div>
+
+            {/* Main content */}
             <div
                 style={{
                     display: 'flex',
-                    alignItems: 'baseline',
+                    alignItems: 'center',
                     flex: 1,
                     padding: '1px 0',
-                    paddingLeft: '4px',
                     paddingRight: '14px',
                     minWidth: 0,
                 }}
@@ -154,19 +294,22 @@ export function OrgNodeRow({
 
                 {/* Connector (level ≥ 2) */}
                 {node.level >= 2 && (
-                    <span style={{ color: hexToRgba(lc, 0.5), flexShrink: 0 }}>
+                    <span
+                        style={{ color: hexToRgba(lc, 0.5), flexShrink: 0, alignSelf: 'baseline' }}
+                    >
                         {isLastSibling ? '└─' : '├─'}
                     </span>
                 )}
 
-                {/* Fold / bullet indicator */}
+                {/* Bullet / state icon */}
                 <span
                     style={{
-                        color: lc,
                         flexShrink: 0,
                         marginLeft: node.level >= 2 ? '4px' : '2px',
                         marginRight: '5px',
                         cursor: hasKids ? 'pointer' : 'default',
+                        display: 'flex',
+                        alignItems: 'center',
                     }}
                     onClick={(e) => {
                         if (!hasKids) return;
@@ -174,34 +317,8 @@ export function OrgNodeRow({
                         onToggleCollapse();
                     }}
                 >
-                    {hasKids ? (node.collapsed ? '▸' : '▾') : '○'}
+                    {bullet}
                 </span>
-
-                {/* State keyword */}
-                {node.state && (
-                    <span
-                        style={{
-                            color: STATE_COLORS[node.state],
-                            flexShrink: 0,
-                            marginRight: '6px',
-                        }}
-                    >
-                        {node.state}
-                    </span>
-                )}
-
-                {/* Priority */}
-                {node.priority && (
-                    <span
-                        style={{
-                            color: PRIORITY_COLORS[node.priority],
-                            flexShrink: 0,
-                            marginRight: '6px',
-                        }}
-                    >
-                        [#{node.priority}]
-                    </span>
-                )}
 
                 {/* Title or edit input */}
                 {isEdit ? (
@@ -239,9 +356,11 @@ export function OrgNodeRow({
                         style={{
                             color: isDone ? C.dim : node.level === 1 ? lc : C.fg,
                             textDecoration: isDone ? 'line-through' : 'none',
+                            fontWeight: titleWeight,
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
+                            alignSelf: 'baseline',
                         }}
                     >
                         {node.title || (
@@ -252,7 +371,16 @@ export function OrgNodeRow({
 
                 {/* Collapsed indicator */}
                 {!isEdit && hasKids && node.collapsed && (
-                    <span style={{ color: C.dim, flexShrink: 0, marginLeft: '6px' }}>…</span>
+                    <span
+                        style={{
+                            color: C.dim,
+                            flexShrink: 0,
+                            marginLeft: '6px',
+                            alignSelf: 'baseline',
+                        }}
+                    >
+                        …
+                    </span>
                 )}
 
                 {/* Metadata annotation */}
@@ -263,6 +391,7 @@ export function OrgNodeRow({
                             flexShrink: 0,
                             marginLeft: '10px',
                             fontStyle: 'italic',
+                            alignSelf: 'baseline',
                         }}
                     >
                         {new Date(node.createdAt).toLocaleString(undefined, {

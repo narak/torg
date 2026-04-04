@@ -13,11 +13,26 @@ importers:
     dependencies:
       fuse.js:
         specifier: ^7.2.0
-        version: 7.2.0
+        version: 7.3.0
+      react:
+        specifier: 18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
+      tw-animate-css:
+        specifier: ^1.4.0
+        version: 1.4.0
     devDependencies:
       '@tailwindcss/vite':
         specifier: 4.1.12
         version: 4.1.12(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1))
+      '@types/react':
+        specifier: ^18.3.28
+        version: 18.3.28
+      '@types/react-dom':
+        specifier: ^18.3.7
+        version: 18.3.7(@types/react@18.3.28)
       '@vitejs/plugin-react':
         specifier: 4.7.0
         version: 4.7.0(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1))
@@ -117,157 +132,157 @@ packages:
     engines: {node: '>=6.9.0'}
 
   '@esbuild/aix-ppc64@0.25.12':
-    resolution: {integrity: sha512-Hhmwd6CInZ3dwpuGTF8fJG6yoWmsToE+vYgD4nytZVxcu1ulHpUQRAB1UJ8+N1Am3Mz4+xOByoQoSZf4D+CpkA==}
+    resolution: {integrity: sha1-gPy+NhMOWLdnBRHoiLjoiiWe12w=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/aix-ppc64/-/aix-ppc64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [ppc64]
     os: [aix]
 
   '@esbuild/android-arm64@0.25.12':
-    resolution: {integrity: sha512-6AAmLG7zwD1Z159jCKPvAxZd4y/VTO0VkprYy+3N2FtJ8+BQWFXU+OxARIwA46c5tdD9SsKGZ/1ocqBS/gAKHg==}
+    resolution: {integrity: sha1-iqSWX40KeYLcIXNL9mATI6Ztp1I=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/android-arm64/-/android-arm64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [android]
 
   '@esbuild/android-arm@0.25.12':
-    resolution: {integrity: sha512-VJ+sKvNA/GE7Ccacc9Cha7bpS8nyzVv0jdVgwNDaR4gDMC/2TTRc33Ip8qrNYUcpkOHUT5OZ0bUcNNVZQ9RLlg==}
+    resolution: {integrity: sha1-MAcSEB9/UPHSYnoWLm4JsQm2dno=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/android-arm/-/android-arm-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm]
     os: [android]
 
   '@esbuild/android-x64@0.25.12':
-    resolution: {integrity: sha512-5jbb+2hhDHx5phYR2By8GTWEzn6I9UqR11Kwf22iKbNpYrsmRB18aX/9ivc5cabcUiAT/wM+YIZ6SG9QO6a8kg==}
+    resolution: {integrity: sha1-h9+ycWEgK9yVjvSLthsJx1j67hY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/android-x64/-/android-x64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [android]
 
   '@esbuild/darwin-arm64@0.25.12':
-    resolution: {integrity: sha512-N3zl+lxHCifgIlcMUP5016ESkeQjLj/959RxxNYIthIg+CQHInujFuXeWbWMgnTo4cp5XVHqFPmpyu9J65C1Yg==}
+    resolution: {integrity: sha1-eRl4mOwf90XSHAceHHzDyALwwf0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/darwin-arm64/-/darwin-arm64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [darwin]
 
   '@esbuild/darwin-x64@0.25.12':
-    resolution: {integrity: sha512-HQ9ka4Kx21qHXwtlTUVbKJOAnmG1ipXhdWTmNXiPzPfWKpXqASVcWdnf2bnL73wgjNrFXAa3yYvBSd9pzfEIpA==}
+    resolution: {integrity: sha1-FGQAqFYhM/RcTS6tzzfd0JcYB54=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/darwin-x64/-/darwin-x64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [darwin]
 
   '@esbuild/freebsd-arm64@0.25.12':
-    resolution: {integrity: sha512-gA0Bx759+7Jve03K1S0vkOu5Lg/85dou3EseOGUes8flVOGxbhDDh/iZaoek11Y8mtyKPGF3vP8XhnkDEAmzeg==}
+    resolution: {integrity: sha1-HF+bpyBuFY/SskxZ+i0si7R8oP4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/freebsd-arm64/-/freebsd-arm64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [freebsd]
 
   '@esbuild/freebsd-x64@0.25.12':
-    resolution: {integrity: sha512-TGbO26Yw2xsHzxtbVFGEXBFH0FRAP7gtcPE7P5yP7wGy7cXK2oO7RyOhL5NLiqTlBh47XhmIUXuGciXEqYFfBQ==}
+    resolution: {integrity: sha1-6mMfSja+qsS5J5+g/MbKKerusrM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/freebsd-x64/-/freebsd-x64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [freebsd]
 
   '@esbuild/linux-arm64@0.25.12':
-    resolution: {integrity: sha512-8bwX7a8FghIgrupcxb4aUmYDLp8pX06rGh5HqDT7bB+8Rdells6mHvrFHHW2JAOPZUbnjUpKTLg6ECyzvas2AQ==}
+    resolution: {integrity: sha1-4QZrzlg5TxsRQd7shVel8KIvWXc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/linux-arm64/-/linux-arm64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [linux]
 
   '@esbuild/linux-arm@0.25.12':
-    resolution: {integrity: sha512-lPDGyC1JPDou8kGcywY0YILzWlhhnRjdof3UlcoqYmS9El818LLfJJc3PXXgZHrHCAKs/Z2SeZtDJr5MrkxtOw==}
+    resolution: {integrity: sha1-RSzWayCTLQi9xTqLYcDjC69DSLk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/linux-arm/-/linux-arm-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm]
     os: [linux]
 
   '@esbuild/linux-ia32@0.25.12':
-    resolution: {integrity: sha512-0y9KrdVnbMM2/vG8KfU0byhUN+EFCny9+8g202gYqSSVMonbsCfLjUO+rCci7pM0WBEtz+oK/PIwHkzxkyharA==}
+    resolution: {integrity: sha1-sk+KzEW89UGSx/LzvhtT5lUer+A=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/linux-ia32/-/linux-ia32-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [ia32]
     os: [linux]
 
   '@esbuild/linux-loong64@0.25.12':
-    resolution: {integrity: sha512-h///Lr5a9rib/v1GGqXVGzjL4TMvVTv+s1DPoxQdz7l/AYv6LDSxdIwzxkrPW438oUXiDtwM10o9PmwS/6Z0Ng==}
+    resolution: {integrity: sha1-+c//p/yDIlcfvEyLMmjK8VvYGtA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/linux-loong64/-/linux-loong64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [loong64]
     os: [linux]
 
   '@esbuild/linux-mips64el@0.25.12':
-    resolution: {integrity: sha512-iyRrM1Pzy9GFMDLsXn1iHUm18nhKnNMWscjmp4+hpafcZjrr2WbT//d20xaGljXDBYHqRcl8HnxbX6uaA/eGVw==}
+    resolution: {integrity: sha1-V1oUvXRkT/q4ka3H1+YNJ1KW8s0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/linux-mips64el/-/linux-mips64el-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [mips64el]
     os: [linux]
 
   '@esbuild/linux-ppc64@0.25.12':
-    resolution: {integrity: sha512-9meM/lRXxMi5PSUqEXRCtVjEZBGwB7P/D4yT8UG/mwIdze2aV4Vo6U5gD3+RsoHXKkHCfSxZKzmDssVlRj1QQA==}
+    resolution: {integrity: sha1-dbmccKlfvV93OddpK+/mBgFZGGk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/linux-ppc64/-/linux-ppc64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [ppc64]
     os: [linux]
 
   '@esbuild/linux-riscv64@0.25.12':
-    resolution: {integrity: sha512-Zr7KR4hgKUpWAwb1f3o5ygT04MzqVrGEGXGLnj15YQDJErYu/BGg+wmFlIDOdJp0PmB0lLvxFIOXZgFRrdjR0w==}
+    resolution: {integrity: sha1-LjJZRAMhpE553fdTXDJQV9qHXNY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/linux-riscv64/-/linux-riscv64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [riscv64]
     os: [linux]
 
   '@esbuild/linux-s390x@0.25.12':
-    resolution: {integrity: sha512-MsKncOcgTNvdtiISc/jZs/Zf8d0cl/t3gYWX8J9ubBnVOwlk65UIEEvgBORTiljloIWnBzLs4qhzPkJcitIzIg==}
+    resolution: {integrity: sha1-F2dsq7/lko2lsqDW311YzQjbJmM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/linux-s390x/-/linux-s390x-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [s390x]
     os: [linux]
 
   '@esbuild/linux-x64@0.25.12':
-    resolution: {integrity: sha512-uqZMTLr/zR/ed4jIGnwSLkaHmPjOjJvnm6TVVitAa08SLS9Z0VM8wIRx7gWbJB5/J54YuIMInDquWyYvQLZkgw==}
+    resolution: {integrity: sha1-BYN3VoXKggZtBMNQfwlSTTzXowY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/linux-x64/-/linux-x64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [linux]
 
   '@esbuild/netbsd-arm64@0.25.12':
-    resolution: {integrity: sha512-xXwcTq4GhRM7J9A8Gv5boanHhRa/Q9KLVmcyXHCTaM4wKfIpWkdXiMog/KsnxzJ0A1+nD+zoecuzqPmCRyBGjg==}
+    resolution: {integrity: sha1-8ExAScsuJS/paxb+2Q9wdGsT9KQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/netbsd-arm64/-/netbsd-arm64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [netbsd]
 
   '@esbuild/netbsd-x64@0.25.12':
-    resolution: {integrity: sha512-Ld5pTlzPy3YwGec4OuHh1aCVCRvOXdH8DgRjfDy/oumVovmuSzWfnSJg+VtakB9Cm0gxNO9BzWkj6mtO1FMXkQ==}
+    resolution: {integrity: sha1-d9oNCg2CbXySHuo9QCklSLJYoHY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/netbsd-x64/-/netbsd-x64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [netbsd]
 
   '@esbuild/openbsd-arm64@0.25.12':
-    resolution: {integrity: sha512-fF96T6KsBo/pkQI950FARU9apGNTSlZGsv1jZBAlcLL1MLjLNIWPBkj5NlSz8aAzYKg+eNqknrUJ24QBybeR5A==}
+    resolution: {integrity: sha1-Ypb1hnrt7yioGyKrIAnHhqlS3M0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/openbsd-arm64/-/openbsd-arm64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [openbsd]
 
   '@esbuild/openbsd-x64@0.25.12':
-    resolution: {integrity: sha512-MZyXUkZHjQxUvzK7rN8DJ3SRmrVrke8ZyRusHlP+kuwqTcfWLyqMOE3sScPPyeIXN/mDJIfGXvcMqCgYKekoQw==}
+    resolution: {integrity: sha1-+NIzAzYOJ7Fs8GWyO7/0PBQUJnk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/openbsd-x64/-/openbsd-x64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [openbsd]
 
   '@esbuild/openharmony-arm64@0.25.12':
-    resolution: {integrity: sha512-rm0YWsqUSRrjncSXGA7Zv78Nbnw4XL6/dzr20cyrQf7ZmRcsovpcRBdhD43Nuk3y7XIoW2OxMVvwuRvk9XdASg==}
+    resolution: {integrity: sha1-SeC3aHRKOSS+DX/ZfdbOmykj2I0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/openharmony-arm64/-/openharmony-arm64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [openharmony]
 
   '@esbuild/sunos-x64@0.25.12':
-    resolution: {integrity: sha512-3wGSCDyuTHQUzt0nV7bocDy72r2lI33QL3gkDNGkod22EsYl04sMf0qLb8luNKTOmgF/eDEDP5BFNwoBKH441w==}
+    resolution: {integrity: sha1-pu19Z3jWflKMgfsWWyP0kRubE9Y=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/sunos-x64/-/sunos-x64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [sunos]
 
   '@esbuild/win32-arm64@0.25.12':
-    resolution: {integrity: sha512-rMmLrur64A7+DKlnSuwqUdRKyd3UE7oPJZmnljqEptesKM8wx9J8gx5u0+9Pq0fQQW8vqeKebwNXdfOyP+8Bsg==}
+    resolution: {integrity: sha1-msFMN44bZTrxfQjn0840yu9YcyM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/win32-arm64/-/win32-arm64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [win32]
 
   '@esbuild/win32-ia32@0.25.12':
-    resolution: {integrity: sha512-HkqnmmBoCbCwxUKKNPBixiWDGCpQGVsrQfJoVGYLPT41XWF8lHuE5N6WhVia2n4o5QK5M4tYr21827fNhi4byQ==}
+    resolution: {integrity: sha1-kYlC3LuzXMFPyjmvuRteaj0Scmc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/win32-ia32/-/win32-ia32-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [ia32]
     os: [win32]
 
   '@esbuild/win32-x64@0.25.12':
-    resolution: {integrity: sha512-alJC0uCZpTFrSL0CCDjcgleBXPnCrEAhTBILpeAp7M/OFgoqtAetfBzX0xM00MUsVVPpVjlPuMbREqnZCXaTnA==}
+    resolution: {integrity: sha1-m9rYF2vngRrRSNH4dyNZBB9GxsU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@esbuild/win32-x64/-/win32-x64-0.25.12.tgz}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
@@ -296,140 +311,140 @@ packages:
     resolution: {integrity: sha1-R9K/TO9tRwsi9YMbQg+JZOC/dV8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rolldown/pluginutils/-/pluginutils-1.0.0-beta.27.tgz}
 
   '@rollup/rollup-android-arm-eabi@4.60.1':
-    resolution: {integrity: sha512-d6FinEBLdIiK+1uACUttJKfgZREXrF0Qc2SmLII7W2AD8FfiZ9Wjd+rD/iRuf5s5dWrr1GgwXCvPqOuDquOowA==}
+    resolution: {integrity: sha1-BD8UVxYjRSkFLvnhzh2Ef/vp5nQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.60.1.tgz}
     cpu: [arm]
     os: [android]
 
   '@rollup/rollup-android-arm64@4.60.1':
-    resolution: {integrity: sha512-YjG/EwIDvvYI1YvYbHvDz/BYHtkY4ygUIXHnTdLhG+hKIQFBiosfWiACWortsKPKU/+dUwQQCKQM3qrDe8c9BA==}
+    resolution: {integrity: sha1-Aj4b0UbnUZCH39nosp5M+fjs01w=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-android-arm64/-/rollup-android-arm64-4.60.1.tgz}
     cpu: [arm64]
     os: [android]
 
   '@rollup/rollup-darwin-arm64@4.60.1':
-    resolution: {integrity: sha512-mjCpF7GmkRtSJwon+Rq1N8+pI+8l7w5g9Z3vWj4T7abguC4Czwi3Yu/pFaLvA3TTeMVjnu3ctigusqWUfjZzvw==}
+    resolution: {integrity: sha1-Vcy1SHwCQZlUxXp6gGAohdYW4e4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.60.1.tgz}
     cpu: [arm64]
     os: [darwin]
 
   '@rollup/rollup-darwin-x64@4.60.1':
-    resolution: {integrity: sha512-haZ7hJ1JT4e9hqkoT9R/19XW2QKqjfJVv+i5AGg57S+nLk9lQnJ1F/eZloRO3o9Scy9CM3wQ9l+dkXtcBgN5Ew==}
+    resolution: {integrity: sha1-JUtlQEsUSIyDIl6IuIGTdq1xp4Q=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.60.1.tgz}
     cpu: [x64]
     os: [darwin]
 
   '@rollup/rollup-freebsd-arm64@4.60.1':
-    resolution: {integrity: sha512-czw90wpQq3ZsAVBlinZjAYTKduOjTywlG7fEeWKUA7oCmpA8xdTkxZZlwNJKWqILlq0wehoZcJYfBvOyhPTQ6w==}
+    resolution: {integrity: sha1-Y3f/OMBSx2/K/7eyco0xcv5nb+Y=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-freebsd-arm64/-/rollup-freebsd-arm64-4.60.1.tgz}
     cpu: [arm64]
     os: [freebsd]
 
   '@rollup/rollup-freebsd-x64@4.60.1':
-    resolution: {integrity: sha512-KVB2rqsxTHuBtfOeySEyzEOB7ltlB/ux38iu2rBQzkjbwRVlkhAGIEDiiYnO2kFOkJp+Z7pUXKyrRRFuFUKt+g==}
+    resolution: {integrity: sha1-ujkCMJ0Ijq9xObkW8JtxQLKLQG0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-freebsd-x64/-/rollup-freebsd-x64-4.60.1.tgz}
     cpu: [x64]
     os: [freebsd]
 
   '@rollup/rollup-linux-arm-gnueabihf@4.60.1':
-    resolution: {integrity: sha512-L+34Qqil+v5uC0zEubW7uByo78WOCIrBvci69E7sFASRl0X7b/MB6Cqd1lky/CtcSVTydWa2WZwFuWexjS5o6g==}
+    resolution: {integrity: sha1-4BG5oUY4Jn5TtEYoboONva9T8Wc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.60.1.tgz}
     cpu: [arm]
     os: [linux]
     libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.60.1':
-    resolution: {integrity: sha512-n83O8rt4v34hgFzlkb1ycniJh7IR5RCIqt6mz1VRJD6pmhRi0CXdmfnLu9dIUS6buzh60IvACM842Ffb3xd6Gg==}
+    resolution: {integrity: sha1-C86c6aAJSQq9KP2SLdl+1SExGv4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musleabihf-4.60.1.tgz}
     cpu: [arm]
     os: [linux]
     libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.60.1':
-    resolution: {integrity: sha512-Nql7sTeAzhTAja3QXeAI48+/+GjBJ+QmAH13snn0AJSNL50JsDqotyudHyMbO2RbJkskbMbFJfIJKWA6R1LCJQ==}
+    resolution: {integrity: sha1-b2z7vzJPu0zv8hOr338yL9RdJf8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.60.1.tgz}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.60.1':
-    resolution: {integrity: sha512-+pUymDhd0ys9GcKZPPWlFiZ67sTWV5UU6zOJat02M1+PiuSGDziyRuI/pPue3hoUwm2uGfxdL+trT6Z9rxnlMA==}
+    resolution: {integrity: sha1-98s+7K6pwVHvdzQq8F84rpJL95U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.60.1.tgz}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
   '@rollup/rollup-linux-loong64-gnu@4.60.1':
-    resolution: {integrity: sha512-VSvgvQeIcsEvY4bKDHEDWcpW4Yw7BtlKG1GUT4FzBUlEKQK0rWHYBqQt6Fm2taXS+1bXvJT6kICu5ZwqKCnvlQ==}
+    resolution: {integrity: sha1-SZv6xrtmn9iLtmQ1e/a+mWoouS8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-loong64-gnu/-/rollup-linux-loong64-gnu-4.60.1.tgz}
     cpu: [loong64]
     os: [linux]
     libc: [glibc]
 
   '@rollup/rollup-linux-loong64-musl@4.60.1':
-    resolution: {integrity: sha512-4LqhUomJqwe641gsPp6xLfhqWMbQV04KtPp7/dIp0nzPxAkNY1AbwL5W0MQpcalLYk07vaW9Kp1PBhdpZYYcEw==}
+    resolution: {integrity: sha1-En36wIdkdkOWu+BEU8VF04o6tRg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-loong64-musl/-/rollup-linux-loong64-musl-4.60.1.tgz}
     cpu: [loong64]
     os: [linux]
     libc: [musl]
 
   '@rollup/rollup-linux-ppc64-gnu@4.60.1':
-    resolution: {integrity: sha512-tLQQ9aPvkBxOc/EUT6j3pyeMD6Hb8QF2BTBnCQWP/uu1lhc9AIrIjKnLYMEroIz/JvtGYgI9dF3AxHZNaEH0rw==}
+    resolution: {integrity: sha1-anL02VhSqsGDJsW/cIOT6POkG3A=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-ppc64-gnu/-/rollup-linux-ppc64-gnu-4.60.1.tgz}
     cpu: [ppc64]
     os: [linux]
     libc: [glibc]
 
   '@rollup/rollup-linux-ppc64-musl@4.60.1':
-    resolution: {integrity: sha512-RMxFhJwc9fSXP6PqmAz4cbv3kAyvD1etJFjTx4ONqFP9DkTkXsAMU4v3Vyc5BgzC+anz7nS/9tp4obsKfqkDHg==}
+    resolution: {integrity: sha1-uoZ0ZmsA1vkGbLmldxqEMMNNLeY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-ppc64-musl/-/rollup-linux-ppc64-musl-4.60.1.tgz}
     cpu: [ppc64]
     os: [linux]
     libc: [musl]
 
   '@rollup/rollup-linux-riscv64-gnu@4.60.1':
-    resolution: {integrity: sha512-QKgFl+Yc1eEk6MmOBfRHYF6lTxiiiV3/z/BRrbSiW2I7AFTXoBFvdMEyglohPj//2mZS4hDOqeB0H1ACh3sBbg==}
+    resolution: {integrity: sha1-F8w4sqceMCVHytKbz3jQ2yYYySI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-riscv64-gnu/-/rollup-linux-riscv64-gnu-4.60.1.tgz}
     cpu: [riscv64]
     os: [linux]
     libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-musl@4.60.1':
-    resolution: {integrity: sha512-RAjXjP/8c6ZtzatZcA1RaQr6O1TRhzC+adn8YZDnChliZHviqIjmvFwHcxi4JKPSDAt6Uhf/7vqcBzQJy0PDJg==}
+    resolution: {integrity: sha1-42pB4ti9JHMxvVz8E7jJUdM0VKI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-musl-4.60.1.tgz}
     cpu: [riscv64]
     os: [linux]
     libc: [musl]
 
   '@rollup/rollup-linux-s390x-gnu@4.60.1':
-    resolution: {integrity: sha512-wcuocpaOlaL1COBYiA89O6yfjlp3RwKDeTIA0hM7OpmhR1Bjo9j31G1uQVpDlTvwxGn2nQs65fBFL5UFd76FcQ==}
+    resolution: {integrity: sha1-FocmXx9L3qBybHYaWMLbmTNgnWg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.60.1.tgz}
     cpu: [s390x]
     os: [linux]
     libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.60.1':
-    resolution: {integrity: sha512-77PpsFQUCOiZR9+LQEFg9GClyfkNXj1MP6wRnzYs0EeWbPcHs02AXu4xuUbM1zhwn3wqaizle3AEYg5aeoohhg==}
+    resolution: {integrity: sha1-Vqag2QdvKgWpdgMUk7JKIN3MDnc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.60.1.tgz}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.60.1':
-    resolution: {integrity: sha512-5cIATbk5vynAjqqmyBjlciMJl1+R/CwX9oLk/EyiFXDWd95KpHdrOJT//rnUl4cUcskrd0jCCw3wpZnhIHdD9w==}
+    resolution: {integrity: sha1-vCQOu1uf2NQcqKgMtFhFLowYfg8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.60.1.tgz}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
   '@rollup/rollup-openbsd-x64@4.60.1':
-    resolution: {integrity: sha512-cl0w09WsCi17mcmWqqglez9Gk8isgeWvoUZ3WiJFYSR3zjBQc2J5/ihSjpl+VLjPqjQ/1hJRcqBfLjssREQILw==}
+    resolution: {integrity: sha1-b4DUigBsSy/6dyTpWj4z9pdYcq8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-openbsd-x64/-/rollup-openbsd-x64-4.60.1.tgz}
     cpu: [x64]
     os: [openbsd]
 
   '@rollup/rollup-openharmony-arm64@4.60.1':
-    resolution: {integrity: sha512-4Cv23ZrONRbNtbZa37mLSueXUCtN7MXccChtKpUnQNgF010rjrjfHx3QxkS2PI7LqGT5xXyYs1a7LbzAwT0iCA==}
+    resolution: {integrity: sha1-j2229w0KSKvYM7JjzW3T5xmcTA4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-openharmony-arm64/-/rollup-openharmony-arm64-4.60.1.tgz}
     cpu: [arm64]
     os: [openharmony]
 
   '@rollup/rollup-win32-arm64-msvc@4.60.1':
-    resolution: {integrity: sha512-i1okWYkA4FJICtr7KpYzFpRTHgy5jdDbZiWfvny21iIKky5YExiDXP+zbXzm3dUcFpkEeYNHgQ5fuG236JPq0g==}
+    resolution: {integrity: sha1-tomJv6gV0LPU4wLs2QvadEQ4sXc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.60.1.tgz}
     cpu: [arm64]
     os: [win32]
 
   '@rollup/rollup-win32-ia32-msvc@4.60.1':
-    resolution: {integrity: sha512-u09m3CuwLzShA0EYKMNiFgcjjzwqtUMLmuCJLeZWjjOYA3IT2Di09KaxGBTP9xVztWyIWjVdsB2E9goMjZvTQg==}
+    resolution: {integrity: sha1-wJjkUzjFDyLxsohHY1TwJbdGKFs=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.60.1.tgz}
     cpu: [ia32]
     os: [win32]
 
   '@rollup/rollup-win32-x64-gnu@4.60.1':
-    resolution: {integrity: sha512-k+600V9Zl1CM7eZxJgMyTUzmrmhB/0XZnF4pRypKAlAgxmedUA+1v9R+XOFv56W4SlHEzfeMtzujLJD22Uz5zg==}
+    resolution: {integrity: sha1-LJ4VvhVbedBZmZU7FzeykDhC6QM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-win32-x64-gnu/-/rollup-win32-x64-gnu-4.60.1.tgz}
     cpu: [x64]
     os: [win32]
 
   '@rollup/rollup-win32-x64-msvc@4.60.1':
-    resolution: {integrity: sha512-lWMnixq/QzxyhTV6NjQJ4SFo1J6PvOX8vUx5Wb4bBPsEb+8xZ89Bz6kOXpfXj9ak9AHTQVQzlgzBEc1SyM27xQ==}
+    resolution: {integrity: sha1-I7hgET6fh+6gFdH6OkJApStC/NQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.60.1.tgz}
     cpu: [x64]
     os: [win32]
 
@@ -437,65 +452,65 @@ packages:
     resolution: {integrity: sha1-kJnHyaa3GbLK4mX+y7N+CO0/0qI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/node/-/node-4.1.12.tgz}
 
   '@tailwindcss/oxide-android-arm64@4.1.12':
-    resolution: {integrity: sha512-oNY5pq+1gc4T6QVTsZKwZaGpBb2N1H1fsc1GD4o7yinFySqIuRZ2E4NvGasWc6PhYJwGK2+5YT1f9Tp80zUQZQ==}
+    resolution: {integrity: sha1-J5IP5h+idDr+ioyilvpkC2CdF9U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-android-arm64/-/oxide-android-arm64-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [android]
 
   '@tailwindcss/oxide-darwin-arm64@4.1.12':
-    resolution: {integrity: sha512-cq1qmq2HEtDV9HvZlTtrj671mCdGB93bVY6J29mwCyaMYCP/JaUBXxrQQQm7Qn33AXXASPUb2HFZlWiiHWFytw==}
+    resolution: {integrity: sha1-6L1HmPJuwdASvwaDrrd0SfcVBc0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-darwin-arm64/-/oxide-darwin-arm64-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
   '@tailwindcss/oxide-darwin-x64@4.1.12':
-    resolution: {integrity: sha512-6UCsIeFUcBfpangqlXay9Ffty9XhFH1QuUFn0WV83W8lGdX8cD5/+2ONLluALJD5+yJ7k8mVtwy3zMZmzEfbLg==}
+    resolution: {integrity: sha1-jdt+Xd/ZsEnshKK9qZ8rBKhoWfU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-darwin-x64/-/oxide-darwin-x64-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
   '@tailwindcss/oxide-freebsd-x64@4.1.12':
-    resolution: {integrity: sha512-JOH/f7j6+nYXIrHobRYCtoArJdMJh5zy5lr0FV0Qu47MID/vqJAY3r/OElPzx1C/wdT1uS7cPq+xdYYelny1ww==}
+    resolution: {integrity: sha1-2hwLFrel+VoeQA8pmj7JT7b9QKw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-freebsd-x64/-/oxide-freebsd-x64-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [freebsd]
 
   '@tailwindcss/oxide-linux-arm-gnueabihf@4.1.12':
-    resolution: {integrity: sha512-v4Ghvi9AU1SYgGr3/j38PD8PEe6bRfTnNSUE3YCMIRrrNigCFtHZ2TCm8142X8fcSqHBZBceDx+JlFJEfNg5zQ==}
+    resolution: {integrity: sha1-NOVYqm6GnG/phny3jte6ZRufyqQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-linux-arm-gnueabihf/-/oxide-linux-arm-gnueabihf-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
 
   '@tailwindcss/oxide-linux-arm64-gnu@4.1.12':
-    resolution: {integrity: sha512-YP5s1LmetL9UsvVAKusHSyPlzSRqYyRB0f+Kl/xcYQSPLEw/BvGfxzbH+ihUciePDjiXwHh+p+qbSP3SlJw+6g==}
+    resolution: {integrity: sha1-CgCoFGq2IV+BstOFBWyZFEG/OQ4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-linux-arm64-gnu/-/oxide-linux-arm64-gnu-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
   '@tailwindcss/oxide-linux-arm64-musl@4.1.12':
-    resolution: {integrity: sha512-V8pAM3s8gsrXcCv6kCHSuwyb/gPsd863iT+v1PGXC4fSL/OJqsKhfK//v8P+w9ThKIoqNbEnsZqNy+WDnwQqCA==}
+    resolution: {integrity: sha1-sTj0lAaIhK4NjDQ9wZBLIvXpjcY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-linux-arm64-musl/-/oxide-linux-arm64-musl-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
   '@tailwindcss/oxide-linux-x64-gnu@4.1.12':
-    resolution: {integrity: sha512-xYfqYLjvm2UQ3TZggTGrwxjYaLB62b1Wiysw/YE3Yqbh86sOMoTn0feF98PonP7LtjsWOWcXEbGqDL7zv0uW8Q==}
+    resolution: {integrity: sha1-W51fI7Fc23FGOfW5dBwN9dYQ95Q=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-linux-x64-gnu/-/oxide-linux-x64-gnu-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
   '@tailwindcss/oxide-linux-x64-musl@4.1.12':
-    resolution: {integrity: sha512-ha0pHPamN+fWZY7GCzz5rKunlv9L5R8kdh+YNvP5awe3LtuXb5nRi/H27GeL2U+TdhDOptU7T6Is7mdwh5Ar3A==}
+    resolution: {integrity: sha1-9o7FMNPKaHXqkBW81d0HYu5eL10=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-linux-x64-musl/-/oxide-linux-x64-musl-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
   '@tailwindcss/oxide-wasm32-wasi@4.1.12':
-    resolution: {integrity: sha512-4tSyu3dW+ktzdEpuk6g49KdEangu3eCYoqPhWNsZgUhyegEda3M9rG0/j1GV/JjVVsj+lG7jWAyrTlLzd/WEBg==}
+    resolution: {integrity: sha1-n9FaHr3mB2xCxEXF4wXDFnPq2WU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.1.12.tgz}
     engines: {node: '>=14.0.0'}
     cpu: [wasm32]
     bundledDependencies:
@@ -507,13 +522,13 @@ packages:
       - tslib
 
   '@tailwindcss/oxide-win32-arm64-msvc@4.1.12':
-    resolution: {integrity: sha512-iGLyD/cVP724+FGtMWslhcFyg4xyYyM+5F4hGvKA7eifPkXHRAUDFaimu53fpNg9X8dfP75pXx/zFt/jlNF+lg==}
+    resolution: {integrity: sha1-k4vMaoLhEg6k/izpS+CozfOuksc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-win32-arm64-msvc/-/oxide-win32-arm64-msvc-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
   '@tailwindcss/oxide-win32-x64-msvc@4.1.12':
-    resolution: {integrity: sha512-NKIh5rzw6CpEodv/++r0hGLlfgT/gFN+5WNdZtvh6wpU2BpGNgdjvj6H2oFc8nCM839QM1YOhjpgbAONUb4IxA==}
+    resolution: {integrity: sha1-se4u0O8sQJXd7DaEoZh+KzYTrzY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/oxide-win32-x64-msvc/-/oxide-win32-x64-msvc-4.1.12.tgz}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -542,14 +557,25 @@ packages:
   '@types/estree@1.0.8':
     resolution: {integrity: sha1-lYuRyZGxhnztMYvt6g4hXuBQcm4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/estree/-/estree-1.0.8.tgz}
 
+  '@types/prop-types@15.7.15':
+    resolution: {integrity: sha1-5uWobWAr6spxzlFj+t9fldcJMcc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/prop-types/-/prop-types-15.7.15.tgz}
+
+  '@types/react-dom@18.3.7':
+    resolution: {integrity: sha1-uJ3fLNg7T+r8xOLqQa/fuVoNGU8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/react-dom/-/react-dom-18.3.7.tgz}
+    peerDependencies:
+      '@types/react': ^18.0.0
+
+  '@types/react@18.3.28':
+    resolution: {integrity: sha1-CoWxpyQ7QljZ9ib0N5e6GOtfh4E=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/react/-/react-18.3.28.tgz}
+
   '@vitejs/plugin-react@4.7.0':
     resolution: {integrity: sha1-ZHr057t1rTrdV452KtmEuQ9KJLk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@vitejs/plugin-react/-/plugin-react-4.7.0.tgz}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: 6.3.5
 
-  baseline-browser-mapping@2.10.13:
-    resolution: {integrity: sha1-WhVMxFiRkwFaJ049GDGbDXa5Ik4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/baseline-browser-mapping/-/baseline-browser-mapping-2.10.13.tgz}
+  baseline-browser-mapping@2.10.14:
+    resolution: {integrity: sha1-0lRjczqPgLtZq595fJAtyIgy1Hw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/baseline-browser-mapping/-/baseline-browser-mapping-2.10.14.tgz}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -558,8 +584,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
-  caniuse-lite@1.0.30001784:
-    resolution: {integrity: sha1-vflzOggTzPtatNAvISfmLuTGtxg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/caniuse-lite/-/caniuse-lite-1.0.30001784.tgz}
+  caniuse-lite@1.0.30001785:
+    resolution: {integrity: sha1-Mfjj7BBZQw0qewT/9EwnZyxEgt8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/caniuse-lite/-/caniuse-lite-1.0.30001785.tgz}
 
   chownr@3.0.0:
     resolution: {integrity: sha1-mFXmTs0kCpzEJnzopKpdJKHaFeQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/chownr/-/chownr-3.0.0.tgz}
@@ -567,6 +593,9 @@ packages:
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha1-S1YPZJ/E6RjdCrdc9JYei8iC2Co=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/convert-source-map/-/convert-source-map-2.0.0.tgz}
+
+  csstype@3.2.3:
+    resolution: {integrity: sha1-7EjA8+mT5QZIyG2lWeJhCZXPmJo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/csstype/-/csstype-3.2.3.tgz}
 
   debug@4.4.3:
     resolution: {integrity: sha1-xq5DLZvZZiWC/OCHCbA4xY6ePWo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/debug/-/debug-4.4.3.tgz}
@@ -607,12 +636,12 @@ packages:
         optional: true
 
   fsevents@2.3.3:
-    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
+    resolution: {integrity: sha1-ysZAd4XQNnWipeGlMFxpezR9kNY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fsevents/-/fsevents-2.3.3.tgz}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  fuse.js@7.2.0:
-    resolution: {integrity: sha1-U/DNJlXyCq6BH2wIG9+QyUUX17Q=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fuse.js/-/fuse.js-7.2.0.tgz}
+  fuse.js@7.3.0:
+    resolution: {integrity: sha1-aOHqHGwP8mLxgBqUmnjtvgWwvBM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fuse.js/-/fuse.js-7.3.0.tgz}
     engines: {node: '>=10'}
 
   gensync@1.0.0-beta.2:
@@ -640,65 +669,65 @@ packages:
     hasBin: true
 
   lightningcss-darwin-arm64@1.30.1:
-    resolution: {integrity: sha512-c8JK7hyE65X1MHMN+Viq9n11RRC7hgin3HhYKhrMyaXflk5GVplZ60IxyoVtzILeKr+xAJwg6zK6sjTBJ0FKYQ==}
+    resolution: {integrity: sha1-PUfOXiIblWfHA5UO3yUpyko3AK4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [darwin]
 
   lightningcss-darwin-x64@1.30.1:
-    resolution: {integrity: sha512-k1EvjakfumAQoTfcXUcHQZhSpLlkAuEkdMBsI/ivWw9hL+7FtilQc0Cy3hrx0AAQrVtQAbMI7YjCgYgvn37PzA==}
+    resolution: {integrity: sha1-6BEF0/1jMIYMFf6GD2TTnP9fvSI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-darwin-x64/-/lightningcss-darwin-x64-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [darwin]
 
   lightningcss-freebsd-x64@1.30.1:
-    resolution: {integrity: sha512-kmW6UGCGg2PcyUE59K5r0kWfKPAVy4SltVeut+umLCFoJ53RdCUWxcRDzO1eTaxf/7Q2H7LTquFHPL5R+Gjyig==}
+    resolution: {integrity: sha1-oOcyAxCD/51iXF2wIdCesIWvi+Q=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-freebsd-x64/-/lightningcss-freebsd-x64-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [freebsd]
 
   lightningcss-linux-arm-gnueabihf@1.30.1:
-    resolution: {integrity: sha512-MjxUShl1v8pit+6D/zSPq9S9dQ2NPFSQwGvxBCYaBYLPlCWuPh9/t1MRS8iUaR8i+a6w7aps+B4N0S1TYP/R+Q==}
+    resolution: {integrity: sha1-H17MpglVKN22SfkwS6JWDHJHSQg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-linux-arm-gnueabihf/-/lightningcss-linux-arm-gnueabihf-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [arm]
     os: [linux]
 
   lightningcss-linux-arm64-gnu@1.30.1:
-    resolution: {integrity: sha512-gB72maP8rmrKsnKYy8XUuXi/4OctJiuQjcuqWNlJQ6jZiWqtPvqFziskH3hnajfvKB27ynbVCucKSm2rkQp4Bw==}
+    resolution: {integrity: sha1-7ud5lyYQO///HoiZPfcm9pEewAk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-linux-arm64-gnu/-/lightningcss-linux-arm64-gnu-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
   lightningcss-linux-arm64-musl@1.30.1:
-    resolution: {integrity: sha512-jmUQVx4331m6LIX+0wUhBbmMX7TCfjF5FoOH6SD1CttzuYlGNVpA7QnrmLxrsub43ClTINfGSYyHe2HWeLl5CQ==}
+    resolution: {integrity: sha1-8uS1P0KJL+7vj2IMu4iffAZKff4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-linux-arm64-musl/-/lightningcss-linux-arm64-musl-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
   lightningcss-linux-x64-gnu@1.30.1:
-    resolution: {integrity: sha512-piWx3z4wN8J8z3+O5kO74+yr6ze/dKmPnI7vLqfSqI8bccaTGY5xiSGVIJBDd5K5BHlvVLpUB3S2YCfelyJ1bw==}
+    resolution: {integrity: sha1-L8cJYiS8AA67l+6pSuokjFsOsVc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
   lightningcss-linux-x64-musl@1.30.1:
-    resolution: {integrity: sha512-rRomAK7eIkL+tHY0YPxbc5Dra2gXlI63HL+v1Pdi1a3sC+tJTcFrHX+E86sulgAXeI7rSzDYhPSeHHjqFhqfeQ==}
+    resolution: {integrity: sha1-ZtyisVn9gZ6oMsRIldB+WzHXXyY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
   lightningcss-win32-arm64-msvc@1.30.1:
-    resolution: {integrity: sha512-mSL4rqPi4iXq5YVqzSsJgMVFENoa4nGTT/GjO2c0Yl9OuQfPsIfncvLrEW6RbbB24WtZ3xP/2CCmI3tNkNV4oA==}
+    resolution: {integrity: sha1-fYEQoZ18LSK/3y8ruL5o59G2kDk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-win32-arm64-msvc/-/lightningcss-win32-arm64-msvc-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [win32]
 
   lightningcss-win32-x64-msvc@1.30.1:
-    resolution: {integrity: sha512-PVqXh48wh4T53F/1CCu8PIPCxLzWyCnn/9T5W1Jpmdy5h9Cwd+0YQS6/LwhHXSafuc61/xg9Lv5OrCby6a++jg==}
+    resolution: {integrity: sha1-/X3QCOqYSUuF0ktL6gFnk/Lg41I=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [win32]
@@ -706,6 +735,10 @@ packages:
   lightningcss@1.30.1:
     resolution: {integrity: sha1-eOl5wtWVv8uQ0qjA62Mv5sW/7V0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss/-/lightningcss-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
+
+  loose-envify@1.4.0:
+    resolution: {integrity: sha1-ce5R+nvkyuwaY4OffmgtgTLTDK8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/loose-envify/-/loose-envify-1.4.0.tgz}
+    hasBin: true
 
   lru-cache@5.1.1:
     resolution: {integrity: sha1-HaJ+ZxAnGUdpXa9oSOhH8B2EuSA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lru-cache/-/lru-cache-5.1.1.tgz}
@@ -744,18 +777,30 @@ packages:
     engines: {node: ^10 || ^12 || >=14}
 
   prettier@3.8.1:
-    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
+    resolution: {integrity: sha1-7fSJd8+ZFVj0/L2KO6YBW6KjoXM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/prettier/-/prettier-3.8.1.tgz}
     engines: {node: '>=14'}
     hasBin: true
 
+  react-dom@18.3.1:
+    resolution: {integrity: sha1-wiZdeVEbV9R5s90/36UVNklMXLQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/react-dom/-/react-dom-18.3.1.tgz}
+    peerDependencies:
+      react: ^18.3.1
+
   react-refresh@0.17.0:
     resolution: {integrity: sha1-t+V5w2V/I9BOzL5K0uWKjtUeflM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/react-refresh/-/react-refresh-0.17.0.tgz}
+    engines: {node: '>=0.10.0'}
+
+  react@18.3.1:
+    resolution: {integrity: sha1-SauJIAnFOTNiW9FrJTP8dUyrKJE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/react/-/react-18.3.1.tgz}
     engines: {node: '>=0.10.0'}
 
   rollup@4.60.1:
     resolution: {integrity: sha1-tKoryzpeFDe1+tQNQ/5C1L3npC0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/rollup/-/rollup-4.60.1.tgz}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
+
+  scheduler@0.23.2:
+    resolution: {integrity: sha1-QUumSjsoKJLpRM8hCOzAeNEVzcM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/scheduler/-/scheduler-0.23.2.tgz}
 
   semver@6.3.1:
     resolution: {integrity: sha1-VW0u+GiRRuRtzqS/3QlfNDTf/LQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/semver/-/semver-6.3.1.tgz}
@@ -779,6 +824,9 @@ packages:
   tinyglobby@0.2.15:
     resolution: {integrity: sha1-4ijdHmOM6pk9L9tPzS1GAqeZUcI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/tinyglobby/-/tinyglobby-0.2.15.tgz}
     engines: {node: '>=12.0.0'}
+
+  tw-animate-css@1.4.0:
+    resolution: {integrity: sha1-tKBvaCRMujlCiqR+ZebkwLq8Ie4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/tw-animate-css/-/tw-animate-css-1.4.0.tgz}
 
   update-browserslist-db@1.2.3:
     resolution: {integrity: sha1-ZNdttYcTE2rL60xJEUNmzGzC6A0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/update-browserslist-db/-/update-browserslist-db-1.2.3.tgz}
@@ -1219,6 +1267,17 @@ snapshots:
 
   '@types/estree@1.0.8': {}
 
+  '@types/prop-types@15.7.15': {}
+
+  '@types/react-dom@18.3.7(@types/react@18.3.28)':
+    dependencies:
+      '@types/react': 18.3.28
+
+  '@types/react@18.3.28':
+    dependencies:
+      '@types/prop-types': 15.7.15
+      csstype: 3.2.3
+
   '@vitejs/plugin-react@4.7.0(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1))':
     dependencies:
       '@babel/core': 7.29.0
@@ -1231,21 +1290,23 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  baseline-browser-mapping@2.10.13: {}
+  baseline-browser-mapping@2.10.14: {}
 
   browserslist@4.28.2:
     dependencies:
-      baseline-browser-mapping: 2.10.13
-      caniuse-lite: 1.0.30001784
+      baseline-browser-mapping: 2.10.14
+      caniuse-lite: 1.0.30001785
       electron-to-chromium: 1.5.331
       node-releases: 2.0.37
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
-  caniuse-lite@1.0.30001784: {}
+  caniuse-lite@1.0.30001785: {}
 
   chownr@3.0.0: {}
 
   convert-source-map@2.0.0: {}
+
+  csstype@3.2.3: {}
 
   debug@4.4.3:
     dependencies:
@@ -1298,7 +1359,7 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  fuse.js@7.2.0: {}
+  fuse.js@7.3.0: {}
 
   gensync@1.0.0-beta.2: {}
 
@@ -1357,6 +1418,10 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.30.1
       lightningcss-win32-x64-msvc: 1.30.1
 
+  loose-envify@1.4.0:
+    dependencies:
+      js-tokens: 4.0.0
+
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
@@ -1389,7 +1454,17 @@ snapshots:
 
   prettier@3.8.1: {}
 
+  react-dom@18.3.1(react@18.3.1):
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.3.1
+      scheduler: 0.23.2
+
   react-refresh@0.17.0: {}
+
+  react@18.3.1:
+    dependencies:
+      loose-envify: 1.4.0
 
   rollup@4.60.1:
     dependencies:
@@ -1422,6 +1497,10 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.60.1
       fsevents: 2.3.3
 
+  scheduler@0.23.2:
+    dependencies:
+      loose-envify: 1.4.0
+
   semver@6.3.1: {}
 
   source-map-js@1.2.1: {}
@@ -1442,6 +1521,8 @@ snapshots:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
+
+  tw-animate-css@1.4.0: {}
 
   update-browserslist-db@1.2.3(browserslist@4.28.2):
     dependencies:
