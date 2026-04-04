@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@tailwindcss/vite':
         specifier: 4.1.12
-        version: 4.1.12(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1))
+        version: 4.1.12(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1))
       '@types/react':
         specifier: ^18.3.28
         version: 18.3.28
@@ -35,7 +35,7 @@ importers:
         version: 18.3.7(@types/react@18.3.28)
       '@vitejs/plugin-react':
         specifier: 4.7.0
-        version: 4.7.0(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1))
+        version: 4.7.0(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1))
       prettier:
         specifier: ^3.8.1
         version: 3.8.1
@@ -44,9 +44,18 @@ importers:
         version: 4.1.12
       vite:
         specifier: 6.3.5
-        version: 6.3.5(jiti@2.6.1)(lightningcss@1.30.1)
+        version: 6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1)
+      vite-plugin-pwa:
+        specifier: ^1.2.0
+        version: 1.2.0(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0)
 
 packages:
+
+  '@apideck/better-ajv-errors@0.3.7':
+    resolution: {integrity: sha1-iSOPaJ2BpkQTmkfg68LiNryh/yw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@apideck/better-ajv-errors/-/better-ajv-errors-0.3.7.tgz}
+    engines: {node: '>=10'}
+    peerDependencies:
+      ajv: '>=8'
 
   '@babel/code-frame@7.29.0':
     resolution: {integrity: sha1-fNelnxWzzA3NgDA493knEqfQsVw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/code-frame/-/code-frame-7.29.0.tgz}
@@ -64,12 +73,37 @@ packages:
     resolution: {integrity: sha1-0Jh2KQERq7sA75Yqe4OlMH+6DVA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/generator/-/generator-7.29.1.tgz}
     engines: {node: '>=6.9.0'}
 
+  '@babel/helper-annotate-as-pure@7.27.3':
+    resolution: {integrity: sha1-8x/Ya5FfxNrx86xpdsWb5whO2cU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.27.3.tgz}
+    engines: {node: '>=6.9.0'}
+
   '@babel/helper-compilation-targets@7.28.6':
     resolution: {integrity: sha1-MsSj9B8S7RUyF5sQik10bhBcKyU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-compilation-targets/-/helper-compilation-targets-7.28.6.tgz}
     engines: {node: '>=6.9.0'}
 
+  '@babel/helper-create-class-features-plugin@7.28.6':
+    resolution: {integrity: sha1-YR/1SC2p7w22KRvNJDA0ALyhcPs=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/helper-create-regexp-features-plugin@7.28.5':
+    resolution: {integrity: sha1-fB3dZLIGXH94A0sltDNGp+Ge2Zc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-create-regexp-features-plugin/-/helper-create-regexp-features-plugin-7.28.5.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/helper-define-polyfill-provider@0.6.8':
+    resolution: {integrity: sha1-zx5EYrYT8rVMQeb/dY1d/KoshdE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-define-polyfill-provider/-/helper-define-polyfill-provider-0.6.8.tgz}
+    peerDependencies:
+      '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
+
   '@babel/helper-globals@7.28.0':
     resolution: {integrity: sha1-uUMN8qpOF7woZl6t6uiqHZheZnQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-globals/-/helper-globals-7.28.0.tgz}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/helper-member-expression-to-functions@7.28.5':
+    resolution: {integrity: sha1-8+B6EL437XpjRhxj5pKVdZRaYVA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-member-expression-to-functions/-/helper-member-expression-to-functions-7.28.5.tgz}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-module-imports@7.28.6':
@@ -82,8 +116,28 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
 
+  '@babel/helper-optimise-call-expression@7.27.1':
+    resolution: {integrity: sha1-xlIhthpkPz5icF5d0rXxFeNfkgA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-optimise-call-expression/-/helper-optimise-call-expression-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+
   '@babel/helper-plugin-utils@7.28.6':
     resolution: {integrity: sha1-bxPqJRtoyFMumF/VMvKHQaivmsg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-plugin-utils/-/helper-plugin-utils-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/helper-remap-async-to-generator@7.27.1':
+    resolution: {integrity: sha1-RgHVx84usq6lgyjUNyVSP802LOY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-remap-async-to-generator/-/helper-remap-async-to-generator-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/helper-replace-supers@7.28.6':
+    resolution: {integrity: sha1-lKqaHXQjoArq0/IE94g0zn1T/kQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-replace-supers/-/helper-replace-supers-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/helper-skip-transparent-expression-wrappers@7.27.1':
+    resolution: {integrity: sha1-YruRs6u6jH8f7AJS2dvqEbPuelY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-skip-transparent-expression-wrappers/-/helper-skip-transparent-expression-wrappers-7.27.1.tgz}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-string-parser@7.27.1':
@@ -98,6 +152,10 @@ packages:
     resolution: {integrity: sha1-+lL1sefbGrBJRFtCHERxMDiXcC8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-validator-option/-/helper-validator-option-7.27.1.tgz}
     engines: {node: '>=6.9.0'}
 
+  '@babel/helper-wrap-function@7.28.6':
+    resolution: {integrity: sha1-TjSf+SItq2mpOgGcwpbN2EQuJ5o=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helper-wrap-function/-/helper-wrap-function-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+
   '@babel/helpers@7.29.2':
     resolution: {integrity: sha1-nPvMsCuOIpiSwLBwOAUswahwnEk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/helpers/-/helpers-7.29.2.tgz}
     engines: {node: '>=6.9.0'}
@@ -106,6 +164,294 @@ packages:
     resolution: {integrity: sha1-WL1QuaeVHRNJiKGuF3o175pwO6E=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/parser/-/parser-7.29.2.tgz}
     engines: {node: '>=6.0.0'}
     hasBin: true
+
+  '@babel/plugin-bugfix-firefox-class-in-computed-class-key@7.28.5':
+    resolution: {integrity: sha1-+95Xl0cHu/oDdtNNQl/0+mxzJCE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-bugfix-firefox-class-in-computed-class-key/-/plugin-bugfix-firefox-class-in-computed-class-key-7.28.5.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/plugin-bugfix-safari-class-field-initializer-scope@7.27.1':
+    resolution: {integrity: sha1-Q/cKbX79UjcO7731WuA9kbKThW0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-bugfix-safari-class-field-initializer-scope/-/plugin-bugfix-safari-class-field-initializer-scope-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@7.27.1':
+    resolution: {integrity: sha1-vrYjvVc7i28wR70EwyUGrcPlinI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/-/plugin-bugfix-safari-id-destructuring-collision-in-function-expression-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.27.1':
+    resolution: {integrity: sha1-4TSlR56yupwCcU6MHr8eyQdhJP0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining/-/plugin-bugfix-v8-spread-parameters-in-optional-chaining-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.13.0
+
+  '@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly@7.28.6':
+    resolution: {integrity: sha1-DoKJzsKLqvBdVP0I2BrjZ2Bl9p8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly/-/plugin-bugfix-v8-static-class-fields-redefine-readonly-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/plugin-proposal-private-property-in-object@7.21.0-placeholder-for-preset-env.2':
+    resolution: {integrity: sha1-eET5KJVG76n+usLeTP41igUL1wM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-proposal-private-property-in-object/-/plugin-proposal-private-property-in-object-7.21.0-placeholder-for-preset-env.2.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-syntax-import-assertions@7.28.6':
+    resolution: {integrity: sha1-rpvBkjprpSe3AQTdIZGwzYcshQc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-syntax-import-assertions/-/plugin-syntax-import-assertions-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-syntax-import-attributes@7.28.6':
+    resolution: {integrity: sha1-tx1ZFGZfYBJOEzaW8XzXZpBixQM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-syntax-import-attributes/-/plugin-syntax-import-attributes-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-syntax-unicode-sets-regex@7.18.6':
+    resolution: {integrity: sha1-1Jo7PmtS5b5nQAIjF1gCNKakc1c=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-syntax-unicode-sets-regex/-/plugin-syntax-unicode-sets-regex-7.18.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/plugin-transform-arrow-functions@7.27.1':
+    resolution: {integrity: sha1-biBhBnujqwJm2DSp+UgRGW8qupo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-arrow-functions/-/plugin-transform-arrow-functions-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-async-generator-functions@7.29.0':
+    resolution: {integrity: sha1-Y+2CmCApjwvxQ9Wkpo+4wG/9dC8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-async-generator-functions/-/plugin-transform-async-generator-functions-7.29.0.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-async-to-generator@7.28.6':
+    resolution: {integrity: sha1-vZe0Ijey0byQ10vLSGw5vltNfnc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-async-to-generator/-/plugin-transform-async-to-generator-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-block-scoped-functions@7.27.1':
+    resolution: {integrity: sha1-VYqdbiTPcoAt07YqS1Hg1iwPV/k=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-block-scoped-functions/-/plugin-transform-block-scoped-functions-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-block-scoping@7.28.6':
+    resolution: {integrity: sha1-4e9WM0SMJOdjRhJcJTTus1lpmpk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-block-scoping/-/plugin-transform-block-scoping-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-class-properties@7.28.6':
+    resolution: {integrity: sha1-0nSkR4tueC2eqYf9oJvbbSjWa3I=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-class-properties/-/plugin-transform-class-properties-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-class-static-block@7.28.6':
+    resolution: {integrity: sha1-EldJHoJZxtElrE2abzn50r89unA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-class-static-block/-/plugin-transform-class-static-block-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.12.0
+
+  '@babel/plugin-transform-classes@7.28.6':
+    resolution: {integrity: sha1-j2+3m6NwOXjnAc4ql+NzqufdpLc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-classes/-/plugin-transform-classes-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-computed-properties@7.28.6':
+    resolution: {integrity: sha1-k2gk/HHCbLXEM0hXdtecjnsCAtI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-computed-properties/-/plugin-transform-computed-properties-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-destructuring@7.28.5':
+    resolution: {integrity: sha1-uEAnZN+WF5ogcLt7UBoVhs+K16c=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-destructuring/-/plugin-transform-destructuring-7.28.5.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-dotall-regex@7.28.6':
+    resolution: {integrity: sha1-3vMe2E4PtuJcceU8Ek57dqSrjmE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-dotall-regex/-/plugin-transform-dotall-regex-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-duplicate-keys@7.27.1':
+    resolution: {integrity: sha1-8fv2KOzhjhLnsysXWUDmg1j1RtE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-duplicate-keys/-/plugin-transform-duplicate-keys-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-duplicate-named-capturing-groups-regex@7.29.0':
+    resolution: {integrity: sha1-gBS4ps/Q57knYnJEQ78NJADybfE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-duplicate-named-capturing-groups-regex/-/plugin-transform-duplicate-named-capturing-groups-regex-7.29.0.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/plugin-transform-dynamic-import@7.27.1':
+    resolution: {integrity: sha1-THjzVVKsDgaqH248Vz1naV6K9aQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-dynamic-import/-/plugin-transform-dynamic-import-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-explicit-resource-management@7.28.6':
+    resolution: {integrity: sha1-3WeI+YLIt36Gd50dApWR452di+c=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-explicit-resource-management/-/plugin-transform-explicit-resource-management-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-exponentiation-operator@7.28.6':
+    resolution: {integrity: sha1-Xkd+t+r68qtVN6BKqvzzfi1/EJE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-exponentiation-operator/-/plugin-transform-exponentiation-operator-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-export-namespace-from@7.27.1':
+    resolution: {integrity: sha1-ccpp00ce3W2qcRz038NABBXfnCM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-export-namespace-from/-/plugin-transform-export-namespace-from-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-for-of@7.27.1':
+    resolution: {integrity: sha1-vCT3CA6f9yG2OnCseyVkyhW2xAo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-for-of/-/plugin-transform-for-of-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-function-name@7.27.1':
+    resolution: {integrity: sha1-TQvzB3IOTc5tfDD8sf1sp3ves6c=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-function-name/-/plugin-transform-function-name-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-json-strings@7.28.6':
+    resolution: {integrity: sha1-TIwVstxJ4oXREKTPPaxS/S38MDg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-json-strings/-/plugin-transform-json-strings-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-literals@7.27.1':
+    resolution: {integrity: sha1-uq76TRCh1CBvnc3aUNfVgnu3CyQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-literals/-/plugin-transform-literals-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-logical-assignment-operators@7.28.6':
+    resolution: {integrity: sha1-UwKKPXfjPFDvMKj85coXBlk25gU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-logical-assignment-operators/-/plugin-transform-logical-assignment-operators-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-member-expression-literals@7.27.1':
+    resolution: {integrity: sha1-N7iLpZTYUkGOmVNvVhL3lfI66vk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-member-expression-literals/-/plugin-transform-member-expression-literals-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-modules-amd@7.27.1':
+    resolution: {integrity: sha1-pBRfnYfCKR/i0F+ZS2XbpOPnGW8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-modules-amd/-/plugin-transform-modules-amd-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-modules-commonjs@7.28.6':
+    resolution: {integrity: sha1-wCMuDf5mpzTMStDV51/DMhtv3vE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-modules-systemjs@7.29.0':
+    resolution: {integrity: sha1-5FipWheAfEFZJBBqP/GIo7je6WQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-modules-systemjs/-/plugin-transform-modules-systemjs-7.29.0.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-modules-umd@7.27.1':
+    resolution: {integrity: sha1-Y/LPT23BXevBL2lORHFIY9NM0zQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-modules-umd/-/plugin-transform-modules-umd-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-named-capturing-groups-regex@7.29.0':
+    resolution: {integrity: sha1-omzVHgnEcYWI/EzOHF0cAVIQLWo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-named-capturing-groups-regex/-/plugin-transform-named-capturing-groups-regex-7.29.0.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/plugin-transform-new-target@7.27.1':
+    resolution: {integrity: sha1-JZxDk5coytFwasFzUbfmp76hq+s=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-new-target/-/plugin-transform-new-target-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-nullish-coalescing-operator@7.28.6':
+    resolution: {integrity: sha1-m8YglukKt6iH88qcRp9q3sVnl1c=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-nullish-coalescing-operator/-/plugin-transform-nullish-coalescing-operator-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-numeric-separator@7.28.6':
+    resolution: {integrity: sha1-ExCwKSdi56SjNd9fWAwzIO59np8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-numeric-separator/-/plugin-transform-numeric-separator-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-object-rest-spread@7.28.6':
+    resolution: {integrity: sha1-/dS8LXJIDbbKQq7VwFHxSNewZ/c=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-object-rest-spread/-/plugin-transform-object-rest-spread-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-object-super@7.27.1':
+    resolution: {integrity: sha1-HJMs0nvzh0xDpcrE9D6/lwyYcbU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-object-super/-/plugin-transform-object-super-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-optional-catch-binding@7.28.6':
+    resolution: {integrity: sha1-dRB74Ux4OFl4IBpJyGQUoVCiC0w=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-optional-catch-binding/-/plugin-transform-optional-catch-binding-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-optional-chaining@7.28.6':
+    resolution: {integrity: sha1-kmzxUL1CH8g2J1PpEbShsc5DVs0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-optional-chaining/-/plugin-transform-optional-chaining-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-parameters@7.27.7':
+    resolution: {integrity: sha1-H9L+u3x059Ic87BfeuvJB5QK9To=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-parameters/-/plugin-transform-parameters-7.27.7.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-private-methods@7.28.6':
+    resolution: {integrity: sha1-x2+/7zuGx3Xbf3wQb/9URhC9tBE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-private-methods/-/plugin-transform-private-methods-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-private-property-in-object@7.28.6':
+    resolution: {integrity: sha1-T6/vHhMSnXnx11rBgMUqr+/bKBE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-private-property-in-object/-/plugin-transform-private-property-in-object-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-property-literals@7.27.1':
+    resolution: {integrity: sha1-B+r9YYgAWR6IBzoK8blA2aQsZCQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-property-literals/-/plugin-transform-property-literals-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
 
   '@babel/plugin-transform-react-jsx-self@7.27.1':
     resolution: {integrity: sha1-r2eNhQas9SxXfKxz/3/mYVyF/JI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-react-jsx-self/-/plugin-transform-react-jsx-self-7.27.1.tgz}
@@ -118,6 +464,93 @@ packages:
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-regenerator@7.29.0':
+    resolution: {integrity: sha1-3sI3zsG5MzCHbW2pmSxKvULJ0Ys=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-regenerator/-/plugin-transform-regenerator-7.29.0.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-regexp-modifiers@7.28.6':
+    resolution: {integrity: sha1-fvAWO9i0phBIGyUJxYzyF/BlKQs=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-regexp-modifiers/-/plugin-transform-regexp-modifiers-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/plugin-transform-reserved-words@7.27.1':
+    resolution: {integrity: sha1-QPukh4zL0cVmBaRHmjqJGsAnS7Q=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-reserved-words/-/plugin-transform-reserved-words-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-shorthand-properties@7.27.1':
+    resolution: {integrity: sha1-Uyq9rN7Ie/7h4O+OL83uVD/jK5A=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-shorthand-properties/-/plugin-transform-shorthand-properties-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-spread@7.28.6':
+    resolution: {integrity: sha1-QKK0I/bbe3DwQ60Celi8tEqXV7Y=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-spread/-/plugin-transform-spread-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-sticky-regex@7.27.1':
+    resolution: {integrity: sha1-GJhJNdnSKWhDpJHXigFJOffc0oA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-sticky-regex/-/plugin-transform-sticky-regex-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-template-literals@7.27.1':
+    resolution: {integrity: sha1-Gg6zXYuz5u/AbJ/UDrC871SDKLg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-template-literals/-/plugin-transform-template-literals-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-typeof-symbol@7.27.1':
+    resolution: {integrity: sha1-cOlmu0kuA1Cc836vptzDBR+EQ2k=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-typeof-symbol/-/plugin-transform-typeof-symbol-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-unicode-escapes@7.27.1':
+    resolution: {integrity: sha1-PjFD+EOK74Qt4ogW7OWHgBkM+AY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-unicode-escapes/-/plugin-transform-unicode-escapes-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-unicode-property-regex@7.28.6':
+    resolution: {integrity: sha1-Y6emwhoOddrpsYYUVBEepcqiKCE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-unicode-property-regex/-/plugin-transform-unicode-property-regex-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-unicode-regex@7.27.1':
+    resolution: {integrity: sha1-JZSPXDldsV9gkCjjcGZ+2Lrpr5c=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.27.1.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-unicode-sets-regex@7.28.6':
+    resolution: {integrity: sha1-kkkSkU5d+f5hXsRy+I/0eIzgTU4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/plugin-transform-unicode-sets-regex/-/plugin-transform-unicode-sets-regex-7.28.6.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+
+  '@babel/preset-env@7.29.2':
+    resolution: {integrity: sha1-Whc/IsfY3zYq8cn+MfrNMg3kqGw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/preset-env/-/preset-env-7.29.2.tgz}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/preset-modules@0.1.6-no-external-plugins':
+    resolution: {integrity: sha1-zLiKLEnIFyNoYf7ngmCAVzuKkjo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/preset-modules/-/preset-modules-0.1.6-no-external-plugins.tgz}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0 || ^8.0.0-0 <8.0.0
+
+  '@babel/runtime@7.29.2':
+    resolution: {integrity: sha1-mm4tBfS2aS4YAc1PsXatgjkw7V4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/runtime/-/runtime-7.29.2.tgz}
+    engines: {node: '>=6.9.0'}
 
   '@babel/template@7.28.6':
     resolution: {integrity: sha1-Dn5W7O23iu72bOeXKwgvznaiPlc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@babel/template/-/template-7.28.6.tgz}
@@ -287,6 +720,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@isaacs/cliui@9.0.0':
+    resolution: {integrity: sha1-TQo/EnBYBDvy5+4Wnq8w7ZATAvM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@isaacs/cliui/-/cliui-9.0.0.tgz}
+    engines: {node: '>=18'}
+
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha1-LVmuOrSzj7QnC/oj0w+OLobH/jI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@isaacs/fs-minipass/-/fs-minipass-4.0.1.tgz}
     engines: {node: '>=18.0.0'}
@@ -301,6 +738,9 @@ packages:
     resolution: {integrity: sha1-eg7mAfYPmaIMfHxf8MgDiMEYm9Y=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz}
     engines: {node: '>=6.0.0'}
 
+  '@jridgewell/source-map@0.3.11':
+    resolution: {integrity: sha1-shg1y9Nttla4V8KtAuvUE8wTqbo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@jridgewell/source-map/-/source-map-0.3.11.tgz}
+
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha1-aRKwDSxjHA0Vzhp6tXzWV/Ko+Lo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz}
 
@@ -309,6 +749,55 @@ packages:
 
   '@rolldown/pluginutils@1.0.0-beta.27':
     resolution: {integrity: sha1-R9K/TO9tRwsi9YMbQg+JZOC/dV8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rolldown/pluginutils/-/pluginutils-1.0.0-beta.27.tgz}
+
+  '@rollup/plugin-babel@5.3.1':
+    resolution: {integrity: sha1-BLwGCPSqSy5LGuvyhDRND2j9ooM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz}
+    engines: {node: '>= 10.0.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+      '@types/babel__core': ^7.1.9
+      rollup: ^1.20.0||^2.0.0
+    peerDependenciesMeta:
+      '@types/babel__core':
+        optional: true
+
+  '@rollup/plugin-node-resolve@15.3.1':
+    resolution: {integrity: sha1-ZgCJU8JSS+eGqjGdSeMvISgpang=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/plugin-node-resolve/-/plugin-node-resolve-15.3.1.tgz}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.78.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/plugin-replace@2.4.2':
+    resolution: {integrity: sha1-otU5MU+8d8JEhY+qUjASglBoUQo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/plugin-replace/-/plugin-replace-2.4.2.tgz}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+
+  '@rollup/plugin-terser@0.4.4':
+    resolution: {integrity: sha1-Fd/9s/c/Ehqk+7N+fKa+mu6pGWI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/plugin-terser/-/plugin-terser-0.4.4.tgz}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/pluginutils@3.1.0':
+    resolution: {integrity: sha1-cGtFJO5tyLEDs8mVUz5a1oDAK5s=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/pluginutils/-/pluginutils-3.1.0.tgz}
+    engines: {node: '>= 8.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+
+  '@rollup/pluginutils@5.3.0':
+    resolution: {integrity: sha1-V7obDL2o56PFl6SFPIB7FW4hp7Q=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/pluginutils/-/pluginutils-5.3.0.tgz}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
 
   '@rollup/rollup-android-arm-eabi@4.60.1':
     resolution: {integrity: sha1-BD8UVxYjRSkFLvnhzh2Ef/vp5nQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.60.1.tgz}
@@ -448,6 +937,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@surma/rollup-plugin-off-main-thread@2.2.3':
+    resolution: {integrity: sha1-7jSYWVLKIVWKsNlS8AKYrSGQwFM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-2.2.3.tgz}
+
   '@tailwindcss/node@4.1.12':
     resolution: {integrity: sha1-kJnHyaa3GbLK4mX+y7N+CO0/0qI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@tailwindcss/node/-/node-4.1.12.tgz}
 
@@ -554,6 +1046,9 @@ packages:
   '@types/babel__traverse@7.28.0':
     resolution: {integrity: sha1-B9cT1szg0mXJhJ2wy+YtP2Hzb3Q=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/babel__traverse/-/babel__traverse-7.28.0.tgz}
 
+  '@types/estree@0.0.39':
+    resolution: {integrity: sha1-4Xfmme4bjCLSMXTKqnQiZEOJUJ8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/estree/-/estree-0.0.39.tgz}
+
   '@types/estree@1.0.8':
     resolution: {integrity: sha1-lYuRyZGxhnztMYvt6g4hXuBQcm4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/estree/-/estree-1.0.8.tgz}
 
@@ -568,21 +1063,102 @@ packages:
   '@types/react@18.3.28':
     resolution: {integrity: sha1-CoWxpyQ7QljZ9ib0N5e6GOtfh4E=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/react/-/react-18.3.28.tgz}
 
+  '@types/resolve@1.20.2':
+    resolution: {integrity: sha1-l9JuAM1KBCO0r2IKvs8+b0QreXU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/resolve/-/resolve-1.20.2.tgz}
+
+  '@types/trusted-types@2.0.7':
+    resolution: {integrity: sha1-usywepcLkXB986PoumiWxX6tLRE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@types/trusted-types/-/trusted-types-2.0.7.tgz}
+
   '@vitejs/plugin-react@4.7.0':
     resolution: {integrity: sha1-ZHr057t1rTrdV452KtmEuQ9KJLk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/@vitejs/plugin-react/-/plugin-react-4.7.0.tgz}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: 6.3.5
 
+  acorn@8.16.0:
+    resolution: {integrity: sha1-TOecib5Ar+ev6POtuQKh8c6awIo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/acorn/-/acorn-8.16.0.tgz}
+    engines: {node: '>=0.4.0'}
+    hasBin: true
+
+  ajv@8.18.0:
+    resolution: {integrity: sha1-iGQYa2c40APrOpMxcrs4M+EM77w=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/ajv/-/ajv-8.18.0.tgz}
+
+  array-buffer-byte-length@1.0.2:
+    resolution: {integrity: sha1-OE0So3KVrsN2mrAirTI6GKUcz4s=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/array-buffer-byte-length/-/array-buffer-byte-length-1.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  arraybuffer.prototype.slice@1.0.4:
+    resolution: {integrity: sha1-nXYNhNvdBtDL+SyISWFaGnqzGDw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/arraybuffer.prototype.slice/-/arraybuffer.prototype.slice-1.0.4.tgz}
+    engines: {node: '>= 0.4'}
+
+  async-function@1.0.0:
+    resolution: {integrity: sha1-UJyfymDq+FA0xoKYOBiOTkyP+ys=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/async-function/-/async-function-1.0.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  async@3.2.6:
+    resolution: {integrity: sha1-Gwco4Ukp1RuFtEm38G4nwRReOM4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/async/-/async-3.2.6.tgz}
+
+  at-least-node@1.0.0:
+    resolution: {integrity: sha1-YCzUtG6EStTv/JKoARo8RuAjjcI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/at-least-node/-/at-least-node-1.0.0.tgz}
+    engines: {node: '>= 4.0.0'}
+
+  available-typed-arrays@1.0.7:
+    resolution: {integrity: sha1-pcw3XWoDwu/IelU/PgsVIt7xSEY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/available-typed-arrays/-/available-typed-arrays-1.0.7.tgz}
+    engines: {node: '>= 0.4'}
+
+  babel-plugin-polyfill-corejs2@0.4.17:
+    resolution: {integrity: sha1-GY+XDxyZqFa0ZtEYfojOML0ZnZE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/babel-plugin-polyfill-corejs2/-/babel-plugin-polyfill-corejs2-0.4.17.tgz}
+    peerDependencies:
+      '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
+
+  babel-plugin-polyfill-corejs3@0.14.2:
+    resolution: {integrity: sha1-asCNLzEq/7cMTGnA+7pMtBfuVYc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/babel-plugin-polyfill-corejs3/-/babel-plugin-polyfill-corejs3-0.14.2.tgz}
+    peerDependencies:
+      '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
+
+  babel-plugin-polyfill-regenerator@0.6.8:
+    resolution: {integrity: sha1-imv9XdVCOTYrPQbOR6xSstlddyE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/babel-plugin-polyfill-regenerator/-/babel-plugin-polyfill-regenerator-0.6.8.tgz}
+    peerDependencies:
+      '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
+
+  balanced-match@1.0.2:
+    resolution: {integrity: sha1-6D46fj8wCzTLnYf2FfoMvzV2kO4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/balanced-match/-/balanced-match-1.0.2.tgz}
+
+  balanced-match@4.0.4:
+    resolution: {integrity: sha1-v7EGYv7tgZaixi58aOF3IMJ0F5o=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/balanced-match/-/balanced-match-4.0.4.tgz}
+    engines: {node: 18 || 20 || >=22}
+
   baseline-browser-mapping@2.10.14:
     resolution: {integrity: sha1-0lRjczqPgLtZq595fJAtyIgy1Hw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/baseline-browser-mapping/-/baseline-browser-mapping-2.10.14.tgz}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  brace-expansion@2.0.3:
+    resolution: {integrity: sha1-BJMzi91Y4xmxA5xnz37kOYksAdk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/brace-expansion/-/brace-expansion-2.0.3.tgz}
+
+  brace-expansion@5.0.5:
+    resolution: {integrity: sha1-3MOjcRa3nz4bRtuZTO1dVw6TD9s=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/brace-expansion/-/brace-expansion-5.0.5.tgz}
+    engines: {node: 18 || 20 || >=22}
+
   browserslist@4.28.2:
     resolution: {integrity: sha1-9QtlNi70iXTKn1CzaAVm14a4EdI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/browserslist/-/browserslist-4.28.2.tgz}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
+
+  buffer-from@1.1.2:
+    resolution: {integrity: sha1-KxRqb9cugLT1XSVfNe1Zo6mkG9U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/buffer-from/-/buffer-from-1.1.2.tgz}
+
+  call-bind-apply-helpers@1.0.2:
+    resolution: {integrity: sha1-S1QowiK+mF15w9gmV0edvgtZstY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  call-bind@1.0.8:
+    resolution: {integrity: sha1-BzapZg9TfjOIgm9EDV7EX3ROqkw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/call-bind/-/call-bind-1.0.8.tgz}
+    engines: {node: '>= 0.4'}
+
+  call-bound@1.0.4:
+    resolution: {integrity: sha1-I43pNdKippKSjFOMfM+pEGf9Bio=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/call-bound/-/call-bound-1.0.4.tgz}
+    engines: {node: '>= 0.4'}
 
   caniuse-lite@1.0.30001785:
     resolution: {integrity: sha1-Mfjj7BBZQw0qewT/9EwnZyxEgt8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/caniuse-lite/-/caniuse-lite-1.0.30001785.tgz}
@@ -591,11 +1167,41 @@ packages:
     resolution: {integrity: sha1-mFXmTs0kCpzEJnzopKpdJKHaFeQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/chownr/-/chownr-3.0.0.tgz}
     engines: {node: '>=18'}
 
+  commander@2.20.3:
+    resolution: {integrity: sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/commander/-/commander-2.20.3.tgz}
+
+  common-tags@1.8.2:
+    resolution: {integrity: sha1-lOuzwHbSYDJ0X9VPrOf2iO9aycY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/common-tags/-/common-tags-1.8.2.tgz}
+    engines: {node: '>=4.0.0'}
+
   convert-source-map@2.0.0:
     resolution: {integrity: sha1-S1YPZJ/E6RjdCrdc9JYei8iC2Co=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/convert-source-map/-/convert-source-map-2.0.0.tgz}
 
+  core-js-compat@3.49.0:
+    resolution: {integrity: sha1-BhRUR9kvSq8ligxE8ktHr66v/vY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/core-js-compat/-/core-js-compat-3.49.0.tgz}
+
+  cross-spawn@7.0.6:
+    resolution: {integrity: sha1-ilj+ePANzXDDcEUXWd+/rwPo7p8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/cross-spawn/-/cross-spawn-7.0.6.tgz}
+    engines: {node: '>= 8'}
+
+  crypto-random-string@2.0.0:
+    resolution: {integrity: sha1-7yp6lm7BEIM4g2m6oC6+rSKbMNU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/crypto-random-string/-/crypto-random-string-2.0.0.tgz}
+    engines: {node: '>=8'}
+
   csstype@3.2.3:
     resolution: {integrity: sha1-7EjA8+mT5QZIyG2lWeJhCZXPmJo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/csstype/-/csstype-3.2.3.tgz}
+
+  data-view-buffer@1.0.2:
+    resolution: {integrity: sha1-IRoDupXsr3eYqMcZjXlTYhH4hXA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/data-view-buffer/-/data-view-buffer-1.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  data-view-byte-length@1.0.2:
+    resolution: {integrity: sha1-noD3ylJFPOPpPSWjUxh2fqdwRzU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/data-view-byte-length/-/data-view-byte-length-1.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  data-view-byte-offset@1.0.1:
+    resolution: {integrity: sha1-BoMH+bcat2274QKROJ4CCFZgYZE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/data-view-byte-offset/-/data-view-byte-offset-1.0.1.tgz}
+    engines: {node: '>= 0.4'}
 
   debug@4.4.3:
     resolution: {integrity: sha1-xq5DLZvZZiWC/OCHCbA4xY6ePWo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/debug/-/debug-4.4.3.tgz}
@@ -606,9 +1212,30 @@ packages:
       supports-color:
         optional: true
 
+  deepmerge@4.3.1:
+    resolution: {integrity: sha1-RLXyFHzTsA1LVhN2hZZvJv0l3Uo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/deepmerge/-/deepmerge-4.3.1.tgz}
+    engines: {node: '>=0.10.0'}
+
+  define-data-property@1.1.4:
+    resolution: {integrity: sha1-iU3BQbt9MGCuQ2b2oBB+aPvkjF4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/define-data-property/-/define-data-property-1.1.4.tgz}
+    engines: {node: '>= 0.4'}
+
+  define-properties@1.2.1:
+    resolution: {integrity: sha1-EHgcxhbrlRqAoDS6/Kpzd/avK2w=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/define-properties/-/define-properties-1.2.1.tgz}
+    engines: {node: '>= 0.4'}
+
   detect-libc@2.1.2:
     resolution: {integrity: sha1-aJxdzcGQDvVYOky59te0c3QgdK0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/detect-libc/-/detect-libc-2.1.2.tgz}
     engines: {node: '>=8'}
+
+  dunder-proto@1.0.1:
+    resolution: {integrity: sha1-165mfh3INIL4tw/Q9u78UNow9Yo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/dunder-proto/-/dunder-proto-1.0.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  ejs@3.1.10:
+    resolution: {integrity: sha1-aauDWLFOiW+AzDnmIIe4hQDDrDs=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/ejs/-/ejs-3.1.10.tgz}
+    engines: {node: '>=0.10.0'}
+    hasBin: true
 
   electron-to-chromium@1.5.331:
     resolution: {integrity: sha1-Pk6EUELVF8aLPAC+X8MyBPE7IFg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/electron-to-chromium/-/electron-to-chromium-1.5.331.tgz}
@@ -616,6 +1243,30 @@ packages:
   enhanced-resolve@5.20.1:
     resolution: {integrity: sha1-7us5Zr6mLDSMQKDMnnkS4lV9C+A=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/enhanced-resolve/-/enhanced-resolve-5.20.1.tgz}
     engines: {node: '>=10.13.0'}
+
+  es-abstract@1.24.1:
+    resolution: {integrity: sha1-8MEx7V6huyQRE0qN2U3vCcRseJk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/es-abstract/-/es-abstract-1.24.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  es-define-property@1.0.1:
+    resolution: {integrity: sha1-mD6y+aZyTpMD9hrd8BHHLgngsPo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/es-define-property/-/es-define-property-1.0.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  es-errors@1.3.0:
+    resolution: {integrity: sha1-BfdaJdq5jk+x3NXhRywFRtUFfI8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/es-errors/-/es-errors-1.3.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  es-object-atoms@1.1.1:
+    resolution: {integrity: sha1-HE8sSDcydZfOadLKGQp/3RcjOME=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/es-object-atoms/-/es-object-atoms-1.1.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  es-set-tostringtag@2.1.0:
+    resolution: {integrity: sha1-8x274MGDsAptJutjJcgQwP0YvU0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/es-set-tostringtag/-/es-set-tostringtag-2.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  es-to-primitive@1.3.0:
+    resolution: {integrity: sha1-lsicgsxJ/YeUokg1uj4f+H8hThg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/es-to-primitive/-/es-to-primitive-1.3.0.tgz}
+    engines: {node: '>= 0.4'}
 
   esbuild@0.25.12:
     resolution: {integrity: sha1-l6HQQfSrAML84vg40rmWmi0ql6U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/esbuild/-/esbuild-0.25.12.tgz}
@@ -626,6 +1277,25 @@ packages:
     resolution: {integrity: sha1-ARo/aYVroYnf+n3I/M6Z0qh5A+U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/escalade/-/escalade-3.2.0.tgz}
     engines: {node: '>=6'}
 
+  estree-walker@1.0.1:
+    resolution: {integrity: sha1-MbxdYSyWtwQQa0d+bdXYqhOMtwA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/estree-walker/-/estree-walker-1.0.1.tgz}
+
+  estree-walker@2.0.2:
+    resolution: {integrity: sha1-UvAQF4wqTBF6d1fP6UKtt9LaTKw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/estree-walker/-/estree-walker-2.0.2.tgz}
+
+  esutils@2.0.3:
+    resolution: {integrity: sha1-dNLrTeC42hKTcRkQ1Qd1ubcQ72Q=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/esutils/-/esutils-2.0.3.tgz}
+    engines: {node: '>=0.10.0'}
+
+  fast-deep-equal@3.1.3:
+    resolution: {integrity: sha1-On1WtVnWy8PrUSMlJE5hmmXGxSU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz}
+
+  fast-json-stable-stringify@2.1.0:
+    resolution: {integrity: sha1-h0v2nG9ATCtdmcSBNBOZ/VWJJjM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz}
+
+  fast-uri@3.1.0:
+    resolution: {integrity: sha1-Zu7P9sdkwN+bdi5iyn7c+1O07fo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fast-uri/-/fast-uri-3.1.0.tgz}
+
   fdir@6.5.0:
     resolution: {integrity: sha1-7Sq5Z6MxreYvGNB32uGSaE1Q01A=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fdir/-/fdir-6.5.0.tgz}
     engines: {node: '>=12.0.0'}
@@ -635,21 +1305,227 @@ packages:
       picomatch:
         optional: true
 
+  filelist@1.0.6:
+    resolution: {integrity: sha1-HohwlCp8Y2yGL3xJuTlJN7aplaM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/filelist/-/filelist-1.0.6.tgz}
+
+  for-each@0.3.5:
+    resolution: {integrity: sha1-1lBogCeCaSD+6wr3R+57lCGkHUc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/for-each/-/for-each-0.3.5.tgz}
+    engines: {node: '>= 0.4'}
+
+  foreground-child@3.3.1:
+    resolution: {integrity: sha1-Mujp7Rtoo0l777msK2rfkqY4V28=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/foreground-child/-/foreground-child-3.3.1.tgz}
+    engines: {node: '>=14'}
+
+  fs-extra@9.1.0:
+    resolution: {integrity: sha1-WVRGDHZKjaIJS6NVS/g55rmnyG0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fs-extra/-/fs-extra-9.1.0.tgz}
+    engines: {node: '>=10'}
+
   fsevents@2.3.3:
     resolution: {integrity: sha1-ysZAd4XQNnWipeGlMFxpezR9kNY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fsevents/-/fsevents-2.3.3.tgz}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
+  function-bind@1.1.2:
+    resolution: {integrity: sha1-LALYZNl/PqbIgwxGTL0Rq26rehw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/function-bind/-/function-bind-1.1.2.tgz}
+
+  function.prototype.name@1.1.8:
+    resolution: {integrity: sha1-5o4d97JZpclJ7u+Vzb3lPt/6u3g=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/function.prototype.name/-/function.prototype.name-1.1.8.tgz}
+    engines: {node: '>= 0.4'}
+
+  functions-have-names@1.2.3:
+    resolution: {integrity: sha1-BAT+TuK6L2B/Dg7DyAuumUEzuDQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/functions-have-names/-/functions-have-names-1.2.3.tgz}
+
   fuse.js@7.3.0:
     resolution: {integrity: sha1-aOHqHGwP8mLxgBqUmnjtvgWwvBM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/fuse.js/-/fuse.js-7.3.0.tgz}
     engines: {node: '>=10'}
+
+  generator-function@2.0.1:
+    resolution: {integrity: sha1-DnXdQQ0SQ2h6C6LpUblO7bj3N6I=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/generator-function/-/generator-function-2.0.1.tgz}
+    engines: {node: '>= 0.4'}
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha1-MqbudsPX9S1GsrGuXZP+qFgKJeA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/gensync/-/gensync-1.0.0-beta.2.tgz}
     engines: {node: '>=6.9.0'}
 
+  get-intrinsic@1.3.0:
+    resolution: {integrity: sha1-dD8OO2lkqTpUke0b/6rgVNf5jQE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/get-intrinsic/-/get-intrinsic-1.3.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  get-own-enumerable-property-symbols@3.0.2:
+    resolution: {integrity: sha1-tf3nfyLL4185C04ImSLFC85u9mQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.2.tgz}
+
+  get-proto@1.0.1:
+    resolution: {integrity: sha1-FQs/J0OGnvPoUewMSdFbHRTQDuE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/get-proto/-/get-proto-1.0.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  get-symbol-description@1.1.0:
+    resolution: {integrity: sha1-e91U4L7+j/yfO04gMiDZ8eiBtu4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/get-symbol-description/-/get-symbol-description-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  glob@11.1.0:
+    resolution: {integrity: sha1-T4JlduTrmcfa04N5PS+fCPZ+UKY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/glob/-/glob-11.1.0.tgz}
+    engines: {node: 20 || >=22}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+    hasBin: true
+
+  globalthis@1.0.4:
+    resolution: {integrity: sha1-dDDtOpddl7+1m8zkH1yruvplEjY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/globalthis/-/globalthis-1.0.4.tgz}
+    engines: {node: '>= 0.4'}
+
+  gopd@1.2.0:
+    resolution: {integrity: sha1-ifVrghe9vIgCvSmd9tfxCB1+UaE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/gopd/-/gopd-1.2.0.tgz}
+    engines: {node: '>= 0.4'}
+
   graceful-fs@4.2.11:
     resolution: {integrity: sha1-QYPk6L8Iu24Fu7L30uDI9xLKQOM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/graceful-fs/-/graceful-fs-4.2.11.tgz}
+
+  has-bigints@1.1.0:
+    resolution: {integrity: sha1-KGB+llrJZ+A80qLHCiY2oe2tSf4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/has-bigints/-/has-bigints-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  has-property-descriptors@1.0.2:
+    resolution: {integrity: sha1-lj7X0HHce/XwhMW/vg0bYiJYaFQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/has-property-descriptors/-/has-property-descriptors-1.0.2.tgz}
+
+  has-proto@1.2.0:
+    resolution: {integrity: sha1-XeWm6r2V/f/ZgYtDBV6AZeOf6dU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/has-proto/-/has-proto-1.2.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  has-symbols@1.1.0:
+    resolution: {integrity: sha1-/JxqeDoISVHQuXH+EBjegTcHozg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/has-symbols/-/has-symbols-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  has-tostringtag@1.0.2:
+    resolution: {integrity: sha1-LNxC1AvvLltO6rfAGnPFTOerWrw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/has-tostringtag/-/has-tostringtag-1.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  hasown@2.0.2:
+    resolution: {integrity: sha1-AD6vkb563DcuhOxZ3DclLO24AAM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/hasown/-/hasown-2.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  idb@7.1.1:
+    resolution: {integrity: sha1-2RDe2GbTLHztm+/Fv9829XLO1ys=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/idb/-/idb-7.1.1.tgz}
+
+  internal-slot@1.1.0:
+    resolution: {integrity: sha1-HqyRdilH0vcFa8g42T4TsulgSWE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/internal-slot/-/internal-slot-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-array-buffer@3.0.5:
+    resolution: {integrity: sha1-ZXQuHmh70sxmYlMGj9hwf+TUQoA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-array-buffer/-/is-array-buffer-3.0.5.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-async-function@2.1.1:
+    resolution: {integrity: sha1-PmkBjI4E5ztzh5PQIL/ohLn9NSM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-async-function/-/is-async-function-2.1.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-bigint@1.1.0:
+    resolution: {integrity: sha1-3aejRF31ekJYPbQihoLrp8QXBnI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-bigint/-/is-bigint-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-boolean-object@1.2.2:
+    resolution: {integrity: sha1-cGf0dwmAmjk8cf9bs+E12KkhXZ4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-boolean-object/-/is-boolean-object-1.2.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-callable@1.2.7:
+    resolution: {integrity: sha1-O8KoXqdC2eNiBdys3XLKH9xRsFU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-callable/-/is-callable-1.2.7.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-core-module@2.16.1:
+    resolution: {integrity: sha1-KpiAGoSfQ+Kt1kT7trxiKbGaTvQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-core-module/-/is-core-module-2.16.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-data-view@1.0.2:
+    resolution: {integrity: sha1-uuCkG5aImGwhiN2mZX5WuPnmO44=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-data-view/-/is-data-view-1.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-date-object@1.1.0:
+    resolution: {integrity: sha1-rYVUGZb8eqiycpcB0ntzGfldgvc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-date-object/-/is-date-object-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-finalizationregistry@1.1.1:
+    resolution: {integrity: sha1-7v3NxslN3QZ02chYh7+T+USpfJA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-finalizationregistry/-/is-finalizationregistry-1.1.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-generator-function@1.1.2:
+    resolution: {integrity: sha1-rjth49XqTkg5uQutIrAjNQUaF9U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-generator-function/-/is-generator-function-1.1.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-map@2.0.3:
+    resolution: {integrity: sha1-7elrf+HicLPERl46RlZYdkkm1i4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-map/-/is-map-2.0.3.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-module@1.0.0:
+    resolution: {integrity: sha1-Mlj7afeMFNW4FdZkM2tM/7ZEFZE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-module/-/is-module-1.0.0.tgz}
+
+  is-negative-zero@2.0.3:
+    resolution: {integrity: sha1-ztkDoCespjgbd3pXQwadc3akl0c=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-negative-zero/-/is-negative-zero-2.0.3.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-number-object@1.1.1:
+    resolution: {integrity: sha1-FEsh6VobwUggXcwoFKkTTsQbJUE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-number-object/-/is-number-object-1.1.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-obj@1.0.1:
+    resolution: {integrity: sha1-PkcprB9f3gJc19g6iW2rn09n2w8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-obj/-/is-obj-1.0.1.tgz}
+    engines: {node: '>=0.10.0'}
+
+  is-regex@1.2.1:
+    resolution: {integrity: sha1-dtcKPtEO+b5I61d4h9dCBb8MrSI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-regex/-/is-regex-1.2.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-regexp@1.0.0:
+    resolution: {integrity: sha1-/S2INUXEa6xaYz57mgnof6LLUGk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-regexp/-/is-regexp-1.0.0.tgz}
+    engines: {node: '>=0.10.0'}
+
+  is-set@2.0.3:
+    resolution: {integrity: sha1-irIJ6kJGCBQTct7W4MsgDvHZ0B0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-set/-/is-set-2.0.3.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-shared-array-buffer@1.0.4:
+    resolution: {integrity: sha1-m2eES9m38ka6BwjDqT40Jpx3T28=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-shared-array-buffer/-/is-shared-array-buffer-1.0.4.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-stream@2.0.1:
+    resolution: {integrity: sha1-+sHj1TuXrVqdCunO8jifWBClwHc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-stream/-/is-stream-2.0.1.tgz}
+    engines: {node: '>=8'}
+
+  is-string@1.1.1:
+    resolution: {integrity: sha1-kuo/PVxbbgOcqGd+WsjQfqdzy7k=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-string/-/is-string-1.1.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-symbol@1.1.1:
+    resolution: {integrity: sha1-9HdhJ59TLisFpwJKdQbbvtrNBjQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-symbol/-/is-symbol-1.1.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-typed-array@1.1.15:
+    resolution: {integrity: sha1-S/tKRbYc7oOlpG+6d45OjVnAzgs=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-typed-array/-/is-typed-array-1.1.15.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-weakmap@2.0.2:
+    resolution: {integrity: sha1-v3JhXWSd/l9pkHnFS4PkfRrhnP0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-weakmap/-/is-weakmap-2.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-weakref@1.1.1:
+    resolution: {integrity: sha1-7qQwGCvo1kF0vZa/+8RvIb8/kpM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-weakref/-/is-weakref-1.1.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  is-weakset@2.0.4:
+    resolution: {integrity: sha1-yfXesLwZBsbW8QJ/KE3fRZJJ2so=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/is-weakset/-/is-weakset-2.0.4.tgz}
+    engines: {node: '>= 0.4'}
+
+  isarray@2.0.5:
+    resolution: {integrity: sha1-ivHkwSISRMxiRZ+vOJQNTmRKVyM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/isarray/-/isarray-2.0.5.tgz}
+
+  isexe@2.0.0:
+    resolution: {integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/isexe/-/isexe-2.0.0.tgz}
+
+  jackspeak@4.2.3:
+    resolution: {integrity: sha1-J++A8zuTQSA3w76k+O3fgOGTFIM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/jackspeak/-/jackspeak-4.2.3.tgz}
+    engines: {node: 20 || >=22}
+
+  jake@10.9.4:
+    resolution: {integrity: sha1-1ibaEIxj1c+wCrXCX63H4AhK+OY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/jake/-/jake-10.9.4.tgz}
+    engines: {node: '>=10'}
+    hasBin: true
 
   jiti@2.6.1:
     resolution: {integrity: sha1-F47y/JoaWUJIwgYnzYIBh6TXjZI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/jiti/-/jiti-2.6.1.tgz}
@@ -663,10 +1539,24 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
+  json-schema-traverse@1.0.0:
+    resolution: {integrity: sha1-rnvLNlard6c7pcSb9lTzjmtoYOI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz}
+
   json5@2.2.3:
     resolution: {integrity: sha1-eM1vGhm9wStz21rQxh79ZsHikoM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/json5/-/json5-2.2.3.tgz}
     engines: {node: '>=6'}
     hasBin: true
+
+  jsonfile@6.2.0:
+    resolution: {integrity: sha1-fCZb0bZd5pd0eDAAh8mfHIQ4P2I=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/jsonfile/-/jsonfile-6.2.0.tgz}
+
+  jsonpointer@5.0.1:
+    resolution: {integrity: sha1-IRDgrwkA/TdGe1kH7NE6eIShtVk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/jsonpointer/-/jsonpointer-5.0.1.tgz}
+    engines: {node: '>=0.10.0'}
+
+  leven@3.1.0:
+    resolution: {integrity: sha1-d4kd6DQGTMy6gq54QrtrFKE+1/I=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/leven/-/leven-3.1.0.tgz}
+    engines: {node: '>=6'}
 
   lightningcss-darwin-arm64@1.30.1:
     resolution: {integrity: sha1-PUfOXiIblWfHA5UO3yUpyko3AK4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.30.1.tgz}
@@ -736,15 +1626,43 @@ packages:
     resolution: {integrity: sha1-eOl5wtWVv8uQ0qjA62Mv5sW/7V0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lightningcss/-/lightningcss-1.30.1.tgz}
     engines: {node: '>= 12.0.0'}
 
+  lodash.debounce@4.0.8:
+    resolution: {integrity: sha1-gteb/zCmfEAF/9XiUVMArZyk168=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lodash.debounce/-/lodash.debounce-4.0.8.tgz}
+
+  lodash.sortby@4.7.0:
+    resolution: {integrity: sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lodash.sortby/-/lodash.sortby-4.7.0.tgz}
+
+  lodash@4.18.1:
+    resolution: {integrity: sha1-/ytmwfYybVlRPeJAe/iBQ5gSdxw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lodash/-/lodash-4.18.1.tgz}
+
   loose-envify@1.4.0:
     resolution: {integrity: sha1-ce5R+nvkyuwaY4OffmgtgTLTDK8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/loose-envify/-/loose-envify-1.4.0.tgz}
     hasBin: true
 
+  lru-cache@11.2.7:
+    resolution: {integrity: sha1-kSdAJhfzTNZ2e5ba7pjCjnRFjTU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lru-cache/-/lru-cache-11.2.7.tgz}
+    engines: {node: 20 || >=22}
+
   lru-cache@5.1.1:
     resolution: {integrity: sha1-HaJ+ZxAnGUdpXa9oSOhH8B2EuSA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/lru-cache/-/lru-cache-5.1.1.tgz}
 
+  magic-string@0.25.9:
+    resolution: {integrity: sha1-3n+fr5HvihyR0CwuUxTIJ3283Rw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/magic-string/-/magic-string-0.25.9.tgz}
+
   magic-string@0.30.21:
     resolution: {integrity: sha1-VnY+wJoPqAkd8nh5/ZTRkHjADZE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/magic-string/-/magic-string-0.30.21.tgz}
+
+  math-intrinsics@1.1.0:
+    resolution: {integrity: sha1-oN10voHiqlwvJ+Zc4oNgXuTit/k=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/math-intrinsics/-/math-intrinsics-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  minimatch@10.2.5:
+    resolution: {integrity: sha1-vUhoegvjjtKWE5kQVgD4MglYYdE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/minimatch/-/minimatch-10.2.5.tgz}
+    engines: {node: 18 || 20 || >=22}
+
+  minimatch@5.1.9:
+    resolution: {integrity: sha1-EpPvFdsAmLOUVA6Pn3RPn9qN7ks=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/minimatch/-/minimatch-5.1.9.tgz}
+    engines: {node: '>=10'}
 
   minipass@7.1.3:
     resolution: {integrity: sha1-eTibTrG7LQA6m7qH1JLyvTe9xls=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/minipass/-/minipass-7.1.3.tgz}
@@ -765,12 +1683,50 @@ packages:
   node-releases@2.0.37:
     resolution: {integrity: sha1-m9TxC3e6OcK5QC1Og5nEgqeX9nE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/node-releases/-/node-releases-2.0.37.tgz}
 
+  object-inspect@1.13.4:
+    resolution: {integrity: sha1-g3UmXiG8IND6WCwi4bE0hdbgAhM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/object-inspect/-/object-inspect-1.13.4.tgz}
+    engines: {node: '>= 0.4'}
+
+  object-keys@1.1.1:
+    resolution: {integrity: sha1-HEfyct8nfzsdrwYWd9nILiMixg4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/object-keys/-/object-keys-1.1.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  object.assign@4.1.7:
+    resolution: {integrity: sha1-jBTKGkJMalYbC7KiL2b1BJqUXT0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/object.assign/-/object.assign-4.1.7.tgz}
+    engines: {node: '>= 0.4'}
+
+  own-keys@1.0.1:
+    resolution: {integrity: sha1-5ABpEKK/kTWFKJZ27r1vOQz1E1g=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/own-keys/-/own-keys-1.0.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  package-json-from-dist@1.0.1:
+    resolution: {integrity: sha1-TxRxoBCCeob5TP2bByfjbSZ95QU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/package-json-from-dist/-/package-json-from-dist-1.0.1.tgz}
+
+  path-key@3.1.1:
+    resolution: {integrity: sha1-WB9q3mWMu6ZaDTOA3ndTKVBU83U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/path-key/-/path-key-3.1.1.tgz}
+    engines: {node: '>=8'}
+
+  path-parse@1.0.7:
+    resolution: {integrity: sha1-+8EUtgykKzDZ2vWFjkvWi77bZzU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/path-parse/-/path-parse-1.0.7.tgz}
+
+  path-scurry@2.0.2:
+    resolution: {integrity: sha1-a+DQ7gKhDZ4N56mLrmXhgskGH4U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/path-scurry/-/path-scurry-2.0.2.tgz}
+    engines: {node: 18 || 20 || >=22}
+
   picocolors@1.1.1:
     resolution: {integrity: sha1-PTIa8+q5ObCDyPkpodEs2oHCa2s=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/picocolors/-/picocolors-1.1.1.tgz}
+
+  picomatch@2.3.2:
+    resolution: {integrity: sha1-WpQpFeJrNy3A8OZ1MUmhbmscVgE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/picomatch/-/picomatch-2.3.2.tgz}
+    engines: {node: '>=8.6'}
 
   picomatch@4.0.4:
     resolution: {integrity: sha1-/W9eAKFDCG4HTf/kySS4+yk7BYk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/picomatch/-/picomatch-4.0.4.tgz}
     engines: {node: '>=12'}
+
+  possible-typed-array-names@1.1.0:
+    resolution: {integrity: sha1-k+NYK8DlQmWG2dB7ee5A/IQd5K4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/possible-typed-array-names/-/possible-typed-array-names-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
 
   postcss@8.5.8:
     resolution: {integrity: sha1-YjDsyPsC56D2mC5TmQk3hX4T85k=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/postcss/-/postcss-8.5.8.tgz}
@@ -780,6 +1736,21 @@ packages:
     resolution: {integrity: sha1-7fSJd8+ZFVj0/L2KO6YBW6KjoXM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/prettier/-/prettier-3.8.1.tgz}
     engines: {node: '>=14'}
     hasBin: true
+
+  pretty-bytes@5.6.0:
+    resolution: {integrity: sha1-NWJW9kOAR3PIL2RyP+eMksYr6us=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/pretty-bytes/-/pretty-bytes-5.6.0.tgz}
+    engines: {node: '>=6'}
+
+  pretty-bytes@6.1.1:
+    resolution: {integrity: sha1-OM1rtG9Hr79mfCAs/HVL/9IBajs=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/pretty-bytes/-/pretty-bytes-6.1.1.tgz}
+    engines: {node: ^14.13.1 || >=16.0.0}
+
+  punycode@2.3.1:
+    resolution: {integrity: sha1-AnQi4vrsCyXhVJw+G9gwm5EztuU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/punycode/-/punycode-2.3.1.tgz}
+    engines: {node: '>=6'}
+
+  randombytes@2.1.0:
+    resolution: {integrity: sha1-32+ENy8CcNxlzfYpE0mrekc9Tyo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/randombytes/-/randombytes-2.1.0.tgz}
 
   react-dom@18.3.1:
     resolution: {integrity: sha1-wiZdeVEbV9R5s90/36UVNklMXLQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/react-dom/-/react-dom-18.3.1.tgz}
@@ -794,10 +1765,65 @@ packages:
     resolution: {integrity: sha1-SauJIAnFOTNiW9FrJTP8dUyrKJE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/react/-/react-18.3.1.tgz}
     engines: {node: '>=0.10.0'}
 
+  reflect.getprototypeof@1.0.10:
+    resolution: {integrity: sha1-xikhnnijMW2LYEx2XvaJlpZOe/k=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/reflect.getprototypeof/-/reflect.getprototypeof-1.0.10.tgz}
+    engines: {node: '>= 0.4'}
+
+  regenerate-unicode-properties@10.2.2:
+    resolution: {integrity: sha1-qhE4ErqJm2MGWMdiNGa+ceH4b2Y=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/regenerate-unicode-properties/-/regenerate-unicode-properties-10.2.2.tgz}
+    engines: {node: '>=4'}
+
+  regenerate@1.4.2:
+    resolution: {integrity: sha1-uTRtiCfo9aMve6KWN9OYtpAUhIo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/regenerate/-/regenerate-1.4.2.tgz}
+
+  regexp.prototype.flags@1.5.4:
+    resolution: {integrity: sha1-GtbGLUSiWQB+VbOXDgD3Ru+8qhk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/regexp.prototype.flags/-/regexp.prototype.flags-1.5.4.tgz}
+    engines: {node: '>= 0.4'}
+
+  regexpu-core@6.4.0:
+    resolution: {integrity: sha1-NYDODE+u3vWZ7MsUZhJDa2KhduU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/regexpu-core/-/regexpu-core-6.4.0.tgz}
+    engines: {node: '>=4'}
+
+  regjsgen@0.8.0:
+    resolution: {integrity: sha1-3yP/JuDFswCmRwytFgqdCQw6N6s=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/regjsgen/-/regjsgen-0.8.0.tgz}
+
+  regjsparser@0.13.0:
+    resolution: {integrity: sha1-Afg1EzXPeJjUNoa8dNLdcchH7MA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/regjsparser/-/regjsparser-0.13.0.tgz}
+    hasBin: true
+
+  require-from-string@2.0.2:
+    resolution: {integrity: sha1-iaf92TgmEmcxjq/hT5wy5ZjDaQk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/require-from-string/-/require-from-string-2.0.2.tgz}
+    engines: {node: '>=0.10.0'}
+
+  resolve@1.22.11:
+    resolution: {integrity: sha1-qthXzh/7i/qbCxrCnxFWOD9owmI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/resolve/-/resolve-1.22.11.tgz}
+    engines: {node: '>= 0.4'}
+    hasBin: true
+
+  rollup@2.80.0:
+    resolution: {integrity: sha1-qC78FbdI6Yanx28PdxIhsfoQiiw=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/rollup/-/rollup-2.80.0.tgz}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+
   rollup@4.60.1:
     resolution: {integrity: sha1-tKoryzpeFDe1+tQNQ/5C1L3npC0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/rollup/-/rollup-4.60.1.tgz}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
+
+  safe-array-concat@1.1.3:
+    resolution: {integrity: sha1-yeVOxPYDsLu45+UAel7nrs0VOMM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/safe-array-concat/-/safe-array-concat-1.1.3.tgz}
+    engines: {node: '>=0.4'}
+
+  safe-buffer@5.2.1:
+    resolution: {integrity: sha1-Hq+fqb2x/dTsdfWPnNtOa3gn7sY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/safe-buffer/-/safe-buffer-5.2.1.tgz}
+
+  safe-push-apply@1.0.0:
+    resolution: {integrity: sha1-AYUOmBwWAtOYyFCB82Dk5tA9J/U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/safe-push-apply/-/safe-push-apply-1.0.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  safe-regex-test@1.1.0:
+    resolution: {integrity: sha1-f4fftnoxUHguqvGFg/9dFxGsEME=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/safe-regex-test/-/safe-regex-test-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
 
   scheduler@0.23.2:
     resolution: {integrity: sha1-QUumSjsoKJLpRM8hCOzAeNEVzcM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/scheduler/-/scheduler-0.23.2.tgz}
@@ -806,9 +1832,102 @@ packages:
     resolution: {integrity: sha1-VW0u+GiRRuRtzqS/3QlfNDTf/LQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/semver/-/semver-6.3.1.tgz}
     hasBin: true
 
+  serialize-javascript@6.0.2:
+    resolution: {integrity: sha1-3voeBVyDv21Z6oBdjahiJU62psI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/serialize-javascript/-/serialize-javascript-6.0.2.tgz}
+
+  set-function-length@1.2.2:
+    resolution: {integrity: sha1-qscjFBmOrtl1z3eyw7a4gGleVEk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/set-function-length/-/set-function-length-1.2.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  set-function-name@2.0.2:
+    resolution: {integrity: sha1-FqcFxaDcL15jjKltiozU4cK5CYU=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/set-function-name/-/set-function-name-2.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  set-proto@1.0.0:
+    resolution: {integrity: sha1-B2Dbz/MLLX6AH9bhmYPlbaM3Vl4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/set-proto/-/set-proto-1.0.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  shebang-command@2.0.0:
+    resolution: {integrity: sha1-zNCvT4g1+9wmW4JGGq8MNmY/NOo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/shebang-command/-/shebang-command-2.0.0.tgz}
+    engines: {node: '>=8'}
+
+  shebang-regex@3.0.0:
+    resolution: {integrity: sha1-rhbxZE2HPsrYQ7AwexQzYtTEIXI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/shebang-regex/-/shebang-regex-3.0.0.tgz}
+    engines: {node: '>=8'}
+
+  side-channel-list@1.0.0:
+    resolution: {integrity: sha1-EMtZhCYxFdO3oOM2WR4pCoMK+K0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/side-channel-list/-/side-channel-list-1.0.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  side-channel-map@1.0.1:
+    resolution: {integrity: sha1-1rtrN5Asb+9RdOX1M/q0xzKib0I=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/side-channel-map/-/side-channel-map-1.0.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  side-channel-weakmap@1.0.2:
+    resolution: {integrity: sha1-Ed2hnVNo5Azp7CvcH7DsvAeQ7Oo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/side-channel-weakmap/-/side-channel-weakmap-1.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  side-channel@1.1.0:
+    resolution: {integrity: sha1-w/z/nE2pMnhIczNeyXZfqU/2a8k=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/side-channel/-/side-channel-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  signal-exit@4.1.0:
+    resolution: {integrity: sha1-lSGIwcvVRgcOLdIND0HArgUwywQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/signal-exit/-/signal-exit-4.1.0.tgz}
+    engines: {node: '>=14'}
+
+  smob@1.6.1:
+    resolution: {integrity: sha1-kwYHNmc4VFruVCqT4D5HtU4DA+A=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/smob/-/smob-1.6.1.tgz}
+    engines: {node: '>=20.0.0'}
+
   source-map-js@1.2.1:
     resolution: {integrity: sha1-HOVlD93YerwJnto33P8CTCZnrkY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/source-map-js/-/source-map-js-1.2.1.tgz}
     engines: {node: '>=0.10.0'}
+
+  source-map-support@0.5.21:
+    resolution: {integrity: sha1-BP58f54e0tZiIzwoyys1ufY/bk8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/source-map-support/-/source-map-support-0.5.21.tgz}
+
+  source-map@0.6.1:
+    resolution: {integrity: sha1-dHIq8y6WFOnCh6jQu95IteLxomM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/source-map/-/source-map-0.6.1.tgz}
+    engines: {node: '>=0.10.0'}
+
+  source-map@0.8.0-beta.0:
+    resolution: {integrity: sha1-1MG7QsP37pJfAFknuhBwng0dHxE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/source-map/-/source-map-0.8.0-beta.0.tgz}
+    engines: {node: '>= 8'}
+
+  sourcemap-codec@1.4.8:
+    resolution: {integrity: sha1-6oBL2UhXQC5pktBaOO8a41qatMQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz}
+
+  stop-iteration-iterator@1.1.0:
+    resolution: {integrity: sha1-9IH/cKVI9hJNAxLDqhTL+nqlQq0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/stop-iteration-iterator/-/stop-iteration-iterator-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  string.prototype.matchall@4.0.12:
+    resolution: {integrity: sha1-bIh0DkmtSVaxMyqRHpSVg6J11MA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/string.prototype.matchall/-/string.prototype.matchall-4.0.12.tgz}
+    engines: {node: '>= 0.4'}
+
+  string.prototype.trim@1.2.10:
+    resolution: {integrity: sha1-QLLdXulMlZtNz7HWXOcukNpIDIE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/string.prototype.trim/-/string.prototype.trim-1.2.10.tgz}
+    engines: {node: '>= 0.4'}
+
+  string.prototype.trimend@1.0.9:
+    resolution: {integrity: sha1-YuJzEnLNKFBBs2WWBU6fZlabaUI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/string.prototype.trimend/-/string.prototype.trimend-1.0.9.tgz}
+    engines: {node: '>= 0.4'}
+
+  string.prototype.trimstart@1.0.8:
+    resolution: {integrity: sha1-fug03ajHwX7/MRhHK7Nb/tqjTd4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/string.prototype.trimstart/-/string.prototype.trimstart-1.0.8.tgz}
+    engines: {node: '>= 0.4'}
+
+  stringify-object@3.3.0:
+    resolution: {integrity: sha1-cDBlrvyhkwDTzoivT1s5VtdVZik=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/stringify-object/-/stringify-object-3.3.0.tgz}
+    engines: {node: '>=4'}
+
+  strip-comments@2.0.1:
+    resolution: {integrity: sha1-StEcP7ysF3pnpArCJMoznKHBups=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/strip-comments/-/strip-comments-2.0.1.tgz}
+    engines: {node: '>=10'}
+
+  supports-preserve-symlinks-flag@1.0.0:
+    resolution: {integrity: sha1-btpL00SjyUrqN21MwxvHcxEDngk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz}
+    engines: {node: '>= 0.4'}
 
   tailwindcss@4.1.12:
     resolution: {integrity: sha1-e67tW1rHc3BXHCuqcu4G4AUPwKg=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/tailwindcss/-/tailwindcss-4.1.12.tgz}
@@ -821,18 +1940,98 @@ packages:
     resolution: {integrity: sha1-DSFO1WeBom7cMTWBwOLZKc7rhm0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/tar/-/tar-7.5.13.tgz}
     engines: {node: '>=18'}
 
+  temp-dir@2.0.0:
+    resolution: {integrity: sha1-vekrBb3+sVFugEycAK1FF38xMh4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/temp-dir/-/temp-dir-2.0.0.tgz}
+    engines: {node: '>=8'}
+
+  tempy@0.6.0:
+    resolution: {integrity: sha1-ZeLDWrwG8RJKl/OHsIMDRCveWfM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/tempy/-/tempy-0.6.0.tgz}
+    engines: {node: '>=10'}
+
+  terser@5.46.1:
+    resolution: {integrity: sha1-QOSx411fExMPgnk6iz7rfsOpLu4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/terser/-/terser-5.46.1.tgz}
+    engines: {node: '>=10'}
+    hasBin: true
+
   tinyglobby@0.2.15:
     resolution: {integrity: sha1-4ijdHmOM6pk9L9tPzS1GAqeZUcI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/tinyglobby/-/tinyglobby-0.2.15.tgz}
     engines: {node: '>=12.0.0'}
 
+  tr46@1.0.1:
+    resolution: {integrity: sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/tr46/-/tr46-1.0.1.tgz}
+
   tw-animate-css@1.4.0:
     resolution: {integrity: sha1-tKBvaCRMujlCiqR+ZebkwLq8Ie4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/tw-animate-css/-/tw-animate-css-1.4.0.tgz}
+
+  type-fest@0.16.0:
+    resolution: {integrity: sha1-MkC4kaeLDerpENvrhlU+VSoUiGA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/type-fest/-/type-fest-0.16.0.tgz}
+    engines: {node: '>=10'}
+
+  typed-array-buffer@1.0.3:
+    resolution: {integrity: sha1-pyOVRQpIaewDP9VJNxtHrzou5TY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/typed-array-buffer/-/typed-array-buffer-1.0.3.tgz}
+    engines: {node: '>= 0.4'}
+
+  typed-array-byte-length@1.0.3:
+    resolution: {integrity: sha1-hAegT314aE89JSqhoUPSt3tBYM4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/typed-array-byte-length/-/typed-array-byte-length-1.0.3.tgz}
+    engines: {node: '>= 0.4'}
+
+  typed-array-byte-offset@1.0.4:
+    resolution: {integrity: sha1-rjaYuOyRqKuUUBYQiu8A1b/xI1U=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/typed-array-byte-offset/-/typed-array-byte-offset-1.0.4.tgz}
+    engines: {node: '>= 0.4'}
+
+  typed-array-length@1.0.7:
+    resolution: {integrity: sha1-7k3v+YS2S+HhGLDejJyHfVznPT0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/typed-array-length/-/typed-array-length-1.0.7.tgz}
+    engines: {node: '>= 0.4'}
+
+  unbox-primitive@1.1.0:
+    resolution: {integrity: sha1-jZ0snt7qhGDH81AzqIhnlEk00eI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/unbox-primitive/-/unbox-primitive-1.1.0.tgz}
+    engines: {node: '>= 0.4'}
+
+  unicode-canonical-property-names-ecmascript@2.0.1:
+    resolution: {integrity: sha1-yzFz/kfKdD4ighbko93EyE1ijMI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-2.0.1.tgz}
+    engines: {node: '>=4'}
+
+  unicode-match-property-ecmascript@2.0.0:
+    resolution: {integrity: sha1-VP0W4OyxZ88Ezx91a9zJLrp5dsM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/unicode-match-property-ecmascript/-/unicode-match-property-ecmascript-2.0.0.tgz}
+    engines: {node: '>=4'}
+
+  unicode-match-property-value-ecmascript@2.2.1:
+    resolution: {integrity: sha1-Zaet+thXTCGYkOIZKFzkxk7Wfqo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-2.2.1.tgz}
+    engines: {node: '>=4'}
+
+  unicode-property-aliases-ecmascript@2.2.0:
+    resolution: {integrity: sha1-MB1PikPSt1yXrfrYfJ3VNQyUddE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-2.2.0.tgz}
+    engines: {node: '>=4'}
+
+  unique-string@2.0.0:
+    resolution: {integrity: sha1-OcZFH4GvsnSd4rIz4/fF6IQ72J0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/unique-string/-/unique-string-2.0.0.tgz}
+    engines: {node: '>=8'}
+
+  universalify@2.0.1:
+    resolution: {integrity: sha1-Fo78IYCWTmOG0GHglN9hr+I5sY0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/universalify/-/universalify-2.0.1.tgz}
+    engines: {node: '>= 10.0.0'}
+
+  upath@1.2.0:
+    resolution: {integrity: sha1-j2bbzVWog6za5ECK+LA1pQRMGJQ=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/upath/-/upath-1.2.0.tgz}
+    engines: {node: '>=4'}
 
   update-browserslist-db@1.2.3:
     resolution: {integrity: sha1-ZNdttYcTE2rL60xJEUNmzGzC6A0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/update-browserslist-db/-/update-browserslist-db-1.2.3.tgz}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
+
+  vite-plugin-pwa@1.2.0:
+    resolution: {integrity: sha1-PH3hfU7tZi8nMJWgrFL3qY0M3jY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/vite-plugin-pwa/-/vite-plugin-pwa-1.2.0.tgz}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@vite-pwa/assets-generator': ^1.0.0
+      vite: 6.3.5
+      workbox-build: ^7.4.0
+      workbox-window: ^7.4.0
+    peerDependenciesMeta:
+      '@vite-pwa/assets-generator':
+        optional: true
 
   vite@6.3.5:
     resolution: {integrity: sha1-/sc4eQE8nAEoyNKEUExtGUENEqM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/vite/-/vite-6.3.5.tgz}
@@ -874,6 +2073,82 @@ packages:
       yaml:
         optional: true
 
+  webidl-conversions@4.0.2:
+    resolution: {integrity: sha1-qFWYCx8LazWbodXZ+zmulB+qY60=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/webidl-conversions/-/webidl-conversions-4.0.2.tgz}
+
+  whatwg-url@7.1.0:
+    resolution: {integrity: sha1-wsSS8eymEpiO/T0iZr4bn8YXDQY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/whatwg-url/-/whatwg-url-7.1.0.tgz}
+
+  which-boxed-primitive@1.1.1:
+    resolution: {integrity: sha1-127Cfff6Fl8Y1YCDdKX+I8KbF24=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/which-boxed-primitive/-/which-boxed-primitive-1.1.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  which-builtin-type@1.2.1:
+    resolution: {integrity: sha1-iRg9obSQerCJprAgKcxdjWV0Jw4=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/which-builtin-type/-/which-builtin-type-1.2.1.tgz}
+    engines: {node: '>= 0.4'}
+
+  which-collection@1.0.2:
+    resolution: {integrity: sha1-Yn73YkOSChB+fOjpYZHevksWwqA=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/which-collection/-/which-collection-1.0.2.tgz}
+    engines: {node: '>= 0.4'}
+
+  which-typed-array@1.1.20:
+    resolution: {integrity: sha1-P9t636/g6mkVexUJ86HNiSvR0SI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/which-typed-array/-/which-typed-array-1.1.20.tgz}
+    engines: {node: '>= 0.4'}
+
+  which@2.0.2:
+    resolution: {integrity: sha1-fGqN0KY2oDJ+ELWckobu6T8/UbE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/which/-/which-2.0.2.tgz}
+    engines: {node: '>= 8'}
+    hasBin: true
+
+  workbox-background-sync@7.4.0:
+    resolution: {integrity: sha1-X8+DFitUD3mZZv3Y3whY+Rt4fXc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-background-sync/-/workbox-background-sync-7.4.0.tgz}
+
+  workbox-broadcast-update@7.4.0:
+    resolution: {integrity: sha1-8O59KvUdGZ4yITpCnf8D8Uunbeo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-broadcast-update/-/workbox-broadcast-update-7.4.0.tgz}
+
+  workbox-build@7.4.0:
+    resolution: {integrity: sha1-Az+I672cYxKYPz+5wXpBYTadaT8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-build/-/workbox-build-7.4.0.tgz}
+    engines: {node: '>=20.0.0'}
+
+  workbox-cacheable-response@7.4.0:
+    resolution: {integrity: sha1-9oQ4DAffzk7RqlVciimiofhCHUY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-cacheable-response/-/workbox-cacheable-response-7.4.0.tgz}
+
+  workbox-core@7.4.0:
+    resolution: {integrity: sha1-XLWa52VfJydCMmj7G6aY83gJGJ0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-core/-/workbox-core-7.4.0.tgz}
+
+  workbox-expiration@7.4.0:
+    resolution: {integrity: sha1-9xYqRa2LKN6ErOpHjfQhtNAGXmE=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-expiration/-/workbox-expiration-7.4.0.tgz}
+
+  workbox-google-analytics@7.4.0:
+    resolution: {integrity: sha1-II2OWE6CYq+KFBQMOpkNEwIcglc=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-google-analytics/-/workbox-google-analytics-7.4.0.tgz}
+
+  workbox-navigation-preload@7.4.0:
+    resolution: {integrity: sha1-MTOYOyaQ3ucz0Y9Wdg/dUYKm/68=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-navigation-preload/-/workbox-navigation-preload-7.4.0.tgz}
+
+  workbox-precaching@7.4.0:
+    resolution: {integrity: sha1-2vSGlTNTrK+EFCt4zyiokMRmskI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-precaching/-/workbox-precaching-7.4.0.tgz}
+
+  workbox-range-requests@7.4.0:
+    resolution: {integrity: sha1-G+M01qegsVjWCU6GmEYDk4Y9KKI=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-range-requests/-/workbox-range-requests-7.4.0.tgz}
+
+  workbox-recipes@7.4.0:
+    resolution: {integrity: sha1-IX5jlPllvtj78VrYM3DwM1bIhck=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-recipes/-/workbox-recipes-7.4.0.tgz}
+
+  workbox-routing@7.4.0:
+    resolution: {integrity: sha1-S1vJAlZRXcXPSbNWsQFyH9E10BM=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-routing/-/workbox-routing-7.4.0.tgz}
+
+  workbox-strategies@7.4.0:
+    resolution: {integrity: sha1-WRMHNEAHItOc5KChoio2PpmROUY=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-strategies/-/workbox-strategies-7.4.0.tgz}
+
+  workbox-streams@7.4.0:
+    resolution: {integrity: sha1-5bjmtUDwjgXzxRt0jFQFbSTyDow=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-streams/-/workbox-streams-7.4.0.tgz}
+
+  workbox-sw@7.4.0:
+    resolution: {integrity: sha1-Bcllk5m483FuFEBr5m6xGPyzlo8=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-sw/-/workbox-sw-7.4.0.tgz}
+
+  workbox-window@7.4.0:
+    resolution: {integrity: sha1-U5mlJhuMNNnRAvLYMtWFfuTVdIo=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/workbox-window/-/workbox-window-7.4.0.tgz}
+
   yallist@3.1.1:
     resolution: {integrity: sha1-27fa+b/YusmrRev2ArjLrQ1dCP0=, tarball: http://artifactory.dyn.ntnxdpro.com/artifactory/api/npm/canaveral-npm/yallist/-/yallist-3.1.1.tgz}
 
@@ -882,6 +2157,12 @@ packages:
     engines: {node: '>=18'}
 
 snapshots:
+
+  '@apideck/better-ajv-errors@0.3.7(ajv@8.18.0)':
+    dependencies:
+      ajv: 8.18.0
+      jsonpointer: 5.0.1
+      leven: 3.1.0
 
   '@babel/code-frame@7.29.0':
     dependencies:
@@ -919,6 +2200,10 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.31
       jsesc: 3.1.0
 
+  '@babel/helper-annotate-as-pure@7.27.3':
+    dependencies:
+      '@babel/types': 7.29.0
+
   '@babel/helper-compilation-targets@7.28.6':
     dependencies:
       '@babel/compat-data': 7.29.0
@@ -927,7 +2212,45 @@ snapshots:
       lru-cache: 5.1.1
       semver: 6.3.1
 
+  '@babel/helper-create-class-features-plugin@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-annotate-as-pure': 7.27.3
+      '@babel/helper-member-expression-to-functions': 7.28.5
+      '@babel/helper-optimise-call-expression': 7.27.1
+      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
+      '@babel/traverse': 7.29.0
+      semver: 6.3.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/helper-create-regexp-features-plugin@7.28.5(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-annotate-as-pure': 7.27.3
+      regexpu-core: 6.4.0
+      semver: 6.3.1
+
+  '@babel/helper-define-polyfill-provider@0.6.8(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-compilation-targets': 7.28.6
+      '@babel/helper-plugin-utils': 7.28.6
+      debug: 4.4.3
+      lodash.debounce: 4.0.8
+      resolve: 1.22.11
+    transitivePeerDependencies:
+      - supports-color
+
   '@babel/helper-globals@7.28.0': {}
+
+  '@babel/helper-member-expression-to-functions@7.28.5':
+    dependencies:
+      '@babel/traverse': 7.29.0
+      '@babel/types': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/helper-module-imports@7.28.6':
     dependencies:
@@ -945,13 +2268,50 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@babel/helper-optimise-call-expression@7.27.1':
+    dependencies:
+      '@babel/types': 7.29.0
+
   '@babel/helper-plugin-utils@7.28.6': {}
+
+  '@babel/helper-remap-async-to-generator@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-annotate-as-pure': 7.27.3
+      '@babel/helper-wrap-function': 7.28.6
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/helper-replace-supers@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-member-expression-to-functions': 7.28.5
+      '@babel/helper-optimise-call-expression': 7.27.1
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/helper-skip-transparent-expression-wrappers@7.27.1':
+    dependencies:
+      '@babel/traverse': 7.29.0
+      '@babel/types': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/helper-string-parser@7.27.1': {}
 
   '@babel/helper-validator-identifier@7.28.5': {}
 
   '@babel/helper-validator-option@7.27.1': {}
+
+  '@babel/helper-wrap-function@7.28.6':
+    dependencies:
+      '@babel/template': 7.28.6
+      '@babel/traverse': 7.29.0
+      '@babel/types': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/helpers@7.29.2':
     dependencies:
@@ -962,6 +2322,327 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.0
 
+  '@babel/plugin-bugfix-firefox-class-in-computed-class-key@7.28.5(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-bugfix-safari-class-field-initializer-scope@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
+      '@babel/plugin-transform-optional-chaining': 7.28.6(@babel/core@7.29.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-proposal-private-property-in-object@7.21.0-placeholder-for-preset-env.2(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+
+  '@babel/plugin-syntax-import-assertions@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-syntax-import-attributes@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-syntax-unicode-sets-regex@7.18.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-regexp-features-plugin': 7.28.5(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-arrow-functions@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-async-generator-functions@7.29.0(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-remap-async-to-generator': 7.27.1(@babel/core@7.29.0)
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-async-to-generator@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-module-imports': 7.28.6
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-remap-async-to-generator': 7.27.1(@babel/core@7.29.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-block-scoped-functions@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-block-scoping@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-class-properties@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-class-features-plugin': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-class-static-block@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-class-features-plugin': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-classes@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-annotate-as-pure': 7.27.3
+      '@babel/helper-compilation-targets': 7.28.6
+      '@babel/helper-globals': 7.28.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0)
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-computed-properties@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/template': 7.28.6
+
+  '@babel/plugin-transform-destructuring@7.28.5(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-dotall-regex@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-regexp-features-plugin': 7.28.5(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-duplicate-keys@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-duplicate-named-capturing-groups-regex@7.29.0(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-regexp-features-plugin': 7.28.5(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-dynamic-import@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-explicit-resource-management@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/plugin-transform-destructuring': 7.28.5(@babel/core@7.29.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-exponentiation-operator@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-export-namespace-from@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-for-of@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-function-name@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-compilation-targets': 7.28.6
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-json-strings@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-literals@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-logical-assignment-operators@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-member-expression-literals@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-modules-amd@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-modules-commonjs@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-modules-systemjs@7.29.0(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-validator-identifier': 7.28.5
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-modules-umd@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-named-capturing-groups-regex@7.29.0(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-regexp-features-plugin': 7.28.5(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-new-target@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-nullish-coalescing-operator@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-numeric-separator@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-object-rest-spread@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-compilation-targets': 7.28.6
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/plugin-transform-destructuring': 7.28.5(@babel/core@7.29.0)
+      '@babel/plugin-transform-parameters': 7.27.7(@babel/core@7.29.0)
+      '@babel/traverse': 7.29.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-object-super@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-optional-catch-binding@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-optional-chaining@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-parameters@7.27.7(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-private-methods@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-class-features-plugin': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-private-property-in-object@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-annotate-as-pure': 7.27.3
+      '@babel/helper-create-class-features-plugin': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-property-literals@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
   '@babel/plugin-transform-react-jsx-self@7.27.1(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
@@ -971,6 +2652,158 @@ snapshots:
     dependencies:
       '@babel/core': 7.29.0
       '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-regenerator@7.29.0(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-regexp-modifiers@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-regexp-features-plugin': 7.28.5(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-reserved-words@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-shorthand-properties@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-spread@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-sticky-regex@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-template-literals@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-typeof-symbol@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-unicode-escapes@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-unicode-property-regex@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-regexp-features-plugin': 7.28.5(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-unicode-regex@7.27.1(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-regexp-features-plugin': 7.28.5(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-transform-unicode-sets-regex@7.28.6(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-create-regexp-features-plugin': 7.28.5(@babel/core@7.29.0)
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/preset-env@7.29.2(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/compat-data': 7.29.0
+      '@babel/core': 7.29.0
+      '@babel/helper-compilation-targets': 7.28.6
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/helper-validator-option': 7.27.1
+      '@babel/plugin-bugfix-firefox-class-in-computed-class-key': 7.28.5(@babel/core@7.29.0)
+      '@babel/plugin-bugfix-safari-class-field-initializer-scope': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-proposal-private-property-in-object': 7.21.0-placeholder-for-preset-env.2(@babel/core@7.29.0)
+      '@babel/plugin-syntax-import-assertions': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-syntax-import-attributes': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-syntax-unicode-sets-regex': 7.18.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-arrow-functions': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-async-generator-functions': 7.29.0(@babel/core@7.29.0)
+      '@babel/plugin-transform-async-to-generator': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-block-scoped-functions': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-block-scoping': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-class-properties': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-class-static-block': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-classes': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-computed-properties': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-destructuring': 7.28.5(@babel/core@7.29.0)
+      '@babel/plugin-transform-dotall-regex': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-duplicate-keys': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-duplicate-named-capturing-groups-regex': 7.29.0(@babel/core@7.29.0)
+      '@babel/plugin-transform-dynamic-import': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-explicit-resource-management': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-exponentiation-operator': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-export-namespace-from': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-for-of': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-function-name': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-json-strings': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-literals': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-logical-assignment-operators': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-member-expression-literals': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-modules-amd': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-modules-commonjs': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-modules-systemjs': 7.29.0(@babel/core@7.29.0)
+      '@babel/plugin-transform-modules-umd': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-named-capturing-groups-regex': 7.29.0(@babel/core@7.29.0)
+      '@babel/plugin-transform-new-target': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-nullish-coalescing-operator': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-numeric-separator': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-object-rest-spread': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-object-super': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-optional-catch-binding': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-optional-chaining': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-parameters': 7.27.7(@babel/core@7.29.0)
+      '@babel/plugin-transform-private-methods': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-private-property-in-object': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-property-literals': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-regenerator': 7.29.0(@babel/core@7.29.0)
+      '@babel/plugin-transform-regexp-modifiers': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-reserved-words': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-shorthand-properties': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-spread': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-sticky-regex': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-template-literals': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-typeof-symbol': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-unicode-escapes': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-unicode-property-regex': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-unicode-regex': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-unicode-sets-regex': 7.28.6(@babel/core@7.29.0)
+      '@babel/preset-modules': 0.1.6-no-external-plugins(@babel/core@7.29.0)
+      babel-plugin-polyfill-corejs2: 0.4.17(@babel/core@7.29.0)
+      babel-plugin-polyfill-corejs3: 0.14.2(@babel/core@7.29.0)
+      babel-plugin-polyfill-regenerator: 0.6.8(@babel/core@7.29.0)
+      core-js-compat: 3.49.0
+      semver: 6.3.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/preset-modules@0.1.6-no-external-plugins(@babel/core@7.29.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-plugin-utils': 7.28.6
+      '@babel/types': 7.29.0
+      esutils: 2.0.3
+
+  '@babel/runtime@7.29.2': {}
 
   '@babel/template@7.28.6':
     dependencies:
@@ -1073,6 +2906,8 @@ snapshots:
   '@esbuild/win32-x64@0.25.12':
     optional: true
 
+  '@isaacs/cliui@9.0.0': {}
+
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
       minipass: 7.1.3
@@ -1089,6 +2924,11 @@ snapshots:
 
   '@jridgewell/resolve-uri@3.1.2': {}
 
+  '@jridgewell/source-map@0.3.11':
+    dependencies:
+      '@jridgewell/gen-mapping': 0.3.13
+      '@jridgewell/trace-mapping': 0.3.31
+
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
   '@jridgewell/trace-mapping@0.3.31':
@@ -1097,6 +2937,56 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.5
 
   '@rolldown/pluginutils@1.0.0-beta.27': {}
+
+  '@rollup/plugin-babel@5.3.1(@babel/core@7.29.0)(@types/babel__core@7.20.5)(rollup@2.80.0)':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-module-imports': 7.28.6
+      '@rollup/pluginutils': 3.1.0(rollup@2.80.0)
+      rollup: 2.80.0
+    optionalDependencies:
+      '@types/babel__core': 7.20.5
+    transitivePeerDependencies:
+      - supports-color
+
+  '@rollup/plugin-node-resolve@15.3.1(rollup@2.80.0)':
+    dependencies:
+      '@rollup/pluginutils': 5.3.0(rollup@2.80.0)
+      '@types/resolve': 1.20.2
+      deepmerge: 4.3.1
+      is-module: 1.0.0
+      resolve: 1.22.11
+    optionalDependencies:
+      rollup: 2.80.0
+
+  '@rollup/plugin-replace@2.4.2(rollup@2.80.0)':
+    dependencies:
+      '@rollup/pluginutils': 3.1.0(rollup@2.80.0)
+      magic-string: 0.25.9
+      rollup: 2.80.0
+
+  '@rollup/plugin-terser@0.4.4(rollup@2.80.0)':
+    dependencies:
+      serialize-javascript: 6.0.2
+      smob: 1.6.1
+      terser: 5.46.1
+    optionalDependencies:
+      rollup: 2.80.0
+
+  '@rollup/pluginutils@3.1.0(rollup@2.80.0)':
+    dependencies:
+      '@types/estree': 0.0.39
+      estree-walker: 1.0.1
+      picomatch: 2.3.2
+      rollup: 2.80.0
+
+  '@rollup/pluginutils@5.3.0(rollup@2.80.0)':
+    dependencies:
+      '@types/estree': 1.0.8
+      estree-walker: 2.0.2
+      picomatch: 4.0.4
+    optionalDependencies:
+      rollup: 2.80.0
 
   '@rollup/rollup-android-arm-eabi@4.60.1':
     optional: true
@@ -1173,6 +3063,13 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.60.1':
     optional: true
 
+  '@surma/rollup-plugin-off-main-thread@2.2.3':
+    dependencies:
+      ejs: 3.1.10
+      json5: 2.2.3
+      magic-string: 0.25.9
+      string.prototype.matchall: 4.0.12
+
   '@tailwindcss/node@4.1.12':
     dependencies:
       '@jridgewell/remapping': 2.3.5
@@ -1237,12 +3134,12 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.1.12
       '@tailwindcss/oxide-win32-x64-msvc': 4.1.12
 
-  '@tailwindcss/vite@4.1.12(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1))':
+  '@tailwindcss/vite@4.1.12(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1))':
     dependencies:
       '@tailwindcss/node': 4.1.12
       '@tailwindcss/oxide': 4.1.12
       tailwindcss: 4.1.12
-      vite: 6.3.5(jiti@2.6.1)(lightningcss@1.30.1)
+      vite: 6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1)
 
   '@types/babel__core@7.20.5':
     dependencies:
@@ -1265,6 +3162,8 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.0
 
+  '@types/estree@0.0.39': {}
+
   '@types/estree@1.0.8': {}
 
   '@types/prop-types@15.7.15': {}
@@ -1278,7 +3177,11 @@ snapshots:
       '@types/prop-types': 15.7.15
       csstype: 3.2.3
 
-  '@vitejs/plugin-react@4.7.0(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1))':
+  '@types/resolve@1.20.2': {}
+
+  '@types/trusted-types@2.0.7': {}
+
+  '@vitejs/plugin-react@4.7.0(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1))':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.29.0)
@@ -1286,11 +3189,81 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.27
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 6.3.5(jiti@2.6.1)(lightningcss@1.30.1)
+      vite: 6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1)
     transitivePeerDependencies:
       - supports-color
 
+  acorn@8.16.0: {}
+
+  ajv@8.18.0:
+    dependencies:
+      fast-deep-equal: 3.1.3
+      fast-uri: 3.1.0
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
+
+  array-buffer-byte-length@1.0.2:
+    dependencies:
+      call-bound: 1.0.4
+      is-array-buffer: 3.0.5
+
+  arraybuffer.prototype.slice@1.0.4:
+    dependencies:
+      array-buffer-byte-length: 1.0.2
+      call-bind: 1.0.8
+      define-properties: 1.2.1
+      es-abstract: 1.24.1
+      es-errors: 1.3.0
+      get-intrinsic: 1.3.0
+      is-array-buffer: 3.0.5
+
+  async-function@1.0.0: {}
+
+  async@3.2.6: {}
+
+  at-least-node@1.0.0: {}
+
+  available-typed-arrays@1.0.7:
+    dependencies:
+      possible-typed-array-names: 1.1.0
+
+  babel-plugin-polyfill-corejs2@0.4.17(@babel/core@7.29.0):
+    dependencies:
+      '@babel/compat-data': 7.29.0
+      '@babel/core': 7.29.0
+      '@babel/helper-define-polyfill-provider': 0.6.8(@babel/core@7.29.0)
+      semver: 6.3.1
+    transitivePeerDependencies:
+      - supports-color
+
+  babel-plugin-polyfill-corejs3@0.14.2(@babel/core@7.29.0):
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-define-polyfill-provider': 0.6.8(@babel/core@7.29.0)
+      core-js-compat: 3.49.0
+    transitivePeerDependencies:
+      - supports-color
+
+  babel-plugin-polyfill-regenerator@0.6.8(@babel/core@7.29.0):
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/helper-define-polyfill-provider': 0.6.8(@babel/core@7.29.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  balanced-match@1.0.2: {}
+
+  balanced-match@4.0.4: {}
+
   baseline-browser-mapping@2.10.14: {}
+
+  brace-expansion@2.0.3:
+    dependencies:
+      balanced-match: 1.0.2
+
+  brace-expansion@5.0.5:
+    dependencies:
+      balanced-match: 4.0.4
 
   browserslist@4.28.2:
     dependencies:
@@ -1300,19 +3273,96 @@ snapshots:
       node-releases: 2.0.37
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
+  buffer-from@1.1.2: {}
+
+  call-bind-apply-helpers@1.0.2:
+    dependencies:
+      es-errors: 1.3.0
+      function-bind: 1.1.2
+
+  call-bind@1.0.8:
+    dependencies:
+      call-bind-apply-helpers: 1.0.2
+      es-define-property: 1.0.1
+      get-intrinsic: 1.3.0
+      set-function-length: 1.2.2
+
+  call-bound@1.0.4:
+    dependencies:
+      call-bind-apply-helpers: 1.0.2
+      get-intrinsic: 1.3.0
+
   caniuse-lite@1.0.30001785: {}
 
   chownr@3.0.0: {}
 
+  commander@2.20.3: {}
+
+  common-tags@1.8.2: {}
+
   convert-source-map@2.0.0: {}
 
+  core-js-compat@3.49.0:
+    dependencies:
+      browserslist: 4.28.2
+
+  cross-spawn@7.0.6:
+    dependencies:
+      path-key: 3.1.1
+      shebang-command: 2.0.0
+      which: 2.0.2
+
+  crypto-random-string@2.0.0: {}
+
   csstype@3.2.3: {}
+
+  data-view-buffer@1.0.2:
+    dependencies:
+      call-bound: 1.0.4
+      es-errors: 1.3.0
+      is-data-view: 1.0.2
+
+  data-view-byte-length@1.0.2:
+    dependencies:
+      call-bound: 1.0.4
+      es-errors: 1.3.0
+      is-data-view: 1.0.2
+
+  data-view-byte-offset@1.0.1:
+    dependencies:
+      call-bound: 1.0.4
+      es-errors: 1.3.0
+      is-data-view: 1.0.2
 
   debug@4.4.3:
     dependencies:
       ms: 2.1.3
 
+  deepmerge@4.3.1: {}
+
+  define-data-property@1.1.4:
+    dependencies:
+      es-define-property: 1.0.1
+      es-errors: 1.3.0
+      gopd: 1.2.0
+
+  define-properties@1.2.1:
+    dependencies:
+      define-data-property: 1.1.4
+      has-property-descriptors: 1.0.2
+      object-keys: 1.1.1
+
   detect-libc@2.1.2: {}
+
+  dunder-proto@1.0.1:
+    dependencies:
+      call-bind-apply-helpers: 1.0.2
+      es-errors: 1.3.0
+      gopd: 1.2.0
+
+  ejs@3.1.10:
+    dependencies:
+      jake: 10.9.4
 
   electron-to-chromium@1.5.331: {}
 
@@ -1320,6 +3370,84 @@ snapshots:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.3.2
+
+  es-abstract@1.24.1:
+    dependencies:
+      array-buffer-byte-length: 1.0.2
+      arraybuffer.prototype.slice: 1.0.4
+      available-typed-arrays: 1.0.7
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      data-view-buffer: 1.0.2
+      data-view-byte-length: 1.0.2
+      data-view-byte-offset: 1.0.1
+      es-define-property: 1.0.1
+      es-errors: 1.3.0
+      es-object-atoms: 1.1.1
+      es-set-tostringtag: 2.1.0
+      es-to-primitive: 1.3.0
+      function.prototype.name: 1.1.8
+      get-intrinsic: 1.3.0
+      get-proto: 1.0.1
+      get-symbol-description: 1.1.0
+      globalthis: 1.0.4
+      gopd: 1.2.0
+      has-property-descriptors: 1.0.2
+      has-proto: 1.2.0
+      has-symbols: 1.1.0
+      hasown: 2.0.2
+      internal-slot: 1.1.0
+      is-array-buffer: 3.0.5
+      is-callable: 1.2.7
+      is-data-view: 1.0.2
+      is-negative-zero: 2.0.3
+      is-regex: 1.2.1
+      is-set: 2.0.3
+      is-shared-array-buffer: 1.0.4
+      is-string: 1.1.1
+      is-typed-array: 1.1.15
+      is-weakref: 1.1.1
+      math-intrinsics: 1.1.0
+      object-inspect: 1.13.4
+      object-keys: 1.1.1
+      object.assign: 4.1.7
+      own-keys: 1.0.1
+      regexp.prototype.flags: 1.5.4
+      safe-array-concat: 1.1.3
+      safe-push-apply: 1.0.0
+      safe-regex-test: 1.1.0
+      set-proto: 1.0.0
+      stop-iteration-iterator: 1.1.0
+      string.prototype.trim: 1.2.10
+      string.prototype.trimend: 1.0.9
+      string.prototype.trimstart: 1.0.8
+      typed-array-buffer: 1.0.3
+      typed-array-byte-length: 1.0.3
+      typed-array-byte-offset: 1.0.4
+      typed-array-length: 1.0.7
+      unbox-primitive: 1.1.0
+      which-typed-array: 1.1.20
+
+  es-define-property@1.0.1: {}
+
+  es-errors@1.3.0: {}
+
+  es-object-atoms@1.1.1:
+    dependencies:
+      es-errors: 1.3.0
+
+  es-set-tostringtag@2.1.0:
+    dependencies:
+      es-errors: 1.3.0
+      get-intrinsic: 1.3.0
+      has-tostringtag: 1.0.2
+      hasown: 2.0.2
+
+  es-to-primitive@1.3.0:
+    dependencies:
+      is-callable: 1.2.7
+      is-date-object: 1.1.0
+      is-symbol: 1.1.1
 
   esbuild@0.25.12:
     optionalDependencies:
@@ -1352,18 +3480,257 @@ snapshots:
 
   escalade@3.2.0: {}
 
+  estree-walker@1.0.1: {}
+
+  estree-walker@2.0.2: {}
+
+  esutils@2.0.3: {}
+
+  fast-deep-equal@3.1.3: {}
+
+  fast-json-stable-stringify@2.1.0: {}
+
+  fast-uri@3.1.0: {}
+
   fdir@6.5.0(picomatch@4.0.4):
     optionalDependencies:
       picomatch: 4.0.4
 
+  filelist@1.0.6:
+    dependencies:
+      minimatch: 5.1.9
+
+  for-each@0.3.5:
+    dependencies:
+      is-callable: 1.2.7
+
+  foreground-child@3.3.1:
+    dependencies:
+      cross-spawn: 7.0.6
+      signal-exit: 4.1.0
+
+  fs-extra@9.1.0:
+    dependencies:
+      at-least-node: 1.0.0
+      graceful-fs: 4.2.11
+      jsonfile: 6.2.0
+      universalify: 2.0.1
+
   fsevents@2.3.3:
     optional: true
 
+  function-bind@1.1.2: {}
+
+  function.prototype.name@1.1.8:
+    dependencies:
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      define-properties: 1.2.1
+      functions-have-names: 1.2.3
+      hasown: 2.0.2
+      is-callable: 1.2.7
+
+  functions-have-names@1.2.3: {}
+
   fuse.js@7.3.0: {}
+
+  generator-function@2.0.1: {}
 
   gensync@1.0.0-beta.2: {}
 
+  get-intrinsic@1.3.0:
+    dependencies:
+      call-bind-apply-helpers: 1.0.2
+      es-define-property: 1.0.1
+      es-errors: 1.3.0
+      es-object-atoms: 1.1.1
+      function-bind: 1.1.2
+      get-proto: 1.0.1
+      gopd: 1.2.0
+      has-symbols: 1.1.0
+      hasown: 2.0.2
+      math-intrinsics: 1.1.0
+
+  get-own-enumerable-property-symbols@3.0.2: {}
+
+  get-proto@1.0.1:
+    dependencies:
+      dunder-proto: 1.0.1
+      es-object-atoms: 1.1.1
+
+  get-symbol-description@1.1.0:
+    dependencies:
+      call-bound: 1.0.4
+      es-errors: 1.3.0
+      get-intrinsic: 1.3.0
+
+  glob@11.1.0:
+    dependencies:
+      foreground-child: 3.3.1
+      jackspeak: 4.2.3
+      minimatch: 10.2.5
+      minipass: 7.1.3
+      package-json-from-dist: 1.0.1
+      path-scurry: 2.0.2
+
+  globalthis@1.0.4:
+    dependencies:
+      define-properties: 1.2.1
+      gopd: 1.2.0
+
+  gopd@1.2.0: {}
+
   graceful-fs@4.2.11: {}
+
+  has-bigints@1.1.0: {}
+
+  has-property-descriptors@1.0.2:
+    dependencies:
+      es-define-property: 1.0.1
+
+  has-proto@1.2.0:
+    dependencies:
+      dunder-proto: 1.0.1
+
+  has-symbols@1.1.0: {}
+
+  has-tostringtag@1.0.2:
+    dependencies:
+      has-symbols: 1.1.0
+
+  hasown@2.0.2:
+    dependencies:
+      function-bind: 1.1.2
+
+  idb@7.1.1: {}
+
+  internal-slot@1.1.0:
+    dependencies:
+      es-errors: 1.3.0
+      hasown: 2.0.2
+      side-channel: 1.1.0
+
+  is-array-buffer@3.0.5:
+    dependencies:
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      get-intrinsic: 1.3.0
+
+  is-async-function@2.1.1:
+    dependencies:
+      async-function: 1.0.0
+      call-bound: 1.0.4
+      get-proto: 1.0.1
+      has-tostringtag: 1.0.2
+      safe-regex-test: 1.1.0
+
+  is-bigint@1.1.0:
+    dependencies:
+      has-bigints: 1.1.0
+
+  is-boolean-object@1.2.2:
+    dependencies:
+      call-bound: 1.0.4
+      has-tostringtag: 1.0.2
+
+  is-callable@1.2.7: {}
+
+  is-core-module@2.16.1:
+    dependencies:
+      hasown: 2.0.2
+
+  is-data-view@1.0.2:
+    dependencies:
+      call-bound: 1.0.4
+      get-intrinsic: 1.3.0
+      is-typed-array: 1.1.15
+
+  is-date-object@1.1.0:
+    dependencies:
+      call-bound: 1.0.4
+      has-tostringtag: 1.0.2
+
+  is-finalizationregistry@1.1.1:
+    dependencies:
+      call-bound: 1.0.4
+
+  is-generator-function@1.1.2:
+    dependencies:
+      call-bound: 1.0.4
+      generator-function: 2.0.1
+      get-proto: 1.0.1
+      has-tostringtag: 1.0.2
+      safe-regex-test: 1.1.0
+
+  is-map@2.0.3: {}
+
+  is-module@1.0.0: {}
+
+  is-negative-zero@2.0.3: {}
+
+  is-number-object@1.1.1:
+    dependencies:
+      call-bound: 1.0.4
+      has-tostringtag: 1.0.2
+
+  is-obj@1.0.1: {}
+
+  is-regex@1.2.1:
+    dependencies:
+      call-bound: 1.0.4
+      gopd: 1.2.0
+      has-tostringtag: 1.0.2
+      hasown: 2.0.2
+
+  is-regexp@1.0.0: {}
+
+  is-set@2.0.3: {}
+
+  is-shared-array-buffer@1.0.4:
+    dependencies:
+      call-bound: 1.0.4
+
+  is-stream@2.0.1: {}
+
+  is-string@1.1.1:
+    dependencies:
+      call-bound: 1.0.4
+      has-tostringtag: 1.0.2
+
+  is-symbol@1.1.1:
+    dependencies:
+      call-bound: 1.0.4
+      has-symbols: 1.1.0
+      safe-regex-test: 1.1.0
+
+  is-typed-array@1.1.15:
+    dependencies:
+      which-typed-array: 1.1.20
+
+  is-weakmap@2.0.2: {}
+
+  is-weakref@1.1.1:
+    dependencies:
+      call-bound: 1.0.4
+
+  is-weakset@2.0.4:
+    dependencies:
+      call-bound: 1.0.4
+      get-intrinsic: 1.3.0
+
+  isarray@2.0.5: {}
+
+  isexe@2.0.0: {}
+
+  jackspeak@4.2.3:
+    dependencies:
+      '@isaacs/cliui': 9.0.0
+
+  jake@10.9.4:
+    dependencies:
+      async: 3.2.6
+      filelist: 1.0.6
+      picocolors: 1.1.1
 
   jiti@2.6.1: {}
 
@@ -1371,7 +3738,19 @@ snapshots:
 
   jsesc@3.1.0: {}
 
+  json-schema-traverse@1.0.0: {}
+
   json5@2.2.3: {}
+
+  jsonfile@6.2.0:
+    dependencies:
+      universalify: 2.0.1
+    optionalDependencies:
+      graceful-fs: 4.2.11
+
+  jsonpointer@5.0.1: {}
+
+  leven@3.1.0: {}
 
   lightningcss-darwin-arm64@1.30.1:
     optional: true
@@ -1418,17 +3797,39 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.30.1
       lightningcss-win32-x64-msvc: 1.30.1
 
+  lodash.debounce@4.0.8: {}
+
+  lodash.sortby@4.7.0: {}
+
+  lodash@4.18.1: {}
+
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
+
+  lru-cache@11.2.7: {}
 
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
 
+  magic-string@0.25.9:
+    dependencies:
+      sourcemap-codec: 1.4.8
+
   magic-string@0.30.21:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  math-intrinsics@1.1.0: {}
+
+  minimatch@10.2.5:
+    dependencies:
+      brace-expansion: 5.0.5
+
+  minimatch@5.1.9:
+    dependencies:
+      brace-expansion: 2.0.3
 
   minipass@7.1.3: {}
 
@@ -1442,9 +3843,43 @@ snapshots:
 
   node-releases@2.0.37: {}
 
+  object-inspect@1.13.4: {}
+
+  object-keys@1.1.1: {}
+
+  object.assign@4.1.7:
+    dependencies:
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      define-properties: 1.2.1
+      es-object-atoms: 1.1.1
+      has-symbols: 1.1.0
+      object-keys: 1.1.1
+
+  own-keys@1.0.1:
+    dependencies:
+      get-intrinsic: 1.3.0
+      object-keys: 1.1.1
+      safe-push-apply: 1.0.0
+
+  package-json-from-dist@1.0.1: {}
+
+  path-key@3.1.1: {}
+
+  path-parse@1.0.7: {}
+
+  path-scurry@2.0.2:
+    dependencies:
+      lru-cache: 11.2.7
+      minipass: 7.1.3
+
   picocolors@1.1.1: {}
 
+  picomatch@2.3.2: {}
+
   picomatch@4.0.4: {}
+
+  possible-typed-array-names@1.1.0: {}
 
   postcss@8.5.8:
     dependencies:
@@ -1453,6 +3888,16 @@ snapshots:
       source-map-js: 1.2.1
 
   prettier@3.8.1: {}
+
+  pretty-bytes@5.6.0: {}
+
+  pretty-bytes@6.1.1: {}
+
+  punycode@2.3.1: {}
+
+  randombytes@2.1.0:
+    dependencies:
+      safe-buffer: 5.2.1
 
   react-dom@18.3.1(react@18.3.1):
     dependencies:
@@ -1465,6 +3910,59 @@ snapshots:
   react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
+
+  reflect.getprototypeof@1.0.10:
+    dependencies:
+      call-bind: 1.0.8
+      define-properties: 1.2.1
+      es-abstract: 1.24.1
+      es-errors: 1.3.0
+      es-object-atoms: 1.1.1
+      get-intrinsic: 1.3.0
+      get-proto: 1.0.1
+      which-builtin-type: 1.2.1
+
+  regenerate-unicode-properties@10.2.2:
+    dependencies:
+      regenerate: 1.4.2
+
+  regenerate@1.4.2: {}
+
+  regexp.prototype.flags@1.5.4:
+    dependencies:
+      call-bind: 1.0.8
+      define-properties: 1.2.1
+      es-errors: 1.3.0
+      get-proto: 1.0.1
+      gopd: 1.2.0
+      set-function-name: 2.0.2
+
+  regexpu-core@6.4.0:
+    dependencies:
+      regenerate: 1.4.2
+      regenerate-unicode-properties: 10.2.2
+      regjsgen: 0.8.0
+      regjsparser: 0.13.0
+      unicode-match-property-ecmascript: 2.0.0
+      unicode-match-property-value-ecmascript: 2.2.1
+
+  regjsgen@0.8.0: {}
+
+  regjsparser@0.13.0:
+    dependencies:
+      jsesc: 3.1.0
+
+  require-from-string@2.0.2: {}
+
+  resolve@1.22.11:
+    dependencies:
+      is-core-module: 2.16.1
+      path-parse: 1.0.7
+      supports-preserve-symlinks-flag: 1.0.0
+
+  rollup@2.80.0:
+    optionalDependencies:
+      fsevents: 2.3.3
 
   rollup@4.60.1:
     dependencies:
@@ -1497,13 +3995,165 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.60.1
       fsevents: 2.3.3
 
+  safe-array-concat@1.1.3:
+    dependencies:
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      get-intrinsic: 1.3.0
+      has-symbols: 1.1.0
+      isarray: 2.0.5
+
+  safe-buffer@5.2.1: {}
+
+  safe-push-apply@1.0.0:
+    dependencies:
+      es-errors: 1.3.0
+      isarray: 2.0.5
+
+  safe-regex-test@1.1.0:
+    dependencies:
+      call-bound: 1.0.4
+      es-errors: 1.3.0
+      is-regex: 1.2.1
+
   scheduler@0.23.2:
     dependencies:
       loose-envify: 1.4.0
 
   semver@6.3.1: {}
 
+  serialize-javascript@6.0.2:
+    dependencies:
+      randombytes: 2.1.0
+
+  set-function-length@1.2.2:
+    dependencies:
+      define-data-property: 1.1.4
+      es-errors: 1.3.0
+      function-bind: 1.1.2
+      get-intrinsic: 1.3.0
+      gopd: 1.2.0
+      has-property-descriptors: 1.0.2
+
+  set-function-name@2.0.2:
+    dependencies:
+      define-data-property: 1.1.4
+      es-errors: 1.3.0
+      functions-have-names: 1.2.3
+      has-property-descriptors: 1.0.2
+
+  set-proto@1.0.0:
+    dependencies:
+      dunder-proto: 1.0.1
+      es-errors: 1.3.0
+      es-object-atoms: 1.1.1
+
+  shebang-command@2.0.0:
+    dependencies:
+      shebang-regex: 3.0.0
+
+  shebang-regex@3.0.0: {}
+
+  side-channel-list@1.0.0:
+    dependencies:
+      es-errors: 1.3.0
+      object-inspect: 1.13.4
+
+  side-channel-map@1.0.1:
+    dependencies:
+      call-bound: 1.0.4
+      es-errors: 1.3.0
+      get-intrinsic: 1.3.0
+      object-inspect: 1.13.4
+
+  side-channel-weakmap@1.0.2:
+    dependencies:
+      call-bound: 1.0.4
+      es-errors: 1.3.0
+      get-intrinsic: 1.3.0
+      object-inspect: 1.13.4
+      side-channel-map: 1.0.1
+
+  side-channel@1.1.0:
+    dependencies:
+      es-errors: 1.3.0
+      object-inspect: 1.13.4
+      side-channel-list: 1.0.0
+      side-channel-map: 1.0.1
+      side-channel-weakmap: 1.0.2
+
+  signal-exit@4.1.0: {}
+
+  smob@1.6.1: {}
+
   source-map-js@1.2.1: {}
+
+  source-map-support@0.5.21:
+    dependencies:
+      buffer-from: 1.1.2
+      source-map: 0.6.1
+
+  source-map@0.6.1: {}
+
+  source-map@0.8.0-beta.0:
+    dependencies:
+      whatwg-url: 7.1.0
+
+  sourcemap-codec@1.4.8: {}
+
+  stop-iteration-iterator@1.1.0:
+    dependencies:
+      es-errors: 1.3.0
+      internal-slot: 1.1.0
+
+  string.prototype.matchall@4.0.12:
+    dependencies:
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      define-properties: 1.2.1
+      es-abstract: 1.24.1
+      es-errors: 1.3.0
+      es-object-atoms: 1.1.1
+      get-intrinsic: 1.3.0
+      gopd: 1.2.0
+      has-symbols: 1.1.0
+      internal-slot: 1.1.0
+      regexp.prototype.flags: 1.5.4
+      set-function-name: 2.0.2
+      side-channel: 1.1.0
+
+  string.prototype.trim@1.2.10:
+    dependencies:
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      define-data-property: 1.1.4
+      define-properties: 1.2.1
+      es-abstract: 1.24.1
+      es-object-atoms: 1.1.1
+      has-property-descriptors: 1.0.2
+
+  string.prototype.trimend@1.0.9:
+    dependencies:
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      define-properties: 1.2.1
+      es-object-atoms: 1.1.1
+
+  string.prototype.trimstart@1.0.8:
+    dependencies:
+      call-bind: 1.0.8
+      define-properties: 1.2.1
+      es-object-atoms: 1.1.1
+
+  stringify-object@3.3.0:
+    dependencies:
+      get-own-enumerable-property-symbols: 3.0.2
+      is-obj: 1.0.1
+      is-regexp: 1.0.0
+
+  strip-comments@2.0.1: {}
+
+  supports-preserve-symlinks-flag@1.0.0: {}
 
   tailwindcss@4.1.12: {}
 
@@ -1517,12 +4167,93 @@ snapshots:
       minizlib: 3.1.0
       yallist: 5.0.0
 
+  temp-dir@2.0.0: {}
+
+  tempy@0.6.0:
+    dependencies:
+      is-stream: 2.0.1
+      temp-dir: 2.0.0
+      type-fest: 0.16.0
+      unique-string: 2.0.0
+
+  terser@5.46.1:
+    dependencies:
+      '@jridgewell/source-map': 0.3.11
+      acorn: 8.16.0
+      commander: 2.20.3
+      source-map-support: 0.5.21
+
   tinyglobby@0.2.15:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
 
+  tr46@1.0.1:
+    dependencies:
+      punycode: 2.3.1
+
   tw-animate-css@1.4.0: {}
+
+  type-fest@0.16.0: {}
+
+  typed-array-buffer@1.0.3:
+    dependencies:
+      call-bound: 1.0.4
+      es-errors: 1.3.0
+      is-typed-array: 1.1.15
+
+  typed-array-byte-length@1.0.3:
+    dependencies:
+      call-bind: 1.0.8
+      for-each: 0.3.5
+      gopd: 1.2.0
+      has-proto: 1.2.0
+      is-typed-array: 1.1.15
+
+  typed-array-byte-offset@1.0.4:
+    dependencies:
+      available-typed-arrays: 1.0.7
+      call-bind: 1.0.8
+      for-each: 0.3.5
+      gopd: 1.2.0
+      has-proto: 1.2.0
+      is-typed-array: 1.1.15
+      reflect.getprototypeof: 1.0.10
+
+  typed-array-length@1.0.7:
+    dependencies:
+      call-bind: 1.0.8
+      for-each: 0.3.5
+      gopd: 1.2.0
+      is-typed-array: 1.1.15
+      possible-typed-array-names: 1.1.0
+      reflect.getprototypeof: 1.0.10
+
+  unbox-primitive@1.1.0:
+    dependencies:
+      call-bound: 1.0.4
+      has-bigints: 1.1.0
+      has-symbols: 1.1.0
+      which-boxed-primitive: 1.1.1
+
+  unicode-canonical-property-names-ecmascript@2.0.1: {}
+
+  unicode-match-property-ecmascript@2.0.0:
+    dependencies:
+      unicode-canonical-property-names-ecmascript: 2.0.1
+      unicode-property-aliases-ecmascript: 2.2.0
+
+  unicode-match-property-value-ecmascript@2.2.1: {}
+
+  unicode-property-aliases-ecmascript@2.2.0: {}
+
+  unique-string@2.0.0:
+    dependencies:
+      crypto-random-string: 2.0.0
+
+  universalify@2.0.1: {}
+
+  upath@1.2.0: {}
 
   update-browserslist-db@1.2.3(browserslist@4.28.2):
     dependencies:
@@ -1530,7 +4261,18 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1):
+  vite-plugin-pwa@1.2.0(vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0):
+    dependencies:
+      debug: 4.4.3
+      pretty-bytes: 6.1.1
+      tinyglobby: 0.2.15
+      vite: 6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1)
+      workbox-build: 7.4.0(@types/babel__core@7.20.5)
+      workbox-window: 7.4.0
+    transitivePeerDependencies:
+      - supports-color
+
+  vite@6.3.5(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.46.1):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.4)
@@ -1542,6 +4284,173 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
       lightningcss: 1.30.1
+      terser: 5.46.1
+
+  webidl-conversions@4.0.2: {}
+
+  whatwg-url@7.1.0:
+    dependencies:
+      lodash.sortby: 4.7.0
+      tr46: 1.0.1
+      webidl-conversions: 4.0.2
+
+  which-boxed-primitive@1.1.1:
+    dependencies:
+      is-bigint: 1.1.0
+      is-boolean-object: 1.2.2
+      is-number-object: 1.1.1
+      is-string: 1.1.1
+      is-symbol: 1.1.1
+
+  which-builtin-type@1.2.1:
+    dependencies:
+      call-bound: 1.0.4
+      function.prototype.name: 1.1.8
+      has-tostringtag: 1.0.2
+      is-async-function: 2.1.1
+      is-date-object: 1.1.0
+      is-finalizationregistry: 1.1.1
+      is-generator-function: 1.1.2
+      is-regex: 1.2.1
+      is-weakref: 1.1.1
+      isarray: 2.0.5
+      which-boxed-primitive: 1.1.1
+      which-collection: 1.0.2
+      which-typed-array: 1.1.20
+
+  which-collection@1.0.2:
+    dependencies:
+      is-map: 2.0.3
+      is-set: 2.0.3
+      is-weakmap: 2.0.2
+      is-weakset: 2.0.4
+
+  which-typed-array@1.1.20:
+    dependencies:
+      available-typed-arrays: 1.0.7
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      for-each: 0.3.5
+      get-proto: 1.0.1
+      gopd: 1.2.0
+      has-tostringtag: 1.0.2
+
+  which@2.0.2:
+    dependencies:
+      isexe: 2.0.0
+
+  workbox-background-sync@7.4.0:
+    dependencies:
+      idb: 7.1.1
+      workbox-core: 7.4.0
+
+  workbox-broadcast-update@7.4.0:
+    dependencies:
+      workbox-core: 7.4.0
+
+  workbox-build@7.4.0(@types/babel__core@7.20.5):
+    dependencies:
+      '@apideck/better-ajv-errors': 0.3.7(ajv@8.18.0)
+      '@babel/core': 7.29.0
+      '@babel/preset-env': 7.29.2(@babel/core@7.29.0)
+      '@babel/runtime': 7.29.2
+      '@rollup/plugin-babel': 5.3.1(@babel/core@7.29.0)(@types/babel__core@7.20.5)(rollup@2.80.0)
+      '@rollup/plugin-node-resolve': 15.3.1(rollup@2.80.0)
+      '@rollup/plugin-replace': 2.4.2(rollup@2.80.0)
+      '@rollup/plugin-terser': 0.4.4(rollup@2.80.0)
+      '@surma/rollup-plugin-off-main-thread': 2.2.3
+      ajv: 8.18.0
+      common-tags: 1.8.2
+      fast-json-stable-stringify: 2.1.0
+      fs-extra: 9.1.0
+      glob: 11.1.0
+      lodash: 4.18.1
+      pretty-bytes: 5.6.0
+      rollup: 2.80.0
+      source-map: 0.8.0-beta.0
+      stringify-object: 3.3.0
+      strip-comments: 2.0.1
+      tempy: 0.6.0
+      upath: 1.2.0
+      workbox-background-sync: 7.4.0
+      workbox-broadcast-update: 7.4.0
+      workbox-cacheable-response: 7.4.0
+      workbox-core: 7.4.0
+      workbox-expiration: 7.4.0
+      workbox-google-analytics: 7.4.0
+      workbox-navigation-preload: 7.4.0
+      workbox-precaching: 7.4.0
+      workbox-range-requests: 7.4.0
+      workbox-recipes: 7.4.0
+      workbox-routing: 7.4.0
+      workbox-strategies: 7.4.0
+      workbox-streams: 7.4.0
+      workbox-sw: 7.4.0
+      workbox-window: 7.4.0
+    transitivePeerDependencies:
+      - '@types/babel__core'
+      - supports-color
+
+  workbox-cacheable-response@7.4.0:
+    dependencies:
+      workbox-core: 7.4.0
+
+  workbox-core@7.4.0: {}
+
+  workbox-expiration@7.4.0:
+    dependencies:
+      idb: 7.1.1
+      workbox-core: 7.4.0
+
+  workbox-google-analytics@7.4.0:
+    dependencies:
+      workbox-background-sync: 7.4.0
+      workbox-core: 7.4.0
+      workbox-routing: 7.4.0
+      workbox-strategies: 7.4.0
+
+  workbox-navigation-preload@7.4.0:
+    dependencies:
+      workbox-core: 7.4.0
+
+  workbox-precaching@7.4.0:
+    dependencies:
+      workbox-core: 7.4.0
+      workbox-routing: 7.4.0
+      workbox-strategies: 7.4.0
+
+  workbox-range-requests@7.4.0:
+    dependencies:
+      workbox-core: 7.4.0
+
+  workbox-recipes@7.4.0:
+    dependencies:
+      workbox-cacheable-response: 7.4.0
+      workbox-core: 7.4.0
+      workbox-expiration: 7.4.0
+      workbox-precaching: 7.4.0
+      workbox-routing: 7.4.0
+      workbox-strategies: 7.4.0
+
+  workbox-routing@7.4.0:
+    dependencies:
+      workbox-core: 7.4.0
+
+  workbox-strategies@7.4.0:
+    dependencies:
+      workbox-core: 7.4.0
+
+  workbox-streams@7.4.0:
+    dependencies:
+      workbox-core: 7.4.0
+      workbox-routing: 7.4.0
+
+  workbox-sw@7.4.0: {}
+
+  workbox-window@7.4.0:
+    dependencies:
+      '@types/trusted-types': 2.0.7
+      workbox-core: 7.4.0
 
   yallist@3.1.1: {}
 
