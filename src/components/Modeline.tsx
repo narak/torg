@@ -1,5 +1,5 @@
 import React from 'react';
-import { C, FONT } from '../theme';
+import { C } from '../theme';
 
 interface ModelineProps {
     message: string;

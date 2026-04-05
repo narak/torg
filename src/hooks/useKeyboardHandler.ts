@@ -56,6 +56,8 @@ export interface KeyboardHandlerDeps {
     clearFilters: () => void;
     toggleHideDone: () => void;
     toggleWordWrap: () => void;
+    syncToDrive: ((markdown: string, nodes: OrgNode[]) => void) | null;
+    markdownText: string;
     setNodes: React.Dispatch<React.SetStateAction<OrgNode[]>>;
     // Memoized callbacks
     confirmTagEdit: () => void;
@@ -110,6 +112,8 @@ export function useKeyboardHandler({
     clearFilters,
     toggleHideDone,
     toggleWordWrap,
+    syncToDrive,
+    markdownText,
     setNodes,
     confirmTagEdit,
     cancelTagEdit,
@@ -505,6 +509,17 @@ export function useKeyboardHandler({
                     setCmdBuf('');
                     return true;
                 }
+                if ((key === 's' || key === 'S') && (e.metaKey || ctrlKey) && !altKey) {
+                    e.preventDefault();
+                    if (syncToDrive) {
+                        syncToDrive(markdownText, nodes);
+                        msg('Syncing to Google Drive…');
+                    } else {
+                        msg('Drive not configured (VITE_GOOGLE_CLIENT_ID missing)');
+                    }
+                    setCmdBuf('');
+                    return true;
+                }
                 if (key === 'w' && !altKey && !ctrlKey && !filterBarFocused) {
                     toggleWordWrap();
                     setCmdBuf('');
@@ -615,6 +630,8 @@ export function useKeyboardHandler({
             clearFilters,
             toggleHideDone,
             toggleWordWrap,
+            syncToDrive,
+            markdownText,
             confirmTagEdit,
             cancelTagEdit,
             confirmEdit,

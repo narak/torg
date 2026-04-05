@@ -9,7 +9,7 @@ import { Topbar } from '../components/Topbar';
 import { FilterBar } from '../components/FilterBar';
 import { TabBar } from '../components/TabBar';
 import { Modeline } from '../components/Modeline';
-import { C, FONT } from '../theme';
+import { C } from '../theme';
 
 export default function App() {
     const state = useOrgState();
@@ -43,6 +43,10 @@ export default function App() {
         filterBarFocused,
         filterFocusIdx,
         wordWrap,
+        driveStatus,
+        driveLastSynced,
+        driveFileUrl,
+        driveConfigured,
         setTabMode,
         setActiveTab,
         visible,
@@ -77,7 +81,6 @@ export default function App() {
             tabIndex={0}
             onKeyDown={handleKeyDown}
             style={{
-                fontFamily: FONT,
                 fontSize: '14px',
                 backgroundColor: C.bg,
                 color: C.fg,
@@ -89,7 +92,16 @@ export default function App() {
                 lineHeight: '1.55',
             }}
         >
-            <Topbar selNode={selNode} selIdx={selIdx} visibleCount={visible.length} stats={stats} />
+            <Topbar
+                selNode={selNode}
+                selIdx={selIdx}
+                visibleCount={visible.length}
+                stats={stats}
+                driveStatus={driveStatus}
+                driveLastSynced={driveLastSynced}
+                driveFileUrl={driveFileUrl}
+                driveConfigured={driveConfigured}
+            />
 
             {tabMode !== 'none' && (
                 <TabBar

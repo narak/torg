@@ -1,15 +1,20 @@
 import React from 'react';
 import type { OrgNode } from '../types';
 import { C } from '../theme';
+import type { DriveState } from '../hooks/useDriveSync';
 
 interface TopbarProps {
     selNode: OrgNode | undefined;
     selIdx: number;
     visibleCount: number;
     stats: { todo: number; doing: number; waiting: number; done: number };
+    driveStatus: DriveState['driveStatus'];
+    driveLastSynced: DriveState['driveLastSynced'];
+    driveFileUrl: DriveState['driveFileUrl'];
+    driveConfigured: DriveState['driveConfigured'];
 }
 
-export function Topbar({ selNode, selIdx, visibleCount, stats }: TopbarProps) {
+export function Topbar({ selNode, selIdx, visibleCount, stats, driveStatus, driveLastSynced, driveFileUrl, driveConfigured }: TopbarProps) {
     return (
         <div
             style={{
@@ -47,8 +52,34 @@ export function Topbar({ selNode, selIdx, visibleCount, stats }: TopbarProps) {
                 </>
             )}
 
+            {/* Drive status */}
+            {driveConfigured && (
+                <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11px' }}>
+                    {driveStatus === 'syncing' && (
+                        <span style={{ color: C.yellow }}>↑ syncing…</span>
+                    )}
+                    {driveStatus === 'synced' && driveLastSynced && (
+                        <a
+                            href={driveFileUrl ?? undefined}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{ color: C.green, textDecoration: 'none' }}
+                            title="Open in Google Drive"
+                        >
+                            ✓ Drive {driveLastSynced.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}
+                        </a>
+                    )}
+                    {driveStatus === 'error' && (
+                        <span style={{ color: C.red }} title="Sync failed">✗ Drive</span>
+                    )}
+                    {(driveStatus === 'idle') && (
+                        <span style={{ color: C.dim }}>Drive</span>
+                    )}
+                </div>
+            )}
+
             {/* Stats */}
-            <div style={{ marginLeft: 'auto', display: 'flex', gap: '12px', fontSize: '12px' }}>
+            <div style={{ marginLeft: driveConfigured ? '12px' : 'auto', display: 'flex', gap: '12px', fontSize: '12px' }}>
                 <span style={{ color: C.red }}>TODO:{stats.todo}</span>
                 <span style={{ color: C.yellow }}>DOING:{stats.doing}</span>
                 <span style={{ color: C.violet }}>WAIT:{stats.waiting}</span>

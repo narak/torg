@@ -9,6 +9,7 @@ import {
 } from '../lib/tree';
 import { generateMarkdown } from '../lib/markdown';
 import { useKeyboardHandler } from './useKeyboardHandler';
+import { useDriveSync, type DriveState } from './useDriveSync';
 
 export interface OrgState {
     // Refs
@@ -50,6 +51,14 @@ export interface OrgState {
     allTags: string[];
     markdownText: string;
     stats: { todo: number; doing: number; waiting: number; done: number };
+    // Drive sync
+    driveStatus: DriveState['driveStatus'];
+    driveLastSynced: DriveState['driveLastSynced'];
+    driveError: DriveState['driveError'];
+    driveFileUrl: DriveState['driveFileUrl'];
+    driveConfigured: DriveState['driveConfigured'];
+    syncToDrive: DriveState['syncToDrive'];
+    loadFromDrive: DriveState['loadFromDrive'];
     // Handlers
     handleKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => void;
     setSelectedId: (id: string) => void;
@@ -132,6 +141,23 @@ export function useOrgState(): OrgState {
     const [filterBarFocused, setFilterBarFocused] = useState(false);
     const [filterFocusIdx, setFilterFocusIdx] = useState(0);
     const [wordWrap, setWordWrap] = useState(false);
+
+    const {
+        driveStatus,
+        driveLastSynced,
+        driveError,
+        driveFileUrl,
+        driveConfigured,
+        syncToDrive,
+        loadFromDrive,
+    } = useDriveSync(useCallback((loaded: OrgNode[]) => {
+        // Replace nodes from Drive, reset selected to first node
+        setNodes(loaded);
+        if (loaded.length > 0) setSelectedId(loaded[0].id);
+        // Wipe undo history so Drive state is the baseline
+        historyRef.current = [];
+        futureRef.current = [];
+    }, []));
 
     const containerRef = useRef<HTMLDivElement>(null);
     const selectedRef = useRef<HTMLDivElement>(null);
@@ -610,6 +636,8 @@ export function useOrgState(): OrgState {
         clearFilters,
         toggleHideDone,
         toggleWordWrap,
+        syncToDrive,
+        markdownText,
         setNodes,
         confirmTagEdit,
         cancelTagEdit,
@@ -658,6 +686,13 @@ export function useOrgState(): OrgState {
         allTags,
         markdownText,
         stats,
+        driveStatus,
+        driveLastSynced,
+        driveError,
+        driveFileUrl,
+        driveConfigured,
+        syncToDrive,
+        loadFromDrive,
         handleKeyDown,
         setSelectedId,
         setEditValue,

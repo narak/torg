@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Fuse, { type FuseResult, type RangeTuple } from 'fuse.js';
 import type { OrgNode } from '../types';
-import { C, FONT } from '../theme';
+import { C } from '../theme';
 
 interface SearchOverlayProps {
     nodes: OrgNode[];

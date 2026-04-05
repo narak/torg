@@ -51,8 +51,6 @@ export const SEVERITY_COLORS: Record<NonNullable<Severity>, string> = {
     S3: C.dimBright,
 };
 
-export const FONT = "'JetBrains Mono','Fira Code','Cascadia Code','Consolas',monospace";
-
 export function hexToRgba(hex: string, alpha: number): string {
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);

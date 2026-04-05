@@ -7,7 +7,6 @@ import {
     STATE_LABELS,
     PRIORITY_COLORS,
     SEVERITY_COLORS,
-    FONT,
     hexToRgba,
 } from '../theme';
 import { nodeHasChildren } from '../lib/tree';
@@ -248,7 +247,6 @@ export function OrgNodeRow({
             style={{
                 display: 'flex',
                 alignItems: 'stretch',
-                minHeight: '22px',
                 backgroundColor: isSel ? C.bgSelected : 'transparent',
                 borderLeft: isSel
                     ? `3px solid ${C.cursor}`
@@ -257,38 +255,41 @@ export function OrgNodeRow({
                       : '3px solid transparent',
                 opacity: isMatch === false && !isSel ? 0.4 : 1,
                 cursor: 'default',
+                paddingRight: '8px',
             }}
         >
-            {/* Left gutter: state text + P badge + S badge */}
+            {/* Left gutter: P badge + S badge */}
             <div
                 style={{
-                    width: '80px',
+                    width: '50px',
                     display: 'flex',
                     alignItems: 'baseline',
+                    lineHeight: '2',
                     gap: '6px',
-                    padding: '0 6px',
+                    padding: '0 8px',
+                    margin: '0 6px',
                     // justifyContent: 'flex-end',
-                    fontSize: '10px',
+                    fontSize: '12px',
                     fontWeight: 'bold',
+                    backgroundColor: C.bgAlt,
                 }}
             >
-                <span style={{ color: PRIORITY_COLORS[node.priority], minWidth: '12px' }}>
-                    {node.priority || ''}
+                <span
+                    style={{
+                        color: node.priority ? PRIORITY_COLORS[node.priority] : C.dim,
+                        minWidth: '12px',
+                    }}
+                >
+                    {node.priority || '-'}
                 </span>
-                <span style={{ color: SEVERITY_COLORS[node.severity], minWidth: '12px' }}>
-                    {node.severity || ''}
+                <span
+                    style={{
+                        color: node.severity ? SEVERITY_COLORS[node.severity] : C.dim,
+                        minWidth: '12px',
+                    }}
+                >
+                    {node.severity || '-'}
                 </span>
-                {node.state && (
-                    <span
-                        style={{
-                            color: STATE_COLORS[node.state],
-                            letterSpacing: '0.3px',
-                            textAlign: 'right',
-                        }}
-                    >
-                        {STATE_LABELS[node.state]}
-                    </span>
-                )}
             </div>
 
             {/* Main content */}
@@ -414,6 +415,33 @@ export function OrgNodeRow({
                     </span>
                 )}
 
+                <div
+                    style={{
+                        width: '80px',
+                        display: 'flex',
+                        alignItems: 'baseline',
+                        lineHeight: '2',
+                        gap: '6px',
+                        padding: '0 6px',
+                        // justifyContent: 'flex-end',
+                        fontSize: '12px',
+                        fontWeight: 'bold',
+                    }}
+                >
+                    {node.state && (
+                        <span
+                            style={{
+                                color: STATE_COLORS[node.state],
+                                letterSpacing: '0.3px',
+                                textAlign: 'right',
+                            }}
+                        >
+                            {STATE_LABELS[node.state]}
+                        </span>
+                    )}
+                </div>
+            </div>
+            <div>
                 {!isEdit && (
                     <TagsCell
                         tags={node.tags}

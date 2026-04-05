@@ -1,5 +1,5 @@
 import React from 'react';
-import { C, FONT } from '../theme';
+import { C } from '../theme';
 
 const HELP: { section?: string; key?: string; desc?: string }[] = [
     { section: 'Navigation' },
@@ -42,6 +42,7 @@ const HELP: { section?: string; key?: string; desc?: string }[] = [
     { section: 'View' },
     { key: 'f / F', desc: 'Cycle global fold (overview/contents/all)' },
     { key: 'M / Shift+m', desc: 'Toggle markdown export panel' },
+    { key: '⌘S / Ctrl+S', desc: 'Sync markdown to Google Drive' },
     { key: 'I / Shift+i', desc: 'Toggle metadata annotations (created date/time)' },
     { key: '?', desc: 'Toggle this help screen' },
     { key: 'Esc', desc: 'Close overlays / cancel' },
@@ -65,7 +66,6 @@ export function HelpOverlay({ onClose }: HelpOverlayProps) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 zIndex: 200,
-                fontFamily: FONT,
             }}
             onClick={onClose}
         >
