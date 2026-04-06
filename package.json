@@ -4,18 +4,19 @@
     "version": "0.0.1",
     "type": "module",
     "scripts": {
-        "build": "vite build",
+        "build": "vite build && node scripts/build-docs.mjs",
         "dev": "vite",
         "fmt": "prettier --write \"src/**/*.{ts,tsx}\""
     },
     "devDependencies": {
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0",
         "@tailwindcss/vite": "4.1.12",
         "@types/react": "^19.0.0",
         "@types/react-dom": "^19.0.0",
         "@vitejs/plugin-react": "^4.0.0",
+        "marked": "^17.0.6",
         "prettier": "^3.8.1",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
         "tailwindcss": "4.1.12",
         "vite": "^6.0.0",
         "vite-plugin-pwa": "^1.2.0"
